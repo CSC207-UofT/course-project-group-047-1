@@ -8,4 +8,8 @@ public class GroceryItem{
         this.price = price;
         this.quantity_in_stock = quantity;
     }
+
+    public double getPrice() {
+        return this.price;
+    }
 }
