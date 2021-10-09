@@ -11,6 +11,13 @@ public class ShoppingCart {
         this.items.add(item);
     }
 
+    //for multiple items
+    public void AddItem(GroceryItem item, int amount) {
+        for (int i = 0; i < amount, i++) {
+            this.items.add(item);
+        }
+    }
+
     public void RemoveItem(int index) {
         this.items.remove(index);
     }

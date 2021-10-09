@@ -12,4 +12,8 @@ public class GroceryItem{
     public double getPrice() {
         return this.price;
     }
+
+    public void removeQuantity(int n) {
+        this.quantity_in_stock -= n;
+    }
 }
