@@ -1,5 +1,1 @@
-/** Zhaoyu
- *
- */
-
 public class GroceryInventory{}
