@@ -39,3 +39,9 @@ potential problems and solutions:
 * We might need a presenter (the presenter have the job of acting as a mediator between UseCases and UI, as a data dispatcher) so that customers are able to navigate the app (ex. see their shoppingCart (with images and quantities of items added to the cart) on their phone screen), but I'm not sure how to approach this
 * add your insights here
 
+
+
+
+
+nonono
+
