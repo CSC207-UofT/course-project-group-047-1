@@ -1,4 +1,4 @@
-public class Customer implements User {
+public class Customer{
     private String name;
     private int number;
     private String email;
