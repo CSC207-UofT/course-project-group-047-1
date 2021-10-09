@@ -1,6 +1,6 @@
 import java.time;
 
-public class delivery_person implements User {
+public class DeliveryPeople implements User {
     private String name;
     private int number;
     private String email;
