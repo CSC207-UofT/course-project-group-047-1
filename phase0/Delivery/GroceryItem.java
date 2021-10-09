@@ -1,4 +1,4 @@
-public class grocery_items {
+public class GroceryItem{
     private String item_name;
     private double price;
     private int quantity_in_stock;
