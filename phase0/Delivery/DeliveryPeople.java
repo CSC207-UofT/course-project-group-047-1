@@ -7,7 +7,7 @@ public class DeliveryPeople implements User {
     private String deliveryArea;
     private LocalTime time;
 
-    public customer (String name, int number, String email, String area) {
+    public DeliveryPeople (String name, int number, String email, String area) {
         this.name = name;
         this.number = number;
         this.email = email;
