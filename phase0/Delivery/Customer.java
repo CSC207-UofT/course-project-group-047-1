@@ -5,7 +5,7 @@ public class Customer implements User {
     private String paymentInfo;
     private String address
 
-    public customer (String name, int number, String email, String paymentInfo, String address) {
+    public Customer (String name, int number, String email, String paymentInfo, String address) {
         this.name = name;
         this.number = number;
         this.email = email;

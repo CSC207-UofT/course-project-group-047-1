@@ -3,7 +3,7 @@ public class GroceryItem{
     private double price;
     private int quantity_in_stock;
 
-    public grocery_items (String name, int price, int quantity) {
+    public GroceryItems (String name, int price, int quantity) {
         this.item_name = name;
         this.price = price;
         this.quantity_in_stock = quantity;
