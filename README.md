@@ -1,1 +1,1 @@
-This is the project repository of group 047 of the course csc207 fall 2021 at the University of Toronto. We have seven members and we are working on phase 0 of the project.
+I moved our code into a new folder: src directly under the repo, so now the skeleton codes are in src, rest of the phase 0 is under course-project-group-047-1/phase0
