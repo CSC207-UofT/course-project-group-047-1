@@ -11,7 +11,7 @@ list of classes:
 
 Entities: Customer GroceryItem DeliveryPeople
 
-Use case: CustomerAccountManager Order deliveryMatchingSystem ShoppingCart GroceryInventory
+Use case: CustomerAccountManager Order DeliveryMatchingSystem ShoppingCart GroceryInventory
 
 controller: OrderArrangeSystem OrderTrackingSystem menu
 
