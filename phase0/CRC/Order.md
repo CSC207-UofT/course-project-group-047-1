@@ -8,6 +8,6 @@ variables: date, address, status
 
 collaborators:
 
-shoppingCart, DeliveryMatchingSystem
+Customer, DeliveryPeople
 
 
