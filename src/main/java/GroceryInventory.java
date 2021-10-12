@@ -26,6 +26,8 @@ public class GroceryInventory {
 
 
     public void view() {
+        System.out.println("Welcome to the store");
+        System.out.println("");
         for (GroceryItem item : this.items) {
             String string = item.getName() + " x " + item.getQuantity() + ", Price: " + item.getPrice() + "$ each ";
             System.out.println(string);
