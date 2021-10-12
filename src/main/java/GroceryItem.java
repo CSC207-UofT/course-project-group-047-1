@@ -1,12 +1,12 @@
 public class GroceryItem{
-    private String item_name;
+    private String name;
     private double price;
-    private int quantity_in_stock;
+    private int quantity;
 
     public GroceryItems (String name, int price, int quantity) {
-        this.item_name = name;
+        this.name = name;
         this.price = price;
-        this.quantity_in_stock = quantity;
+        this.quantity = quantity;
     }
 
     public double getPrice() {
