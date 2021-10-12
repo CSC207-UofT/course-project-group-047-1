@@ -7,8 +7,8 @@ get methods to return customers' details.
 
 variables:
 
-username, pin, email, address,
+username, pin, email, address, cart
 
 collaborator:
 
-this class does not use other classes but is used by other classes.
+ShoppingCart
