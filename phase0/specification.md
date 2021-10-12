@@ -9,25 +9,13 @@ Ideally the program should also allow a user to sign up as a deliverymen to acce
 
 list of classes:
 
-Entities:
-Customer
-GroceryItem
-DeliveryPeople
+Entities: Customer GroceryItem DeliveryPeople
 
-Use case:
-CustomerAccountManager
-Order
-deliveryMatchingSystem
-ShoppingCart
-GroceryInventory
+Use case: CustomerAccountManager Order deliveryMatchingSystem ShoppingCart GroceryInventory
 
-controller:
-OrderArrangeSystem
-OrderTrackingSystem
-menu
+controller: OrderArrangeSystem OrderTrackingSystem menu
 
-command line interface:
-Store
+command line interface: Store
 
 potential problems and potential extensions to our program
 
