@@ -1,47 +1,28 @@
-__Below are the info that our specs and CRC model will be built on. Please share your ideas/concerns by editing the following:__
+Our project domain is InventorySystem
 
-Requirements: A reasonable CRC model that satisfies your specification should consist of
-* entity classes:
-    * customer
-        * 2 types of customers: customer with user account and without account, the latter may choose to create account or go to check out directly
-        * Parameters (customer with account): name, payment info, email, delivery address,.etc
-        * For customer without account, they will enter all the necessary info when checking out  (orderArrangeSystem) and the info is temporary and never stored
-    * groceryItems (abstract)
-        * items have many subclass (or do interface label maybe) that represents different types of groceries (fresh veges, frozen foods, snacks,.etc)
-        * parameters: item_name, price, quantity_in_stock,.etc
-    * deliveryPeople
-        * parameters: name, delivery_area(only downtown, both downtown & GTA,.etc), delivery_schedule(some sort of lists that stores which time slots on the day/next day is occupied/unavailable and which are available for arranging a delivery)
+We are desingning a program for our store, it allows someone to create an account and order items from the store. Ideally the program allows the customer to view the name,
+the price and the quantity in stock of each item. Each customer has their shopping cart, customers can add, and delete items from it, customers can also view the total price
+of items in the cart. When customer finalize what they want they can place their order and the program will arrange a deliverymen to send their stuffs to them. At each stage, 
+a customer can choose to exit the program.
 
-* use case classes:
-    * shoppingCart
-        * interact with customer and groceryItems
-    * customerAccountManager (could be an interface implemented by customer class to deal with customer with account)
-        * Manage customer accounts: create account, save payment methods,.etc
-    * deliveryMatchingSystem
-        * interact with deliveryPeople and match a delivery man with the order sent from orderArrangeSystem
-    * order
-        * stores info on an order(order_number, status, estimated delivery time)
-        * collect customer info: for customer with an account, collect info through customerAccountManager, for customer without account, collect info through keyboard
-        * collect shoppingCart info: calculate the total cost of items in the cart
+Ideally the program should also allow a user to sign up as a deliverymen to accept and deliver orders.
 
-* controller:
-    * orderArrangeSystem
-        * ask the deliveryMatchingSystem to match a delivery man for the order
-        * send transaction request to the bank (don’t know how to do this yet) and validate if the transaction went through, if not the order is cancelled
-        * if the order is successful: send confirmation email to the customer, ask the inventoryManager to update current quantity_in_stock for purchased items
-    * orderTrackingSystem (opt, implementing this may take a lot of effort)
-* basic command line interface
-    * (not sure what it is yet)
-* presenter
-    * TBA
+list of classes:
 
-potential problems and solutions:
-* We might need a presenter (the presenter have the job of acting as a mediator between UseCases and UI, as a data dispatcher) so that customers are able to navigate the app (ex. see their shoppingCart (with images and quantities of items added to the cart) on their phone screen), but I'm not sure how to approach this
-* add your insights here
+Entities: Customer GroceryItem DeliveryPeople
 
+Use case: CustomerAccountManager Order deliveryMatchingSystem ShoppingCart GroceryInventory
 
+controller: OrderArrangeSystem OrderTrackingSystem menu
 
+command line interface: Store
 
+potential problems and potential extensions to our program
 
-nonono
+1. We might need a presenter (the presenter have the job of acting as a mediator between UseCases and UI, as a data dispatcher) so that customers are able to navigate the app (ex. see their shoppingCart (with images and quantities of items added to the cart) on their phone screen), but we are not sure how to approach this
 
+2. We also might add a payment system to make our program more realistic.
+
+3. We might create more classes and methods as we proceed.
+
+4. We can add a storeowner account to top up the store's inventory.
