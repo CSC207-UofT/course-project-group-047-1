@@ -13,7 +13,7 @@ Entities: Customer GroceryItem DeliveryPeople
 
 Use case: CustomerAccountManager Order DeliveryMatchingSystem ShoppingCart GroceryInventory
 
-controller: OrderArrangeSystem OrderTrackingSystem menu
+controller: OrderArrangeSystem OrderTrackingSystem Menu
 
 command line interface: Store
 
