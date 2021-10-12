@@ -25,3 +25,4 @@ potential problems and potential extensions to our program
 
 3. We might create more classes and methods as we proceed.
 
+4. We can add a storeowner account to top up the store's inventory.
