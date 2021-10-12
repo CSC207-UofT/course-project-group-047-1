@@ -21,5 +21,10 @@ public class Customer {
         this.cart = new ShoppingCart();
     }
 
+    public String getUsername() {return this.username;}
+
+
+    public int getpin() {return this.pin;}
+
 
 }

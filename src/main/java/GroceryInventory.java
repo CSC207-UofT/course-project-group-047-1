@@ -9,7 +9,7 @@ public class GroceryInventory {
         GroceryItem apple = new GroceryItem("apple", 3, 10);
         GroceryItem watermelon = new GroceryItem("watermelon", 10, 5 );
         GroceryItem laptop = new GroceryItem("Laptop", 1000, 1);
-        this.items = new ArrayList<GroceryItem>();
+        this.items = new ArrayList<>();
         this.items.add(apple);
         this.items.add(watermelon);
         this.items.add(laptop);
@@ -22,5 +22,18 @@ public class GroceryInventory {
         int old_quantity = item.getQuantity();
         GroceryItem new_item = new GroceryItem(item.getName(), item.getPrice(), old_quantity - quantity);
         this.items.set(index, new_item);
+    }
+
+
+    public void view() {
+        for (GroceryItem item : this.items) {
+            String string = item.getName() + " x " + item.getQuantity() + ", Price: " + item.getPrice() + "$ each ";
+            System.out.println(string);
+        }
+    }
+
+    public static void main(String[] args) {
+        GroceryInventory G = new GroceryInventory();
+        G.view();
     }
 }
