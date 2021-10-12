@@ -1,11 +1,11 @@
 Our project domain is InventorySystem
 
-We are desingning a program for our store, it allows someone to create an account and order items from the store. Ideally the program allows the customer to view the name,
+We are designing a program for our store, it allows someone to create an account and order items from the store. Ideally the program allows the customer to view the name,
 the price and the quantity in stock of each item. Each customer has their shopping cart, customers can add, and delete items from it, customers can also view the total price
-of items in the cart. When customer finalize what they want they can place their order and the program will arrange a deliverymen to send their stuffs to them. At each stage, 
+of items in the cart. When customer finalize what they want they can place their order and the program will arrange a deliveryman to send their stuffs to them. At each stage, 
 a customer can choose to exit the program.
 
-Ideally the program should also allow a user to sign up as a deliverymen to accept and deliver orders.
+Ideally the program should also allow a user to sign up as a deliveryman to accept and deliver orders.
 
 list of classes:
 
