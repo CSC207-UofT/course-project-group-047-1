@@ -1,6 +1,1 @@
-public class Menu {
-
-    public void static run {
-
-    }
-}
+public class Menu {}

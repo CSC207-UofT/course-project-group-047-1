@@ -1,10 +1,10 @@
-import GroceryItem, java.util.ArrayList;
+import java.util.ArrayList;
 
 public class ShoppingCart {
     private ArrayList<GroceryItem> items;
 
     public ShoppingCart() {
-        this.items = new ArrayList<GroceryItem>;
+        this.items = new ArrayList<GroceryItem>();
     }
 
     public void AddItem(GroceryItem item) {
@@ -13,7 +13,7 @@ public class ShoppingCart {
 
     //for multiple items
     public void AddItem(GroceryItem item, int amount) {
-        for (int i = 0; i < amount, i++) {
+        for (int i = 0; i < amount; i++) {
             this.items.add(item);
         }
     }
@@ -23,7 +23,7 @@ public class ShoppingCart {
     }
 
     public double CheckOut() {
-        total = 0;
+        int total = 0;
         for (GroceryItem i: this.items) {
             total += i.getPrice();
         }
