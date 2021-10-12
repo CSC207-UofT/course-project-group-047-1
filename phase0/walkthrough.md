@@ -1,5 +1,3 @@
-Below is our scenario walkthrough of our project.
-
-Scenario walkthrough: A user creates an account, and selects items from the menu and adds them to shoppingCart. The user checks out.
-A delivery person is matched to the order through the deliveryMatchingSystem and then an order is created with the user info, delivery person info,
-and total price of items through the orderArrangeSystem. Order is sent. Upon completion, the delivery person confirms that the order is completed.
+Scenario walkthrough: A user run the file 'store.java', when the program start, the user has two choices, they can either create an account or log into one.
+When the program start, there is no account in record so a user will get an error message. If they choose to create an account, then they can log in, and view a
+list of items in the store.
