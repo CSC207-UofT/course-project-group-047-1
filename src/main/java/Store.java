@@ -2,4 +2,11 @@
  *
  */
 
-public class Store {}
+public class Store {
+
+
+    public static void main(String[] args) {
+        GroceryInventory G = new GroceryInventory();
+        G.view();
+    }
+}
