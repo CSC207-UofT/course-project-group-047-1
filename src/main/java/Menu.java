@@ -8,38 +8,52 @@ public class Menu {
     AccountManager manager = new AccountManager();
 
 
-    public void login_menu() {
+    public void login_menu() throws IOException {
 
         String username;
         String address;
         int pin;
         boolean end = false;
 
-        while (!end) {
-            try {
-                System.out.print("\nPlease enter your customer username: ");
-                username = input.next();
-                System.out.print("\nPlease enter your PIN number: ");
-                pin = input.nextInt();
-                System.out.print("\nPlease enter your address");
-                address = input.next();
+        System.out.print("\nPlease enter your customer username: ");
+        username = input.next();
+        System.out.print("\nPlease enter your PIN number: ");
+        pin = input.nextInt();
 
-                Customer user = new Customer(username, pin, address);
-                if (manager.is_customer(user)) {
-                    customer_menu();
-                    end = true;
-                    break;
-                }
-
-                if (!end) {
-                    System.out.println("\ninvalid username or Pin Number");
-                }
-
-            } catch (
-                    InputMismatchException e) {
-                System.out.println("\nInvalid input");
-            }
+        if (manager.contains(username, pin)) {
+            System.out.println("login success");
         }
+
+
+
+    }
+
+
+    public void create_account_menu() throws IOException {
+
+        String username;
+        String address;
+        int pin;
+
+        System.out.print("\nPlease enter your customer username: ");
+        username = input.next();
+        System.out.print("\nPlease enter your PIN number: ");
+        pin = input.nextInt();
+
+        Customer customer = new Customer(username, pin);
+
+        if (manager.contains(username, pin)) {
+            System.out.println("Account already exists, please login");
+            this.login_menu();
+        }
+
+        manager.add_customer(customer);
+        System.out.println("Account created, please login");
+        this.login_menu();
+
+        System.exit(0);
+
+
     }
 
 

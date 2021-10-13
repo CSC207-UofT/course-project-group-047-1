@@ -5,7 +5,9 @@ public class AccountManager{
     private ArrayList<Customer> customers;
 
 
-    public AccountManager() {}
+    public AccountManager() {
+        customers = new ArrayList<> ();
+    }
 
 
     public void add_customer(Customer customer) {
@@ -21,7 +23,7 @@ public class AccountManager{
     }
 
 
-    public boolean login(String username, int pin) {
+    public boolean contains(String username, int pin) {
         for (Customer customer : this.customers) {
             if (customer.getUsername().equals(username)) {
                 if (customer.getpin() == pin) {return true;}
@@ -30,11 +32,6 @@ public class AccountManager{
         return false;
     }
 
-    public boolean is_customer(Customer customer) {
-        if (this.customers.contains(customer)) {return true;}
-
-        return false;
-    }
 
 }
 

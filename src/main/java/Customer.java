@@ -13,10 +13,10 @@ public class Customer {
         this.cart = new ShoppingCart();
     }
 
-    public Customer (String username, int pin, String address) {
+    public Customer (String username, int pin) {
         this.username = username;
         this.pin = pin;
-        this.address = address;
+        this.address = "";
         this.email = "";
         this.cart = new ShoppingCart();
     }
