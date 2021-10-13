@@ -28,6 +28,7 @@ public class Menu {
                 if (manager.is_customer(user)) {
                     customer_menu();
                     end = true;
+                    break;
                 }
 
                 if (!end) {
