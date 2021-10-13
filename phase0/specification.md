@@ -26,7 +26,7 @@ The program also allows its users to sign up as delivery man to accept and deliv
 * Command Line Interface: 
   * Store
 
-potential problems and potential extensions to our program
+**Potential problems and potential extensions to our program:**
 
 1. We might need a presenter (the presenter have the job of acting as a mediator between UseCases and UI, as a data dispatcher) so that customers are able to navigate the app (ex. see their shoppingCart (with images and quantities of items added to the cart) on their phone screen), but we are not sure how to approach this
 
