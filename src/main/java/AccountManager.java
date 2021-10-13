@@ -29,5 +29,12 @@ public class AccountManager{
         }
         return false;
     }
+
+    public boolean is_customer(Customer customer) {
+        if (this.customers.contains(customer)) {return true;}
+
+        return false;
+    }
+
 }
 
