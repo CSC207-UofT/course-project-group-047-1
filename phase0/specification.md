@@ -12,7 +12,7 @@ The program also allows its users to sign up as delivery man to accept and deliv
   * DeliveryPeople
 
 * Use Cases: 
-  * CustomerAccountManager
+  * AccountManager
   * Order
   * DeliveryMatchingSystem
   * ShoppingCart
