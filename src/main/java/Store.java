@@ -8,10 +8,7 @@ public class Store {
 
 
     public static void main(String[] args) throws IOException {
-        GroceryInventory G = new GroceryInventory();
-        G.view();
-
         Menu m = new Menu();
-        m.create_account_menu();
+        m.main_menu();
     }
 }
