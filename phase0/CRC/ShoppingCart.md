@@ -1,13 +1,12 @@
-ShoppingCart
+Class name: ShoppingCart
 
-responsibility:
+Responsibilities:
+* Temporarily store items picked by a customer
 
-temporarily store items picked by a customer
+Variables:
+* customer
+* items
 
-variables:
-
-customer, items
-
-collaborators:
-
-GroceryItem, Customer
+Collaborators:
+* GroceryItem
+* Customer
