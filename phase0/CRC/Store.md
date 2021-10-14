@@ -1,13 +1,10 @@
-Store
+Class name: Store
 
-responsibility:
+Responsibilities:
+* The command line interface, the only file that should be run
 
-the command line interface, only file that should be run
+Variables:
+* timer: record current time
 
-variables:
-
-timer: record current time
-
-collaborators:
-
-Menu
+Collaborators:
+* Menu
