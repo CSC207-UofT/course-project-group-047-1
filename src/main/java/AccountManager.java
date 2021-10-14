@@ -26,7 +26,7 @@ public class AccountManager{
     public boolean contains(String username, int pin) {
         for (Customer customer : this.customers) {
             if (customer.getUsername().equals(username)) {
-                if (customer.getpin() == pin) {return true;}
+                if (customer.getPin() == pin) {return true;}
             }
         }
         return false;
