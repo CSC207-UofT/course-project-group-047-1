@@ -6,7 +6,7 @@ Store customers and deliverymen account registered in this store in a collection
 
 variables:
 
-customer_accounts, deliverymen_accounts
+customerAccounts, deliverymenAccounts
 
 collaborators:
 
