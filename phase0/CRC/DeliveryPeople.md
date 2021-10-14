@@ -1,13 +1,12 @@
 DeliveryPeople
 
-responsibility:
+Responsibilities:
+* Store personal information of a deliveryman's account
 
-Stores the personal information of deliverymen accounts
+Collaborators: None
 
-variables:
-
-username, pin, status, credit
-
-collaborators:
-
-this class do not use other classes
+Variables:
+* username
+* pin
+* status
+* credit
