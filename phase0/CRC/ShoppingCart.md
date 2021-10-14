@@ -10,4 +10,4 @@ customer, items
 
 collaborators:
 
-GroceryItem
+GroceryItem, Customer
