@@ -1,3 +1,4 @@
-Scenario walkthrough: A user run the file 'store.java', when the program start, the user has two choices, they can either create an account or log into one.
-When the program start, there is no account on record so a user will get an error message. If they choose to create an account, then they can log in, and view a
-list of items in the store.
+Scenario walkthrough: A user run the file 'store.java', when the program start, the user will see the main menu and it
+provides three choices, the user can either create an account or login to one, or can choose to exit the program.
+When the program start, there is no account on record, so a user should choose to create an account, then they can log in
+, and view a list of items in the store

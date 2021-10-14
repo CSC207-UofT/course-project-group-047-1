@@ -24,9 +24,20 @@ public class Menu {
                 System.out.println("\nLogin success\n");
                 this.customer_menu();
                 end = true;
-            }
+            } else {
+                System.out.println("\nWrong username or pin, please create one or try again\n");
+                System.out.println("Enter 1 to create account");
+                System.out.println("Enter 2 to try again");
+                System.out.print("\nPlease enter your choice: ");
+                int num = input.nextInt();
 
-            System.out.println("Wrong username or pin, please try again\n");
+                switch (num) {
+                    case 1:
+                        this.create_account_menu();
+                        end = true;
+                    case 2:
+                }
+            }
         }
     }
 
@@ -49,7 +60,7 @@ public class Menu {
         }
 
         manager.add_customer(customer);
-        System.out.println("Account created, please login");
+        System.out.println("\nAccount created, please login");
         this.login_menu();
 
         System.exit(0);
@@ -78,7 +89,7 @@ public class Menu {
 
     public void main_menu() throws IOException {
 
-        System.out.println("Welcome to our store, please select your choice");
+        System.out.println("\nWelcome to our store, please select your choice\n");
         System.out.println("Enter 1 to create account");
         System.out.println("Enter 2 to login to account");
         System.out.println("Enter 3 to Exit");
