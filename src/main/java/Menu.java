@@ -6,6 +6,9 @@ public class Menu {
     Scanner input = new Scanner(System.in);
     AccountManager manager = new AccountManager();
     GroceryInventory items = new GroceryInventory();
+    public final String red = "\u001B[31m";
+    public final String reset = "\u001B[0m";
+    public final String green = "\u001B[32m";
 
 
     public void login_menu() throws IOException {
@@ -21,11 +24,11 @@ public class Menu {
             pin = input.nextInt();
 
             if (manager.contains(username, pin)) {
-                System.out.println("\nLogin success\n");
+                System.out.println(green + "\nLogin success\n" + reset);
                 this.customer_menu();
                 end = true;
             } else {
-                System.out.println("\nWrong username or pin, please create one or try again\n");
+                System.out.println(red + "\nWrong username or pin, please create one or try again\n" + reset);
                 System.out.println("Enter 1 to create account");
                 System.out.println("Enter 2 to try again");
                 System.out.print("\nPlease enter your choice: ");
@@ -80,7 +83,7 @@ public class Menu {
                 System.out.println(items.view());
 
             case 2:
-                System.out.println("Thank you for visiting our store");
+                System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
         }
 
@@ -89,7 +92,7 @@ public class Menu {
 
     public void main_menu() throws IOException {
 
-        System.out.println("\nWelcome to our store, please select your choice\n");
+        System.out.println(green + "\nWelcome to our store, please select your choice\n" + reset);
         System.out.println("Enter 1 to create account");
         System.out.println("Enter 2 to login to account");
         System.out.println("Enter 3 to Exit");
@@ -105,12 +108,12 @@ public class Menu {
                 this.login_menu();
 
             case 3:
-                System.out.println("Thank you for visiting our store");
+                System.out.println(green + "Thank you for visiting our store" + reset);
                 input.close();
                 System.exit(0);
         }
 
-        System.out.println("\nThank you for visiting our store");
+        System.out.println(green + "\nThank you for visiting our store" + reset);
         input.close();
         System.exit(0);
     }
