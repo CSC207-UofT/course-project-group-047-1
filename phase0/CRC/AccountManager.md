@@ -10,7 +10,7 @@ customer_accounts, deliverymen_accounts
 
 collaborators:
 
-customer, DeliveryPeople
+Customer, DeliveryPeople
 
 
 
