@@ -1,8 +1,8 @@
 Class name: Customer
 
 Responsibilities:
-* Store personal information of a customer account.
-* Return customers' information details.
+* Store personal information of a customer's account.
+* Return customer information details.
 
 Collaborators:
 * ShoppingCart
