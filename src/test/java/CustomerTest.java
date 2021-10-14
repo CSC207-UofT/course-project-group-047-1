@@ -15,6 +15,6 @@ public class CustomerTest {
     public void testGetUsername() {assertEquals("username", customer.getUsername());}
 
     @Test(timeout = 50)
-    public void testGetPin() {assertEquals(12345, customer.getpin());}
+    public void testGetPin() {assertEquals(12345, customer.getPin());}
 
 }
