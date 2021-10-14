@@ -1,22 +1,37 @@
-/**
-Khloe is working on this!
-**/
+import java.util.ArrayList;
 
-import java.util.HashMap;
-import java.util.Map;
+public class AccountManager{
 
-public class AccountManager {
-    private Map<Integer, String> accounts;
+    private ArrayList<Customer> customers;
+
 
     public AccountManager() {
-        accounts = new HashMap<>();
+        customers = new ArrayList<> ();
     }
 
-    public void storeUserName(String user, int number) {
-        accounts.put(number, user);
+
+    public void add_customer(Customer customer) {
+        this.customers.add(customer);
     }
 
-    public String getUserName(int number) {
-        return accounts.get(number);   // this doesn't look right
+
+    public boolean exists(String username) {
+        for (Customer customer : this.customers) {
+            if (customer.getUsername().equals(username)) {return true;}
+        }
+        return false;
     }
+
+
+    public boolean contains(String username, int pin) {
+        for (Customer customer : this.customers) {
+            if (customer.getUsername().equals(username)) {
+                if (customer.getpin() == pin) {return true;}
+            }
+        }
+        return false;
+    }
+
+
 }
+
