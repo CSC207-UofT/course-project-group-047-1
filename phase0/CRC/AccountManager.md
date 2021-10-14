@@ -1,16 +1,12 @@
-AccountManager
+Class name: AccountManager
 
-responsibility:
+Responsibilities:
+* Store customers and deliverymen accounts registered in this store in a collection.
 
-Store customers and deliverymen account registered in this store in a collection.
+Collaborators:
+* Customer
+* DeliveryPeople
 
-variables:
-
-customerAccounts, deliverymenAccounts
-
-collaborators:
-
-Customer, DeliveryPeople
-
-
-
+Variables:
+* customerAccounts
+* deliverymenAccounts
