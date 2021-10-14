@@ -24,7 +24,7 @@ public class Customer {
     public String getUsername() {return this.username;}
 
 
-    public int getpin() {return this.pin;}
+    public int getPin() {return this.pin;}
 
 
 }
