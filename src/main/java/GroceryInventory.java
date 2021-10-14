@@ -25,13 +25,12 @@ public class GroceryInventory {
     }
 
 
-    public void view() {
-        System.out.println("Welcome to the store");
-        System.out.println("");
+    public String view() {
+        String string = "";
+        System.out.println("Welcome to the store\n");
         for (GroceryItem item : this.items) {
-            String string = item.getName() + " x " + item.getQuantity() + ", Price: " + item.getPrice() + "$ each ";
-            System.out.println(string);
+            string = string + item.getName() + " x " + item.getQuantity() + ", Price: " + item.getPrice() + "$ each\n";
         }
+        return string;
     }
-
 }
