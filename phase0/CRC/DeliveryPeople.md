@@ -1,7 +1,7 @@
 DeliveryPeople
 
 Responsibilities:
-* Store personal information of a deliveryman's account
+* Store personal information of deliverymen's accounts
 
 Collaborators: None
 
