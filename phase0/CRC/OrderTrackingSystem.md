@@ -1,13 +1,12 @@
-OrderTrackingSystem
+Class name: OrderTrackingSystem
 
-responsibility:
+Responsibilities:
+* Track an order
+* Allow deliverymen to confirm that an order has been delivered
 
-track an order, allow deliverymen to confirm that an order has been delivered
+Variables:
+* status
+* order
 
-variables:
-
-status, order, 
-
-collaborators:
-
-Order
+Collaborators:
+* Order
