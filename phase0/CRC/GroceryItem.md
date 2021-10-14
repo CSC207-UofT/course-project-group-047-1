@@ -1,13 +1,11 @@
-GroceryItem
+Class name: GroceryItem
 
-Responsibility:
+Responsibilities:
+* Store information of an item in the store
 
-Store the information of an item in the store
+Variables:
+* name
+* quantity
+* price
 
-variables:
-
-name, quantity, price
-
-collaborator:
-
-this class do not use other classes
+Collaborators: None
