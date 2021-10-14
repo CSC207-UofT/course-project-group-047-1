@@ -1,17 +1,15 @@
-import java.time;
 
-public class DeliveryPeople implements User {
-    private String name;
-    private int number;
+public class DeliveryPeople {
+    private String username;
+    private int pin;
     private String email;
-    private String deliveryArea;
-    private LocalTime time;
 
-    public DeliveryPeople (String name, int number, String email, String area) {
-        this.name = name;
-        this.number = number;
+
+
+    public DeliveryPeople (String username, int pin, String email, String area) {
+        this.username = username;
+        this.pin = pin;
         this.email = email;
-        this.deliveryArea = area;
-        this.time = LocalTime.now();
+
     }
 }

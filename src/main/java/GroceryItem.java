@@ -1,19 +1,23 @@
 public class GroceryItem{
-    private String item_name;
+
+    private String name;
     private double price;
-    private int quantity_in_stock;
+    private int quantity;
 
-    public GroceryItems (String name, int price, int quantity) {
-        this.item_name = name;
+    public GroceryItem(String name, double price, int quantity) {
+        this.name = name;
         this.price = price;
-        this.quantity_in_stock = quantity;
+        this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return this.price;
-    }
+    public double getPrice() {return this.price;}
 
-    public void removeQuantity(int n) {
-        this.quantity_in_stock -= n;
-    }
+
+    public String getName() {return this.name;}
+
+
+    public int getQuantity() {return this.quantity;}
+
+    public void reduce(int n) {this.quantity -= n;}
+
 }

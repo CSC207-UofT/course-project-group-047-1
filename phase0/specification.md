@@ -1,23 +1,32 @@
-Our project domain is InventorySystem
+Our project domain is a mix of Inventory System and Delivery Service App.
 
-We are desingning a program for our store, it allows someone to create an account and order items from the store. Ideally the program allows the customer to view the name,
-the price and the quantity in stock of each item. Each customer has their shopping cart, customers can add, and delete items from it, customers can also view the total price
-of items in the cart. When customer finalize what they want they can place their order and the program will arrange a deliverymen to send their stuffs to them. At each stage, 
-a customer can choose to exit the program.
+We are designing a program for grocery stores like Walmart or T&T. The program allows customers to create account and order groceries from the store. The customers are able to view the name, price and quantity in stock of each item. They can also access their shopping cart, which allows them to add or delete grocery items from the cart, as well as to view the total price of selected items. When customers decide to check out, they are required to provide their delivery info, including name, delivery address, phone number, payment method, preferred delivery time.etc. After the customers made the payment, their order is finalized and is matched to a delivery man. The delivery man delivers the ordered items to the delivery address during the customer's preferred delivery time slot. The customer is able to track the delivery process when it starts (optional).
 
-Ideally the program should also allow a user to sign up as a deliverymen to accept and deliver orders.
+The program also allows its users to sign up as delivery man to accept and deliver orders. Delivery man can provide their available time slot for the next few days, they receive the order if they are available during the customer's preferred time slot. Delivery man can choose whether to accept the order. They are required to report the order status (out for delivery, delivered,.etc) and the customer who made the order is able to access such information.
 
-list of classes:
+**List of Classes:**
 
-Entities: Customer GroceryItem DeliveryPeople
+* Entities: 
+  * Customer
+  * GroceryItem
+  * DeliveryPeople
 
-Use case: CustomerAccountManager Order deliveryMatchingSystem ShoppingCart GroceryInventory
+* Use Cases: 
+  * AccountManager
+  * Order
+  * DeliveryMatchingSystem
+  * ShoppingCart
+  * GroceryInventory
 
-controller: OrderArrangeSystem OrderTrackingSystem menu
+* Controller:
+  * OrderArrangeSystem
+  * OrderTrackingSystem
+  * Menu
 
-command line interface: Store
+* Command Line Interface: 
+  * Store
 
-potential problems and potential extensions to our program
+**Potential problems and potential extensions to our program:**
 
 1. We might need a presenter (the presenter have the job of acting as a mediator between UseCases and UI, as a data dispatcher) so that customers are able to navigate the app (ex. see their shoppingCart (with images and quantities of items added to the cart) on their phone screen), but we are not sure how to approach this
 
@@ -25,4 +34,4 @@ potential problems and potential extensions to our program
 
 3. We might create more classes and methods as we proceed.
 
-4. We can add a storeowner account to top up the store's inventory.
+4. We can add a store manager account to top up the store's inventory.

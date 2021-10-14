@@ -1,15 +1,30 @@
-public class Customer implements User {
-    private String name;
-    private int number;
+public class Customer {
+    private String username;
+    private int pin;
     private String email;
-    private String paymentInfo;
-    private String address
+    private String address;
+    private ShoppingCart cart;
 
-    public Customer (String name, int number, String email, String paymentInfo, String address) {
-        this.name = name;
-        this.number = number;
+    public Customer (String username, int pin, String email, String address) {
+        this.username = username;
+        this.pin = pin;
         this.email = email;
-        this.paymentInfo = paymentInfo;
         this.address = address;
+        this.cart = new ShoppingCart();
     }
+
+    public Customer (String username, int pin) {
+        this.username = username;
+        this.pin = pin;
+        this.address = "";
+        this.email = "";
+        this.cart = new ShoppingCart();
+    }
+
+    public String getUsername() {return this.username;}
+
+
+    public int getpin() {return this.pin;}
+
+
 }
