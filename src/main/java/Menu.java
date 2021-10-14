@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class Menu {
 
 
@@ -30,9 +31,6 @@ public class Menu {
                 this.login_menu();
 
             case 3:
-                System.out.println(green + "Thank you for visiting our store" + reset);
-                input.close();
-                System.exit(0);
 
         }
 
@@ -99,13 +97,13 @@ public class Menu {
 
         if (manager.contains(username, pin)) {
 
-            System.out.println("Account already exists, please login");
+            System.out.println(green + "Account already exists, please login" + reset);
             this.login_menu();
 
         }
 
         manager.add_customer(customer);
-        System.out.println("\nAccount created, please login");
+        System.out.println(green + "\nAccount created, please login" + reset);
         this.login_menu();
 
         System.exit(0);
@@ -115,7 +113,7 @@ public class Menu {
 
     public void customer_menu() {
 
-        System.out.println("Welcome, please enter your choice\n");
+        System.out.println(green + "Welcome, please enter your choice\n" + reset);
         System.out.println("Enter 1 to view item list");
         System.out.println("Enter 2 to Exit");
         System.out.print("\nEnter your choice: ");
