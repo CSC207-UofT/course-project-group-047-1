@@ -1,6 +1,3 @@
-/** Yicong Luo
- *
- */
+public class DeliveryMatchingSystem{
 
-
-public class DeliveryMatchingSystem{}
+}

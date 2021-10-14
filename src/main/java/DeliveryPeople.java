@@ -1,4 +1,3 @@
-
 public class DeliveryPeople {
     private String username;
     private int pin;
