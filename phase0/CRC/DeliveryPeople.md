@@ -1,4 +1,4 @@
-DeliveryPeople
+Class name: DeliveryPeople(Entity)
 
 Responsibilities:
 * Store personal information of deliverymen's accounts
