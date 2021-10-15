@@ -11,6 +11,7 @@ public class Menu {
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
+    public final String blue = "\u001B[34m";
 
 
     public void main_menu() throws IOException {
@@ -19,7 +20,7 @@ public class Menu {
         System.out.println("Enter 1 to create account");
         System.out.println("Enter 2 to login to account");
         System.out.println("Enter 3 to Exit");
-        System.out.print("\nEnter your choice: ");
+        System.out.print(blue + "\nEnter your choice: " + reset);
         int num = input.nextInt();
 
         switch (num) {
@@ -46,16 +47,19 @@ public class Menu {
         int pin;
         boolean end = false;
 
+        System.out.println();
+        System.out.println(green + "Welcome to login page" + reset);
+
         while (!end) {
 
-            System.out.print("\nPlease enter your customer username: ");
+            System.out.print(blue + "\nPlease enter your customer username: " + reset);
             username = input.next();
-            System.out.print("\nPlease enter your PIN number: ");
+            System.out.print(blue + "\nPlease enter your PIN number: " + reset);
             pin = input.nextInt();
 
             if (manager.contains(username, pin)) {
 
-                System.out.println(green + "\nLogin success\n" + reset);
+                System.out.println("\nLogin success");
                 this.customer_menu();
                 end = true;
 
@@ -64,7 +68,7 @@ public class Menu {
                 System.out.println(red + "\nWrong username or pin, please create one or try again\n" + reset);
                 System.out.println("Enter 1 to create account");
                 System.out.println("Enter 2 to try again");
-                System.out.print("\nPlease enter your choice: ");
+                System.out.print(blue + "\nPlease enter your choice: " + reset);
                 int num = input.nextInt();
 
                 switch (num) {
@@ -72,6 +76,7 @@ public class Menu {
                     case 1:
                         this.create_account_menu();
                         end = true;
+
                     case 2:
 
                 }
@@ -88,22 +93,25 @@ public class Menu {
         String username;
         int pin;
 
-        System.out.print("\nPlease choose your customer username: ");
+        System.out.println();
+        System.out.println(green + "Welcome to create account page" + reset);
+
+        System.out.print(blue + "\nPlease choose your customer username: " + reset);
         username = input.next();
-        System.out.print("\nPlease choose your PIN number: ");
+        System.out.print(blue + "\nPlease choose your PIN number: " + reset);
         pin = input.nextInt();
 
         Customer customer = new Customer(username, pin);
 
         if (manager.contains(username, pin)) {
 
-            System.out.println(green + "Account already exists, please login" + reset);
+            System.out.println(red + "Account already exists, please login" + reset);
             this.login_menu();
 
         }
 
         manager.add_customer(customer);
-        System.out.println(green + "\nAccount created, please login" + reset);
+        System.out.println("\nAccount created, please login");
         this.login_menu();
 
         System.exit(0);
@@ -113,11 +121,13 @@ public class Menu {
 
     public void customer_menu() {
 
-        System.out.println(green + "Welcome, please enter your choice\n" + reset);
+        System.out.println();
+        System.out.println(green + "Welcome to customer menu, please enter your choice\n" + reset);
         System.out.println("Enter 1 to view item list");
         System.out.println("Enter 2 to Exit");
-        System.out.print("\nEnter your choice: ");
+        System.out.print(blue + "\nEnter your choice: " + reset);
         int num = input.nextInt();
+        System.out.println();
 
         switch (num) {
 
