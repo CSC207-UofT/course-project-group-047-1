@@ -1,13 +1,10 @@
-OrderArrangeSystem
+Class name: OrderArrangeSystem
 
-responsibility:
+Responsibilities:
+* Keep a record of history orders in a collection
 
-keep a record of history orders in a collection
+Variables:
+* orders
 
-variables:
-
-orders
-
-collaborators:
-
-Order
+Collaborators:
+* Order

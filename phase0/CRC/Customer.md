@@ -1,14 +1,15 @@
-Customer
+Class name: Customer
 
-responsibility:
+Responsibilities:
+* Store personal information of a customer's account.
+* Return customer information details.
 
-Stores the personal information of a customer account. should have
-get methods to return customers' details.
+Variables:
+* username
+* pin
+* email
+* address
+* cart
 
-variables:
-
-username, pin, email, address, cart
-
-collaborator:
-
-ShoppingCart
+Collaborators:
+* ShoppingCart

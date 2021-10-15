@@ -1,13 +1,11 @@
-DeliveryMatchingSystem
+Class name: DeliveryMatchingSystem
 
-responsibility:
+Responsibilities:
+* Allocate deliverymen to deliver orders
 
-Allocate deliverymen to deliver orders
+Variables: None
 
-variables:
-
-this class should have no variables.
-
-collaborators:
-
-order, DeliveryPeople, Customer
+Collaborators:
+* Order
+* DeliveryPeople
+* Customer
