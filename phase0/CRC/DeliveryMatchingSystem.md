@@ -1,4 +1,4 @@
-Class name: DeliveryMatchingSystem
+Class name: DeliveryMatchingSystem(Use case)
 
 Responsibilities:
 * Allocate deliverymen to deliver orders
