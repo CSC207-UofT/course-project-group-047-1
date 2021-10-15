@@ -28,21 +28,28 @@ Group member & responsibilities
 
 * Khole Tsang
   * Skeleton code: AccountManager
+  * Will be focusing on class OrderTrackingSystem in the future
 
 * Wenzhen Wang
   * finalizing CRC model with added details (CRC folder)
+  * Will be focusing on class DeliveryPeople and DeliveryMatchingSystem in the future
 
 * Yiyu Li
-  * basics for CRC model(thoughts.md)
+  * basics for CRC model
   * progress report(progress_report.md)
+  * Will be focusing on class OrderArrangeSystem in the future
 
 * Peijun Lu
   * scenario walk-through (walkthrough.md)
+  * unittest for Customer class
+  * Will be focusing on class Order in the future
 
 * Qin Xu
   * progress report(progress_report.md)
+  * Will be focusing on the possible presenter class in the future
 
 * Zhaoyu Yan
   * unittest for GroceryItem class
+  * Will be writing test code for all classes
 
 
