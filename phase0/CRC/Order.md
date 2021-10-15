@@ -1,4 +1,4 @@
-Class name: Order
+Class name: Order(Use case)
 
 Responsibilities:
 * Store information of a customer's order
@@ -9,8 +9,8 @@ Variables:
 * address
 * status
 * customer
-* deliveryPeople
+* deliverymen
 
 Collaborators:
 * Customer
-* DeliveryPeople
+* Deliverymen
