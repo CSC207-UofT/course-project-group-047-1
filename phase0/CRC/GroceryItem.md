@@ -1,7 +1,7 @@
-Class name: GroceryItem
+Class name: GroceryItem(Entity)
 
 Responsibilities:
-* Store information of an item in the store
+* Store information of a type of item in the store
 
 Variables:
 * name
