@@ -1,9 +1,12 @@
-Class name: Menu 
+Class name: Menu(Controller)
 
 Responsibilities:
 * Specify the interaction of user and the program(Specify input output process)
 
-Variables: None
+Variables:
+* items
+* input
+* manager
 
 Collaborators:
-* This class use all other classes except entities and the command line interface
+* This class use all other classes except the command line interface
