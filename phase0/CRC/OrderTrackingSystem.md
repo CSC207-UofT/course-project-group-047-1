@@ -1,4 +1,4 @@
-Class name: OrderTrackingSystem
+Class name: OrderTrackingSystem(Controller)
 
 Responsibilities:
 * Track an order
