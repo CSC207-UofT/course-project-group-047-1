@@ -1,4 +1,4 @@
-Class name: Customer
+Class name: Customer(Entity)
 
 Responsibilities:
 * Store personal information of a customer's account.
