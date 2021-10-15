@@ -1,7 +1,7 @@
-Class name: GroceryInventory
+Class name: GroceryInventory(Use case)
 
 Responsibilities:
-* Record a collection of items available in the store
+* Record a collection of items available in the store.
 
 Variables:
 * items
