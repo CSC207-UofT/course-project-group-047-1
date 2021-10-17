@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class ShoppingCart {
 
 
-    private ArrayList<GroceryItem> items;
+    private final ArrayList<GroceryItem> items;
 
 
     public ShoppingCart() {
@@ -13,6 +13,7 @@ public class ShoppingCart {
 
     }
 
+    // for future use
 
     public void AddItem(GroceryItem item) {
 
@@ -20,14 +21,14 @@ public class ShoppingCart {
 
     }
 
-
+    // for future use
     public void RemoveItem(int index) {
 
         this.items.remove(index);
 
     }
 
-
+    // for future use
     public double getTotalPrice() {
 
         int total = 0;

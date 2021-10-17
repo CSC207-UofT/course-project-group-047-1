@@ -1,8 +1,8 @@
 public class GroceryItem{
 
 
-    private String name;
-    private double price;
+    private final String name;
+    private final double price;
     private int quantity;
 
 
