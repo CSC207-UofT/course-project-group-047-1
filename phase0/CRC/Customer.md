@@ -13,3 +13,4 @@ Variables:
 
 Collaborators:
 * ShoppingCart
+* AccountManager
