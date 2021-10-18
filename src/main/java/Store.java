@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-/** this is the command line interface that should be run when someone wants to launch the program.
+/** this is the file that should be run when someone wants to launch the program.
  *
  */
 
