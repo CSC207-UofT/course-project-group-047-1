@@ -8,4 +8,5 @@ Variables:
 * quantity
 * price
 
-Collaborators: None
+Collaborators:
+* ShoppingCart
