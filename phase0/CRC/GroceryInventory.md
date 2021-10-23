@@ -8,3 +8,4 @@ Variables:
 
 Collaborators:
 * GroceryItem
+* ShoppingCart
