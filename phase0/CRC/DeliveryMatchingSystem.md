@@ -8,4 +8,3 @@ Variables: no variables
 Collaborators:
 * Order
 * DeliveryPeople
-* Customer
