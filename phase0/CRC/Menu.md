@@ -9,4 +9,4 @@ Variables:
 * manager
 
 Collaborators:
-* This class use all other classes except the command line interface
+* all use case classes
