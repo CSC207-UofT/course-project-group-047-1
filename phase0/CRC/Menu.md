@@ -10,3 +10,4 @@ Variables:
 
 Collaborators:
 * all use case classes
+* Menu
