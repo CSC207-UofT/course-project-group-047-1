@@ -9,4 +9,4 @@ Variables:
 * price
 
 Collaborators:
-* ShoppingCart
+* GroceryInventory
