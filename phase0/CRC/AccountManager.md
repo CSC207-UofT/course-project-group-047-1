@@ -1,12 +1,10 @@
 Class name: AccountManager(Use case)
 
 Responsibilities:
-* Store customers and deliverymen accounts registered in this store in collections.
+* Manage customers accounts registered in this store.
 
 Variables:
 * customers
-* deliverymen
 
 Collaborators:
 * Customer
-* DeliveryPeople
