@@ -1,4 +1,4 @@
-Class name: OrderArrangeSystem(Controller)
+Class name: OrderHistory(Controller)
 
 Responsibilities:
 * Keep a record of history orders in a collection
