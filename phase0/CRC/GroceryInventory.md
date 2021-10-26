@@ -1,13 +1,11 @@
-GroceryInventory
+Class name: GroceryInventory(Use case)
 
-responsibility:
+Responsibilities:
+* Record a collection of items available in the store.
 
-record a collection of items available in the store
+Variables:
+* items
 
-variable:
-
-items
-
-collaborator:
-
-GroceryItem
+Collaborators:
+* GroceryItem
+* ShoppingCart

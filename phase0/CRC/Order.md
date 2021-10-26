@@ -1,15 +1,18 @@
-Order
+Class name: Order(Use case)
 
-responsibility:
+Responsibilities:
+* Store information of a customer's order
 
-stores the information of a customers' order
+Variables: 
+* date
+* address
+* status
+* customer
+* deliverymen
 
-Use DeliveryMatchingSystem to match a delivery person to the order
-
-variables: date, address, status, Customer, DeliveryPeople
-
-collaborators:
-
-Customer, DeliveryPeople
-
-
+Collaborators:
+* Customer
+* DeliveryMatchingSystem
+* ShoppingCart
+* OrderTrackingSystem
+* OrderArrangeSystem

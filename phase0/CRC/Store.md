@@ -1,13 +1,10 @@
-Store
+Class name: Store(Command line interface)
 
-responsibility:
+Responsibilities:
+* The command line interface, the only file that should be run
+* initalize a menu to accept user's input
 
-the command line interface, only file that should be run
+Variables: None
 
-variables:
-
-timer: record current time
-
-collaborators:
-
-Menu
+Collaborators:
+* Menu
