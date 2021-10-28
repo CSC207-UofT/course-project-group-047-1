@@ -1,38 +1,45 @@
+import java.io.*;
 import java.util.ArrayList;
-
+import java.util.Hashtable;
 
 public class AccountManager{
 
-
-    private final ArrayList<Customer> customers;
+    private String path = System.getProperty("user.dir") + File.separator + "Accounts.txt";
+    private Hashtable<String, String> accounts = new Hashtable<String, String>();
 
 
     public AccountManager() {
 
-        customers = new ArrayList<> ();
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                this.accounts.put(line, reader.readLine());
+                reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
     public void add_customer(Customer customer) {
+        String user = customer.getUsername();
+        String pin = Integer.toString(customer.getPin());
 
-        this.customers.add(customer);
+        try(BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path))) {
+            fileWriter.write(user + "\n" + pin + "\n" + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        this.accounts.put(user, pin);
     }
 
 
-    public boolean contains(String username, int pin) {
+    public boolean contains(String username) {
 
-        for (Customer customer : this.customers) {
-
-            if (customer.getUsername().equals(username)) {
-
-                if (customer.getPin() == pin) {return true;}
-
-            }
-
-        }
-        return false;
+        return this.accounts.contains(username);
 
     }
 

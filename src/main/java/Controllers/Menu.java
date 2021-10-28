@@ -57,7 +57,7 @@ public class Menu {
             System.out.print(blue + "\nPlease enter your PIN number: " + reset);
             pin = input.nextInt();
 
-            if (manager.contains(username, pin)) {
+            if (manager.contains(username)) {
 
                 System.out.println("\nLogin success");
                 this.customer_menu();
@@ -103,7 +103,7 @@ public class Menu {
 
         Customer customer = new Customer(username, pin);
 
-        if (manager.contains(username, pin)) {
+        if (manager.contains(username)) {
 
             System.out.println(red + "Account already exists, please login" + reset);
             this.login_menu();

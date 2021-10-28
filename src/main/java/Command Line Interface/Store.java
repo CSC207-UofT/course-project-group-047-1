@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.io.*;
 
 /** this is the file that should be run when someone wants to launch the program.
  *
