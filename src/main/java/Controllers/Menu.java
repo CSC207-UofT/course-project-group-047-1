@@ -22,6 +22,7 @@ public class Menu {
         System.out.println("Enter 3 to Exit");
         System.out.print(blue + "\nEnter your choice: " + reset);
         int num = input.nextInt();
+        input.nextLine();
 
         switch (num) {
 
@@ -53,11 +54,12 @@ public class Menu {
         while (!end) {
 
             System.out.print(blue + "\nPlease enter your customer username: " + reset);
-            username = input.next();
+            username = input.nextLine();
             System.out.print(blue + "\nPlease enter your PIN number: " + reset);
             pin = input.nextInt();
+            input.nextLine();
 
-            if (manager.contains(username)) {
+            if (manager.contains(username, pin)) {
 
                 System.out.println("\nLogin success");
                 this.customer_menu();
@@ -70,6 +72,7 @@ public class Menu {
                 System.out.println("Enter 2 to try again");
                 System.out.print(blue + "\nPlease enter your choice: " + reset);
                 int num = input.nextInt();
+                input.nextLine();
 
                 switch (num) {
 
@@ -97,13 +100,14 @@ public class Menu {
         System.out.println(green + "Welcome to create account page" + reset);
 
         System.out.print(blue + "\nPlease choose your customer username: " + reset);
-        username = input.next();
+        username = input.nextLine();
         System.out.print(blue + "\nPlease choose your PIN number: " + reset);
         pin = input.nextInt();
+        input.nextLine();
 
         Customer customer = new Customer(username, pin);
 
-        if (manager.contains(username)) {
+        if (manager.contains(username, pin)) {
 
             System.out.println(red + "Account already exists, please login" + reset);
             this.login_menu();
@@ -127,6 +131,7 @@ public class Menu {
         System.out.println("Enter 2 to Exit");
         System.out.print(blue + "\nEnter your choice: " + reset);
         int num = input.nextInt();
+        input.nextLine();
         System.out.println();
 
         switch (num) {

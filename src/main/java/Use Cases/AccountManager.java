@@ -4,17 +4,16 @@ import java.util.Hashtable;
 
 public class AccountManager{
 
-    private String path = System.getProperty("user.dir") + File.separator + "Accounts.txt";
-    private Hashtable<String, String> accounts = new Hashtable<String, String>();
+    private final String path = System.getProperty("user.dir") + File.separator + "Accounts.txt";
+    private final Hashtable<String, String> accounts = new Hashtable<String, String>();
 
 
     public AccountManager() {
-
+        //if accounts exist in the file, add them to the hashtable.
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 this.accounts.put(line, reader.readLine());
-                reader.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -24,11 +23,15 @@ public class AccountManager{
 
 
     public void add_customer(Customer customer) {
+        //add a new account to the hashtable
         String user = customer.getUsername();
         String pin = Integer.toString(customer.getPin());
 
-        try(BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path))) {
-            fileWriter.write(user + "\n" + pin + "\n" + "\n");
+        try(BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
+            fileWriter.write(user);
+            fileWriter.newLine();
+            fileWriter.write(pin);
+            fileWriter.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,9 +40,12 @@ public class AccountManager{
     }
 
 
-    public boolean contains(String username) {
-
-        return this.accounts.contains(username);
+    public boolean contains(String username, int pin) {
+        if (this.accounts.containsKey(username)) {
+            return this.accounts.get(username).equals(Integer.toString(pin));
+        } else {
+            return false;
+        }
 
     }
 
