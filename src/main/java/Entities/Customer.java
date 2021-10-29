@@ -1,3 +1,8 @@
+package Entities;
+
+
+import Controllers.ShoppingCart;
+
 public class Customer {
 
 

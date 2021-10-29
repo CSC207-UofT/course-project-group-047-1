@@ -1,4 +1,4 @@
-Class name: ShoppingCart(Use case)
+Class name: Controllers.ShoppingCart(Use case)
 
 Responsibilities:
 * Temporarily store items picked by a customer

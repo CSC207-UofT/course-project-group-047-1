@@ -1,3 +1,6 @@
+package Entities;
+
+
 public class GroceryItem{
 
 
