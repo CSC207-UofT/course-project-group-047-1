@@ -11,19 +11,19 @@ The program also allows its users to sign up as delivery man to accept and deliv
   * GroceryItem
   * DeliveryPeople
 
-* Use Cases: 
-  * AccountManager
+* Use_Case: 
+  * Controllers.AccountManager
   * Order
   * DeliveryMatchingSystem
-  * ShoppingCart
+  * Controllers.ShoppingCart
   * GroceryInventory
 
 * Controller:
   * OrderArrangeSystem
   * OrderTrackingSystem
-  * Menu
+  * External_Interface.Menu
 
-* Command Line Interface: 
+* External_Interface: 
   * Store
 
 **Potential problems and potential extensions to our program:**

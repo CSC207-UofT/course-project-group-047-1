@@ -1,4 +1,4 @@
-Class name: Menu(Controller)
+Class name: External_Interface.Menu(Controller)
 
 Responsibilities:
 * Specify the interaction of user and the program(Specify input output process)
@@ -10,4 +10,4 @@ Variables:
 
 Collaborators:
 * all use case classes
-* Menu
+* External_Interface.Menu
