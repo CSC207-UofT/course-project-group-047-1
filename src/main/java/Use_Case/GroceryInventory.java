@@ -30,19 +30,7 @@ public class GroceryInventory {
 
     }
 
-
-    public String view() {
-
-        StringBuilder string = new StringBuilder();
-
-        for (GroceryItem item : this.items) {
-
-            string.append(item.getName()).append(" x ").append(item.getQuantity()).append(", Price: ").append(item.getPrice()).append("$ each\n");
-
-        }
-
-        return string.toString();
-
+    public ArrayList<GroceryItem> getItems() {
+        return items;
     }
-
 }
