@@ -1,13 +1,10 @@
-ShoppingCart
+Class name: Controllers.ShoppingCart(Use case)
 
-responsibility:
+Responsibilities:
+* Temporarily store items picked by a customer
 
-temporarily store items picked by a customer
+Variables:
+* items
 
-variables:
-
-customer, items
-
-collaborators:
-
-GroceryItem
+Collaborators:
+* GroceryItem

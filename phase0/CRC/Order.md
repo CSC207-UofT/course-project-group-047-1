@@ -1,13 +1,18 @@
-Order
+Class name: Order(Use case)
 
-responsibility:
+Responsibilities:
+* Store information of a customer's order
 
-stores the information of a customers' order
+Variables: 
+* date
+* address
+* status
+* customer
+* deliverymen
 
-variables: date, address, status
-
-collaborators:
-
-Customer, DeliveryPeople
-
-
+Collaborators:
+* Customer
+* DeliveryMatchingSystem
+* Controllers.ShoppingCart
+* OrderTrackingSystem
+* OrderArrangeSystem

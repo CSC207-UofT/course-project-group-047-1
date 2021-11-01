@@ -1,13 +1,13 @@
-Menu 
+Class name: External_Interface.Menu(Controller)
 
-responsibility:
+Responsibilities:
+* Specify the interaction of user and the program(Specify input output process)
 
-Specify the interaction of user and the program(Specify input output process)
+Variables:
+* items
+* input
+* manager
 
-variable:
-
-no variable
-
-collaborator:
-
-this class use all other classes except entities and the command line interface
+Collaborators:
+* all use case classes
+* External_Interface.Menu

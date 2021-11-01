@@ -1,16 +1,10 @@
-CustomerAccountManager
+Class name: Controllers.AccountManager(Use case)
 
-responsibility:
+Responsibilities:
+* Manage customers accounts registered in this store.
 
-Store customers and deliverymen account registered in this store in a collection.
+Variables:
+* customers
 
-variables:
-
-customer_accounts, deliverymen_accounts
-
-collaborators:
-
-customer, DeliveryPeople
-
-
-
+Collaborators:
+* Customer
