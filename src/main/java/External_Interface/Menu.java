@@ -3,6 +3,7 @@ package External_Interface;
 // This class process user's input to output. Only Class that should be run
 
 import Controllers.AccountManager;
+import Controllers.StoreManager;
 import Entities.Customer;
 import Use_Case.GroceryInventory;
 
@@ -15,7 +16,7 @@ public class Menu {
 
     Scanner input = new Scanner(System.in);
     AccountManager manager = new AccountManager();
-    GroceryInventory items = new GroceryInventory();
+    StoreManager items = new StoreManager();
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
