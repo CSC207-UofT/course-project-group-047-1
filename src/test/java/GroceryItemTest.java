@@ -1,3 +1,4 @@
+import Entities.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,7 +8,10 @@ public class GroceryItemTest {
     GroceryItem item;
 
     @Before
-    public void setUp() {item = new GroceryItem("Grape", 9.99, 20);}
+    public void setUp() {item = new GroceryItem(1, "Grape", 9.99, 20);}
+
+    @Test(timeout = 50)
+    public void testGetId() {assertEquals(1, item.getId());}
 
     @Test(timeout = 50)
     public void testGetPrice() {assertEquals(9.99, item.getPrice(), 0.0);}

@@ -9,10 +9,11 @@ import java.util.ArrayList;
 
 public class StoreManager {
 
+    private final GroceryInventory g;
     private final ArrayList<GroceryItem> items;
 
     public StoreManager() {
-        GroceryInventory g = new GroceryInventory();
+        this.g = new GroceryInventory();
         this.items = g.getItems();
     }
 
@@ -22,11 +23,15 @@ public class StoreManager {
 
         for (GroceryItem item : this.items) {
 
-            string.append(item.getName()).append(" x ").append(item.getQuantity()).append(", Price: ").append(item.getPrice()).append("$ each\n");
+            string.append(item.getId()).append(" ").append(item.getName()).append(" x ").append(item.getQuantity())
+                    .append(", Price: ").append(item.getPrice()).append("$ each\n");
 
         }
 
         return string.toString();
 
     }
+
+    //updates the Inventory file to reflect reductions to quantity
+    public void update() {this.g.UpdateInventory();}
 }
