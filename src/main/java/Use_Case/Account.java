@@ -7,8 +7,8 @@ import Entities.Customer;
 public class Account {
 
 
-    String username;
-    int pin;
+    private final String username;
+    private final int pin;
 
 
     //constructor

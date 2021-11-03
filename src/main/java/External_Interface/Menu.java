@@ -5,6 +5,7 @@ package External_Interface;
 import Controllers.AccountManager;
 import Controllers.StoreManager;
 import Entities.Customer;
+import Use_Case.Account;
 import Use_Case.GroceryInventory;
 
 import java.io.IOException;
@@ -114,7 +115,7 @@ public class Menu {
         pin = input.nextInt();
         input.nextLine();
 
-        Customer customer = new Customer(username, pin);
+        Account account = new Account(username, pin);
 
         if (manager.contains(username, pin)) {
 
@@ -123,7 +124,7 @@ public class Menu {
 
         }
 
-        manager.add_customer(customer);
+        manager.add_customer(account);
         System.out.println("\nAccount created, please login");
         this.login_menu();
 
