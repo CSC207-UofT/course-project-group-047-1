@@ -2,49 +2,68 @@ package Controllers;
 
 import Entities.GroceryItem;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class ShoppingCart {
 
 
-    private final ArrayList<GroceryItem> items;
-
+    private final HashMap<GroceryItem, Integer> itemsInCart;
 
     public ShoppingCart() {
 
-        this.items = new ArrayList<>();
+        this.itemsInCart = new HashMap<>();
 
     }
 
-    // for future use
-
-    public void AddItem(GroceryItem item) {
-
-        this.items.add(item);
-
+    // add 1 unit of selected item
+    public void addItem(GroceryItem item) {
+        if (this.itemsInCart.containsKey(item)){
+            this.itemsInCart.put(item, this.itemsInCart.get(item) + 1);
+        }
+        else {
+            this.itemsInCart.put(item, 1);
+        }
     }
 
-    // for future use
-    public void RemoveItem(int index) {
-
-        this.items.remove(index);
-
+    // remove 1 unit of selected item, assume item is in the cart
+    public void removeItem(GroceryItem item) {
+        if (this.itemsInCart.get(item) == 1){
+            this.itemsInCart.remove(item);
+        }
+        else {
+            this.itemsInCart.put(item, this.itemsInCart.get(item) - 1);
+        }
     }
+
 
     // for future use
     public double getTotalPrice() {
 
-        int total = 0;
+        double total = 0;
 
-        for (GroceryItem i: this.items) {
+        for (GroceryItem i: this.itemsInCart.keySet()) {
 
-            total += (i.getPrice())*(i.getQuantity());
+            total += i.GetDiscountStrategy().discount(i,this);
 
         }
 
         return total;
 
+    }
+
+    //helper for the discounters
+    public int getItemQuantityInCart(GroceryItem item){
+
+        return this.itemsInCart.get(item);
+
+
+    }
+
+    //helper for ShoppingCartTest
+    public HashMap<GroceryItem, Integer> getItemsInCart(){
+        return this.itemsInCart;
     }
 
 

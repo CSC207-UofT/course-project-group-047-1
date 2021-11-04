@@ -1,6 +1,6 @@
 package Controllers;
 
-import Entities.Customer;
+import Use_Case.Account;
 
 import java.io.*;
 import java.util.Hashtable;
@@ -8,7 +8,7 @@ import java.util.Hashtable;
 public class AccountManager{
 
     private final String path = System.getProperty("user.dir") + File.separator + "Accounts.txt";
-    private final Hashtable<String, String> accounts = new Hashtable<String, String>();
+    private final Hashtable<String, String> accounts = new Hashtable<>();
 
 
     public AccountManager() {
@@ -25,10 +25,10 @@ public class AccountManager{
     }
 
 
-    public void add_customer(Customer customer) {
+    public void add_customer(Account account) {
         //add a new account to the hashtable
-        String user = customer.getUsername();
-        String pin = Integer.toString(customer.getPin());
+        String user = account.getUsername();
+        String pin = Integer.toString(account.getPin());
 
         try(BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
             fileWriter.write(user);
@@ -52,6 +52,4 @@ public class AccountManager{
 
     }
 
-
 }
-
