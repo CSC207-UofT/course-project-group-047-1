@@ -18,3 +18,4 @@ public class AccountTest {
     public void testGetPin() {assertEquals(12345, account.getPin());}
 
 }
+
