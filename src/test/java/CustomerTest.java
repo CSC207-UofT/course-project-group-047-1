@@ -1,5 +1,4 @@
-package Entities;
-
+import Entities.Customer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,13 +9,9 @@ public class CustomerTest {
     Customer customer;
 
     @Before
-    public void setUp() {customer = new Customer("username", 12345,
-            "123@utoronto.ca", "address");}
+    public void setUp() {customer = new Customer("name");}
 
     @Test(timeout = 50)
-    public void testGetUsername() {assertEquals("username", customer.getUsername());}
-
-    @Test(timeout = 50)
-    public void testGetPin() {assertEquals(12345, customer.getPin());}
+    public void testGetUsername() {assertEquals("name", customer.getName());}
 
 }
