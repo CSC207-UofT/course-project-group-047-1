@@ -5,7 +5,7 @@ import External_Interface.Discounter;
 import External_Interface.NoDiscounter;
 
 public class GroceryItem{
-
+    // a GroceryItem has five variables
     private final int id;
     private final String name;
     private final double price;
@@ -13,6 +13,7 @@ public class GroceryItem{
     private Discounter discountStrategy;
 
 
+    //constructor
     public GroceryItem(int id, String name, double price, int quantity) {
         this.id = id;
         this.name = name;
@@ -22,6 +23,8 @@ public class GroceryItem{
 
     }
 
+
+    //get methods
     public int getId() {return this.id;}
 
 
@@ -35,6 +38,12 @@ public class GroceryItem{
 
 
     public void reduce(int n) {this.quantity -= n;}
+
+
+    public void reduceAmount(int n) {
+        //reduce quantity of this item by n
+        this.quantity -= n;
+    }
 
     /**
      * Sets the discounter for this item.
