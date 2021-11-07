@@ -2,6 +2,7 @@ package Controllers;
 
 //This is a file writing class for GroceryItem's, they are stored in a file called Inventory.txt
 
+import Entities.Customer;
 import Entities.GroceryItem;
 
 import java.io.*;
@@ -33,17 +34,20 @@ public class GroceryInventory {
 
     }
 
-    //Pull changes from the file to the ArrayList
+    //Push changes in items into inventory.txt
     public void UpdateInventory() {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+            this.clear();
             for (GroceryItem item : this.items) {
-                writer.write(item.getId());
+                String id = Integer.toString(item.getId());
+                writer.write(id);
                 writer.newLine();
                 writer.write(item.getName());
                 writer.newLine();
                 writer.write(String.valueOf(item.getPrice()));
                 writer.newLine();
-                writer.write(item.getQuantity());
+                String q = Integer.toString(item.getQuantity());
+                writer.write(q);
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -67,4 +71,34 @@ public class GroceryInventory {
         return string.toString();
 
     }
+
+
+    //Delete everything in Inventory.txt
+    public void clear() throws IOException {
+        PrintWriter writer = new PrintWriter(new FileWriter(path));
+        writer.print("");
+        writer.close();
+    }
+
+
+    //Reduce the quantity of item with id by n
+    public void Reduce(int id, int n) {
+        for (GroceryItem item: this.items) {
+            if (item.getId() == id) {
+                item.reduce(n);
+            }
+        }
+        this.UpdateInventory();
+    }
+
+
+    //Remove item's in items from the store
+    public void Remove(ArrayList<GroceryItem> items) {
+        for (GroceryItem item: items) {
+            this.Reduce(item.getId(), item.getQuantity());
+        }
+        this.UpdateInventory();
+    }
+
+
 }
