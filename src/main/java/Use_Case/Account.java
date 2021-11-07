@@ -3,7 +3,7 @@ package Use_Case;
 
 import Entities.Customer;
 
-//this class stores information of a customer's account
+//An Account stores the information of a customer's account
 public class Account {
 
 

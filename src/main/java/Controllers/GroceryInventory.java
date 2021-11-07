@@ -1,16 +1,21 @@
-package Use_Case;
+package Controllers;
 
+//This is a file writing class for GroceryItem's, they are stored in a file called Inventory.txt
 
 import Entities.GroceryItem;
 
 import java.io.*;
 import java.util.ArrayList;
 
+
 public class GroceryInventory {
 
     String path = System.getProperty("user.dir") + File.separator + "Inventory.txt";
+
+    //An ArrayList that store GroceryItems in Inventory.txt
     private final ArrayList<GroceryItem> items = new ArrayList<>();
 
+    //Constructor
     public GroceryInventory() {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
@@ -28,6 +33,7 @@ public class GroceryInventory {
 
     }
 
+    //Pull changes from the file to the ArrayList
     public void UpdateInventory() {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
             for (GroceryItem item : this.items) {
@@ -44,7 +50,21 @@ public class GroceryInventory {
             e.printStackTrace();
         }
     }
-    public ArrayList<GroceryItem> getItems() {
-        return items;
+
+
+    //Return a string representation of GroceryItems in the store
+    public String view() {
+
+        StringBuilder string = new StringBuilder();
+
+        for (GroceryItem item : this.items) {
+
+            string.append(item.getId()).append(" ").append(item.getName()).append(" x ").append(item.getQuantity())
+                    .append(", Price: ").append(item.getPrice()).append("$ each\n");
+
+        }
+
+        return string.toString();
+
     }
 }
