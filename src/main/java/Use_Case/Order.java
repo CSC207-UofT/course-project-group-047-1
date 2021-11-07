@@ -2,46 +2,40 @@ package Use_Case;
 
 //An Order records a purchase buy a customer and the GroceryItems they bought
 
-import Entities.Customer;
-import Entities.GroceryItem;
 
-import java.util.ArrayList;
+import Entities.Customer;
 
 
 public class Order{
 
-    private final Customer customer;
-    private final ArrayList<GroceryItem> items;
+    private final String name;
+    private final int amount;
+    private final double price;
 
 
     //Constructor
-    public Order(Customer customer, ArrayList<GroceryItem> items){
-        this.customer = customer;
-        this.items = items;
+    public Order(String name, int amount, Double price){
+        this.name = name;
+        this.amount = amount;
+        this.price = price;
+    }
+
+    //Another constructor
+    public Order(Customer customer, int amount, Double price){
+        this.name = customer.getName();
+        this.amount = amount;
+        this.price = price;
     }
 
 
     //Get methods
-    public Customer getCustomer(){return this.customer;}
+    public String getCustomer() {return this.name;}
 
 
-    public ArrayList<GroceryItem> getItems(){return this.items;}
+    public double getValue() {return this.price;}
 
 
-    public int getTotalQuantity(){return this.items.size();}
+    public int getTotalQuantity() {return this.amount;}
 
-
-    //Return total Price of the items
-    public double getTotalPrice(){
-        double total = 0;
-
-        for (GroceryItem i : this.items){
-            total += i.getPrice();
-        }
-
-        return total;
-    }
-
-    public String getCustomerName(){return this.customer.getName();}
 
 }

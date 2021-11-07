@@ -37,13 +37,8 @@ public class GroceryItem{
     public int getQuantity() {return this.quantity;}
 
 
+    //Reduce the quantity of this item by n
     public void reduce(int n) {this.quantity -= n;}
-
-
-    public void reduceAmount(int n) {
-        //reduce quantity of this item by n
-        this.quantity -= n;
-    }
 
     /**
      * Sets the discounter for this item.
