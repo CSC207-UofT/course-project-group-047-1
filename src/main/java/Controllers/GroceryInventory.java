@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class GroceryInventory {
 
-    String path = System.getProperty("user.dir") + File.separator + "Inventory.txt";
+    private final String path = System.getProperty("user.dir") + File.separator + "Inventory.txt";
 
     //An ArrayList that store GroceryItems in Inventory.txt
     private final ArrayList<GroceryItem> items = new ArrayList<>();
@@ -35,7 +35,7 @@ public class GroceryInventory {
     }
 
     //Push changes in items into inventory.txt
-    public void UpdateInventory() {
+    public void updateInventory() {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
             this.clear();
             for (GroceryItem item : this.items) {
@@ -82,22 +82,22 @@ public class GroceryInventory {
 
 
     //Reduce the quantity of item with id by n
-    public void Reduce(int id, int n) {
+    public void reduce(int id, int n) {
         for (GroceryItem item: this.items) {
             if (item.getId() == id) {
                 item.reduce(n);
             }
         }
-        this.UpdateInventory();
+        this.updateInventory();
     }
 
 
     //Remove item's in items from the store
-    public void Remove(ArrayList<GroceryItem> items) {
+    public void remove(ArrayList<GroceryItem> items) {
         for (GroceryItem item: items) {
-            this.Reduce(item.getId(), item.getQuantity());
+            this.reduce(item.getId(), item.getQuantity());
         }
-        this.UpdateInventory();
+        this.updateInventory();
     }
 
 

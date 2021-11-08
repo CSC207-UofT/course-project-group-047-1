@@ -50,7 +50,7 @@ public class GroceryItem{
     /**
      * Apply the discounter for this item.
      */
-    public Discounter GetDiscountStrategy() {
+    public Discounter getDiscountStrategy() {
         return this.discountStrategy;
     }
 }
