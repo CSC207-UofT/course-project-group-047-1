@@ -43,9 +43,7 @@ public class ShoppingCart {
         double total = 0;
 
         for (GroceryItem i: this.itemsInCart.keySet()) {
-
-            total += i.getDiscountStrategy().discount(i,this);
-
+            total += i.getPrice();
         }
 
         return total;

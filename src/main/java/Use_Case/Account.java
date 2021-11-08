@@ -1,10 +1,7 @@
 package Use_Case;
-
-
 import Entities.Customer;
 
-
-//An Account stores the information of a customer's account
+//an Account stores the information of a customer's account
 public class Account {
 
 
@@ -12,7 +9,7 @@ public class Account {
     private final int pin;
 
 
-    //Constructor
+    //constructor
     public Account(String username, int pin){
         this.username = username;
         this.pin = pin;
@@ -28,6 +25,7 @@ public class Account {
 
     //a get method
     public String getUsername(){return this.username;}
+
 
     //another get method
     public int getPin(){return this.pin;}

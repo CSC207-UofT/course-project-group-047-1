@@ -13,7 +13,7 @@ public class CustomerTest {
     public void setUp() {
         customer1 = new Customer("name");
         customer2 = new Customer("name");
-        customer2.ChangeName("Hi");
+        customer2.changeName("Hi");
     }
 
     @Test(timeout = 50)
