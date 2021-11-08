@@ -3,12 +3,13 @@ package Use_Case;
 
 import Entities.Customer;
 
-//this class stores information of a customer's account
+
+//An Account stores the information of a customer's account
 public class Account {
 
 
-    String username;
-    int pin;
+    private final String username;
+    private final int pin;
 
 
     //constructor

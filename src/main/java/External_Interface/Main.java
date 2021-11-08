@@ -3,20 +3,19 @@ package External_Interface;
 // This class process user's input to output. Only Class that should be run
 
 import Controllers.AccountManager;
-import Controllers.StoreManager;
-import Entities.Customer;
-import Use_Case.GroceryInventory;
+import Controllers.GroceryInventory;
+import Use_Case.Account;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 
-public class Menu {
+public class Main {
 
 
     Scanner input = new Scanner(System.in);
     AccountManager manager = new AccountManager();
-    StoreManager items = new StoreManager();
+    GroceryInventory items = new GroceryInventory();
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
@@ -114,7 +113,7 @@ public class Menu {
         pin = input.nextInt();
         input.nextLine();
 
-        Customer customer = new Customer(username, pin);
+        Account account = new Account(username, pin);
 
         if (manager.contains(username, pin)) {
 
@@ -123,7 +122,7 @@ public class Menu {
 
         }
 
-        manager.add_customer(customer);
+        manager.add_customer(account);
         System.out.println("\nAccount created, please login");
         this.login_menu();
 
@@ -159,7 +158,7 @@ public class Menu {
 
     public static void main(String[] args) throws IOException {
 
-        Menu m = new Menu();
+        Main m = new Main();
         m.main_menu();
 
     }
