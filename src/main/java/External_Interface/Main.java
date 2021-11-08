@@ -123,7 +123,7 @@ public class Main {
 
         }
 
-        manager.add_customer(account);
+        manager.addCustomer(account);
         System.out.println("\nAccount created, please login");
         this.login_menu();
 

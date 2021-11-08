@@ -25,7 +25,7 @@ public class AccountManager{
     }
 
 
-    public void add_customer(Account account) {
+    public void addCustomer(Account account) {
         //add a new account to the hashtable
         String user = account.getUsername();
         String pin = Integer.toString(account.getPin());
