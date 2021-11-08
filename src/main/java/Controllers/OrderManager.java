@@ -15,11 +15,11 @@ public class OrderManager{
 
     public OrderManager(){
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            while ((reader.readLine()) != null) {
-                String name = reader.readLine();
+            String line;
+            while ((line = reader.readLine()) != null) {
                 int quantity = Integer.parseInt(reader.readLine());
                 double price = Double.parseDouble(reader.readLine());
-                Order order = new Order(name, quantity, price);
+                Order order = new Order(line, quantity, price);
                 this.orders.add(order);
             }
         } catch (IOException e) {
@@ -45,5 +45,5 @@ public class OrderManager{
         Order o = new Order(name, quantity, price);
         this.orders.add(o);
     }
-
+    
 }
