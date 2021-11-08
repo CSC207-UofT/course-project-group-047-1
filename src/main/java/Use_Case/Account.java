@@ -12,7 +12,7 @@ public class Account {
     private final int pin;
 
 
-    //constructor
+    //Constructor
     public Account(String username, int pin){
         this.username = username;
         this.pin = pin;
