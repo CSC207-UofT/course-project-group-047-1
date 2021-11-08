@@ -6,12 +6,20 @@ import static org.junit.Assert.assertEquals;
 
 public class CustomerTest {
 
-    Customer customer;
+    Customer customer1;
+    Customer customer2;
 
     @Before
-    public void setUp() {customer = new Customer("name");}
+    public void setUp() {
+        customer1 = new Customer("name");
+        customer2 = new Customer("name");
+        customer2.changeName("Hi");
+    }
 
     @Test(timeout = 50)
-    public void testGetUsername() {assertEquals("name", customer.getName());}
+    public void testGetUsername() {
+        assertEquals("name", customer1.getName());
+        assertEquals("Hi", customer2.getName());
+    }
 
 }

@@ -1,10 +1,11 @@
 package Controllers;
 
 import Use_Case.Account;
-
 import java.io.*;
 import java.util.Hashtable;
 
+
+//a file  writing class that stores Accounts in a file called Accounts.txt
 public class AccountManager{
 
     private final String path = System.getProperty("user.dir") + File.separator + "Accounts.txt";
@@ -43,6 +44,7 @@ public class AccountManager{
     }
 
 
+    //check if an account exists and has the correct password
     public boolean contains(String username, int pin) {
         if (this.accounts.containsKey(username)) {
             return this.accounts.get(username).equals(Integer.toString(pin));

@@ -1,11 +1,8 @@
 package Use_Case;
-
-//An Order records a purchase buy a customer and the GroceryItems they bought
-
-
 import Entities.Customer;
 
 
+//an Order records a purchase by a customer
 public class Order{
 
     private final String name;
@@ -13,14 +10,14 @@ public class Order{
     private final double price;
 
 
-    //Constructor
+    //constructor
     public Order(String name, int amount, Double price){
         this.name = name;
         this.amount = amount;
         this.price = price;
     }
 
-    //Another constructor
+    //another constructor
     public Order(Customer customer, int amount, Double price){
         this.name = customer.getName();
         this.amount = amount;
@@ -28,7 +25,7 @@ public class Order{
     }
 
 
-    //Get methods
+    //get methods
     public String getCustomer() {return this.name;}
 
 

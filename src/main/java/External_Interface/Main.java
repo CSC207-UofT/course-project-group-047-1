@@ -87,6 +87,7 @@ public class Main {
                     case 1:
                         this.create_account_menu();
                         end = true;
+                        break;
 
                     case 2:
 
