@@ -12,14 +12,19 @@ public class ShoppingCart {
 
     private final ArrayList<GroceryItem> items;
 
-    //Creates a ShoppingCart.
+    /*
+     Creates a ShoppingCart.
+     */
     public ShoppingCart() {
         this.items = new ArrayList<>();
     }
 
 
-    //Adds a GroceryItem to the ShoppingCart.
+    /*
+    Adds a GroceryItem to the ShoppingCart.
+    */
     public void addItem(GroceryItem item) {
+
         for (GroceryItem i : items){
             if (i.getId() == item.getId()) {i.add(item.getQuantity());}
         }
@@ -27,16 +32,21 @@ public class ShoppingCart {
     }
 
 
-    //Removes this item if this item is in ShoppingCart.
+    /*
+    Removes this item if this item is in ShoppingCart.
+    */
     public void removeItem(int id, int n){
+
         for(GroceryItem i: items){
             if (i.getId() == id) {i.reduce(n);}
         }
     }
 
-
-    //Gets the total price of the items in this ShoppingCart.
+    /*
+    Gets the total price of the items in this ShoppingCart.
+    */
     public double getTotalPrice() {
+
         double total = 0;
 
         for (GroceryItem i: items) {
@@ -45,10 +55,12 @@ public class ShoppingCart {
         return total;
     }
 
-
-    //Checks if this ShoppingCart is empty or not.
-    //Return true if is empty, return false if not.
+    /*
+    Checks if this ShoppingCart is empty or not.
+    Return true if is empty, return false if not.
+    */
     public boolean isEmpty() {
+
         if (this.items.size() == 0){
             return true;
         }
@@ -58,8 +70,9 @@ public class ShoppingCart {
         return true;
     }
 
-
-    //Returns a string representation of the ShoppingCart, consisting of items in it.
+    /*
+    Returns a string representation of the ShoppingCart, consisting of items in it.
+    */
     public String view(){
         StringBuilder string;
         string = new StringBuilder();
@@ -72,7 +85,9 @@ public class ShoppingCart {
         return string.toString();
     }
 
-    //Gets the quantity of items in this ShoppingCart.
+    /*
+     Gets the quantity of items in this ShoppingCart.
+     */
     public int getQuantity(){
         int q = 0;
         for (GroceryItem i : items){
