@@ -1,7 +1,5 @@
 import Controllers.ShoppingCart;
 import Entities.GroceryItem;
-import External_Interface.BuyOneGetOneFreeDiscounter;
-import External_Interface.XmasDiscounter;
 import org.junit.Before;
 import org.junit.Test;
 

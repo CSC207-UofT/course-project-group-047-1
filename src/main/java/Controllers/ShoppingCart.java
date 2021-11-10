@@ -12,18 +12,14 @@ public class ShoppingCart {
 
     private final ArrayList<GroceryItem> items;
 
+    //Creates a ShoppingCart.
     public ShoppingCart() {
-    /*
-     Creates a ShoppingCart.
-     */
         this.items = new ArrayList<>();
     }
 
 
+    //Adds a GroceryItem to the ShoppingCart.
     public void addItem(GroceryItem item) {
-        /*
-        Adds a GroceryItem to the ShoppingCart.
-         */
         for (GroceryItem i : items){
             if (i.getId() == item.getId()) {i.add(item.getQuantity());}
         }
@@ -31,20 +27,16 @@ public class ShoppingCart {
     }
 
 
+    //Removes this item if this item is in ShoppingCart.
     public void removeItem(int id, int n){
-        /*
-        Removes this item if this item is in ShoppingCart.
-         */
         for(GroceryItem i: items){
             if (i.getId() == id) {i.reduce(n);}
         }
     }
 
 
+    //Gets the total price of the items in this ShoppingCart.
     public double getTotalPrice() {
-        /*
-        Gets the total price of the items in this ShoppingCart.
-         */
         double total = 0;
 
         for (GroceryItem i: items) {
@@ -53,11 +45,10 @@ public class ShoppingCart {
         return total;
     }
 
+
+    //Checks if this ShoppingCart is empty or not.
+    //Return true if is empty, return false if not.
     public boolean isEmpty() {
-        /*
-        Checks if this ShoppingCart is empty or not.
-        Return true if is empty, return false if not.
-         */
         if (this.items.size() == 0){
             return true;
         }
@@ -67,11 +58,9 @@ public class ShoppingCart {
         return true;
     }
 
-    public String view(){
-        /*
-        Returns a string representation of the ShoppingCart, consisting of items in it.
-         */
 
+    //Returns a string representation of the ShoppingCart, consisting of items in it.
+    public String view(){
         StringBuilder string;
         string = new StringBuilder();
 
@@ -83,10 +72,8 @@ public class ShoppingCart {
         return string.toString();
     }
 
+    //Gets the quantity of items in this ShoppingCart.
     public int getQuantity(){
-        /*
-        Gets the quantity of items in this ShoppingCart.
-         */
         int q = 0;
         for (GroceryItem i : items){
             q += i.getQuantity();
