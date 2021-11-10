@@ -1,28 +1,39 @@
 package External_Interface;
 
-// This class process user's input to output. Only Class that should be run
-
 import Controllers.AccountManager;
 import Controllers.GroceryInventory;
-import Use_Case.Account;
-
-import java.io.IOException;
+import Controllers.OrderManager;
+import Controllers.ShoppingCart;
 import java.util.Scanner;
 
 
+/**
+ * This class accepts user input and convert them into system output, and it's the only class that should be run.
+ */
 public class Main {
 
 
+    String name;
     Scanner input = new Scanner(System.in);
     AccountManager manager = new AccountManager();
     GroceryInventory items = new GroceryInventory();
+    OrderManager Orders = new OrderManager();
+    ShoppingCart cart;
+
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
     public final String blue = "\u001B[34m";
 
 
-    public void main_menu() throws IOException {
+    /**
+     * a Welcome menu, provide three choices for users
+     *
+     * choice 1: create an account, which will call createAccountMenu method
+     * choice 2: login to an account, which will call loginMenu method
+     * choice 3: exit, exit the program
+     */
+    public void mainMenu(){
 
         System.out.println(green + "\nWelcome to our store, please select your choice\n" + reset);
         System.out.println("Enter 1 to create account");
@@ -35,12 +46,15 @@ public class Main {
         switch (num) {
 
             case 1:
-                this.create_account_menu();
+                this.createAccountMenu();
+                break;
 
             case 2:
-                this.login_menu();
+                this.loginMenu();
+                break;
 
             case 3:
+                break;
 
         }
 
@@ -50,7 +64,13 @@ public class Main {
     }
 
 
-    public void login_menu() throws IOException {
+    /**
+     * ask the user for their username and pin, call a method in AccountManager
+     * that checks the credentials to determine if an account exists. If so, then
+     * call customerMenu, if not ask the user to try again or create an account.
+     * If an account has an open order, then
+     */
+    public void loginMenu() {
 
         String username;
         int pin;
@@ -70,8 +90,14 @@ public class Main {
             if (manager.contains(username, pin)) {
 
                 System.out.println("\nLogin success");
-                this.customer_menu();
-                end = true;
+                this.name = username;
+                if (Orders.haveOrder(name)) {
+                    System.out.println(red + "\nYou have an unfinished order, please complete this order first" + reset);
+                    this.confirmMenu();
+                } else {
+                    this.customerMenu();
+                }
+                break;
 
             } else {
 
@@ -85,11 +111,12 @@ public class Main {
                 switch (num) {
 
                     case 1:
-                        this.create_account_menu();
+                        this.createAccountMenu();
                         end = true;
                         break;
 
                     case 2:
+                        break;
 
                 }
 
@@ -100,7 +127,11 @@ public class Main {
     }
 
 
-    public void create_account_menu() throws IOException {
+    /**
+     * ask the user to set up an account by providing a username and pin,
+     * then call the loginMenu method
+     */
+    public void createAccountMenu() {
 
         String username;
         int pin;
@@ -114,25 +145,29 @@ public class Main {
         pin = input.nextInt();
         input.nextLine();
 
-        Account account = new Account(username, pin);
-
         if (manager.contains(username, pin)) {
 
             System.out.println(red + "Account already exists, please login" + reset);
-            this.login_menu();
+            this.loginMenu();
 
         }
 
-        manager.addCustomer(account);
+        manager.addCustomer(manager.createAccount(username, pin));
         System.out.println("\nAccount created, please login");
-        this.login_menu();
+        this.loginMenu();
 
         System.exit(0);
 
     }
 
 
-    public void customer_menu() {
+    /**
+     * provide two choices for user
+     *
+     * choice 1: start shopping, which will call shoppingMenu method
+     * choice 2: exit, exit the program
+     */
+    public void customerMenu() {
 
         System.out.println();
         System.out.println(green + "Welcome to customer menu, please enter your choice\n" + reset);
@@ -144,23 +179,28 @@ public class Main {
         System.out.println();
 
         switch (num) {
-
-            case 1:
-                System.out.println(items.view());
-
-            case 2:
+            case 1 -> {
+                this.cart = new ShoppingCart();
+                this.shoppingMenu();
+            }
+            case 2 -> {
                 System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
-
+            }
         }
 
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public void confirmMenu() {}
+
+    public void shoppingMenu() {}
+
+
+    public static void main(String[] args) {
 
         Main m = new Main();
-        m.main_menu();
+        m.mainMenu();
 
     }
 
