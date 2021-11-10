@@ -2,66 +2,102 @@ package Controllers;
 
 import Entities.GroceryItem;
 
-import java.util.HashMap;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
-
+/**
+ * A ShoppingCart temporarily stores GroceryItems for customers.
+ */
 public class ShoppingCart {
 
+    private final ArrayList<GroceryItem> items;
 
-    private final HashMap<GroceryItem, Integer> itemsInCart;
-
+    /*
+     Creates a ShoppingCart.
+     */
     public ShoppingCart() {
-
-        this.itemsInCart = new HashMap<>();
-
+        this.items = new ArrayList<>();
     }
 
-    // add 1 unit of selected item
+
+    /*
+    Adds a GroceryItem to the ShoppingCart.
+    */
     public void addItem(GroceryItem item) {
-        if (this.itemsInCart.containsKey(item)){
-            this.itemsInCart.put(item, this.itemsInCart.get(item) + 1);
-        }
-        else {
-            this.itemsInCart.put(item, 1);
-        }
-    }
 
-    // remove 1 unit of selected item, assume item is in the cart
-    public void removeItem(GroceryItem item) {
-        if (this.itemsInCart.get(item) == 1){
-            this.itemsInCart.remove(item);
+        for (GroceryItem i : items){
+            if (i.getId() == item.getId()) {i.add(item.getQuantity());}
         }
-        else {
-            this.itemsInCart.put(item, this.itemsInCart.get(item) - 1);
-        }
+        items.add(item);
     }
 
 
-    // for future use
+    /*
+    Removes this item if this item is in ShoppingCart.
+    */
+    public void removeItem(int id, int n){
+
+        for(GroceryItem i: items){
+            if (i.getId() == id) {i.reduce(n);}
+        }
+    }
+
+    /*
+    Gets the total price of the items in this ShoppingCart.
+    */
     public double getTotalPrice() {
 
         double total = 0;
 
-        for (GroceryItem i: this.itemsInCart.keySet()) {
-            total += i.getPrice();
+        for (GroceryItem i: items) {
+            total += i.getPrice()*i.getQuantity();
         }
-
         return total;
-
     }
 
-    //helper for the discounters
-    public int getItemQuantityInCart(GroceryItem item){
+    /*
+    Checks if this ShoppingCart is empty or not.
+    Return true if is empty, return false if not.
+    */
+    public boolean isEmpty() {
 
-        return this.itemsInCart.get(item);
-
-
+        if (this.items.size() == 0){
+            return true;
+        }
+        for (GroceryItem i : this.items) {
+            if (i.getQuantity() != 0) {return false;}
+        }
+        return true;
     }
 
-    //helper for ShoppingCartTest
-    public HashMap<GroceryItem, Integer> getItemsInCart(){
-        return this.itemsInCart;
+    /*
+    Returns a string representation of the ShoppingCart, consisting of items in it.
+    */
+    public String view(){
+        StringBuilder string;
+        string = new StringBuilder();
+
+        for (GroceryItem item : this.items){
+
+            string.append(item.getId()).append(" ").append(item.getName()).append(" x ").append(item.getQuantity())
+                    .append(", Price: ").append(item.getPrice()).append("$ each\n");
+        }
+        return string.toString();
     }
 
+    /*
+     Gets the quantity of items in this ShoppingCart.
+     */
+    public int getQuantity(){
+        int q = 0;
+        for (GroceryItem i : items){
+            q += i.getQuantity();
+        }
+        return q;
+    }
+
+    public ArrayList<GroceryItem> getItems() {
+        return this.items;
+    }
 
 }
