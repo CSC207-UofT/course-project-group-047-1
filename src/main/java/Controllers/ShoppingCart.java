@@ -1,8 +1,6 @@
 package Controllers;
 
 import Entities.GroceryItem;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -10,31 +8,38 @@ import java.util.ArrayList;
  */
 public class ShoppingCart {
 
+
     private final ArrayList<GroceryItem> items;
 
-    /*
-     Creates a ShoppingCart.
+
+    /**
+     * constructor
      */
     public ShoppingCart() {
         this.items = new ArrayList<>();
     }
 
 
-    /*
-    Adds a GroceryItem to the ShoppingCart.
-    */
+    /**
+     * add an item to this shopping cart
+     * @param item: GroceryItem to be added
+     */
     public void addItem(GroceryItem item) {
-
-        for (GroceryItem i : items){
-            if (i.getId() == item.getId()) {i.add(item.getQuantity());}
+        for (GroceryItem i: items) {
+            if (i.getId() == item.getId()) {
+                i.add(item.getQuantity());
+                return;
+            }
         }
         items.add(item);
     }
 
 
-    /*
-    Removes this item if this item is in ShoppingCart.
-    */
+    /**
+     * reduce the quantity of item with id by n
+     * @param id: int
+     * @param n: int
+     */
     public void removeItem(int id, int n){
 
         for(GroceryItem i: items){
@@ -42,9 +47,10 @@ public class ShoppingCart {
         }
     }
 
-    /*
-    Gets the total price of the items in this ShoppingCart.
-    */
+
+    /**
+     * @return: return total value of shopping cart
+     */
     public double getTotalPrice() {
 
         double total = 0;
@@ -55,10 +61,11 @@ public class ShoppingCart {
         return total;
     }
 
-    /*
-    Checks if this ShoppingCart is empty or not.
-    Return true if is empty, return false if not.
-    */
+
+    /**
+     * check if this shopping cart is empty
+     * @return: boolean
+     */
     public boolean isEmpty() {
 
         if (this.items.size() == 0){
@@ -70,9 +77,10 @@ public class ShoppingCart {
         return true;
     }
 
-    /*
-    Returns a string representation of the ShoppingCart, consisting of items in it.
-    */
+
+    /**
+     * @return: return a string representation of items in the cart
+     */
     public String view(){
         StringBuilder string;
         string = new StringBuilder();
@@ -85,8 +93,9 @@ public class ShoppingCart {
         return string.toString();
     }
 
-    /*
-     Gets the quantity of items in this ShoppingCart.
+
+    /**
+     * @return: return the quantity of items in cart
      */
     public int getQuantity(){
         int q = 0;
@@ -96,6 +105,10 @@ public class ShoppingCart {
         return q;
     }
 
+
+    /**
+     * @return: return a list of items in cart
+     */
     public ArrayList<GroceryItem> getItems() {
         return this.items;
     }

@@ -1,21 +1,31 @@
 package Entities;
 
 
-//this class stores the information of a customer
+/**
+ * a customer is a user of the program
+ */
 public class Customer{
 
 
     private String name;
 
 
-    //constructor
+    /**
+     * constructor
+     * @param name: String
+     */
     public Customer (String name){this.name = name;}
 
 
-    //a helper method
+    /**
+     * @return: String
+     */
     public String getName(){return this.name;}
 
 
-    //change name
+    /**
+     * change the name of the customer
+     * @param name: String: new name
+     */
     public void changeName(String name) {this.name = name;}
 }

@@ -2,30 +2,57 @@ package Use_Case;
 import Entities.Customer;
 
 
-//an Order records a purchase by a customer
+/**
+ * an order records a purchase by a customer
+ */
 public class Order{
 
     private final String name;
     private final int amount;
     private final double price;
+    private String status;
 
 
-    //constructor
+    /**
+     * constructor
+     * @param name: name of customer
+     * @param amount: amount of item bought
+     * @param price: total value of items
+     */
     public Order(String name, int amount, Double price){
         this.name = name;
         this.amount = amount;
         this.price = price;
+        this.status = "open";
     }
 
-    //another constructor
+
+    /**
+     * another constructor
+     */
     public Order(Customer customer, int amount, Double price){
         this.name = customer.getName();
         this.amount = amount;
         this.price = price;
+        this.status = "open";
     }
 
 
-    //get methods
+    /**
+     * another constructor
+     */
+    public Order(String name, int amount, Double price, String status){
+        this.name = name;
+        this.amount = amount;
+        this.price = price;
+        this.status = status;
+    }
+
+
+
+    /**
+     * get methods
+     */
     public String getCustomer() {return this.name;}
 
 
@@ -33,6 +60,15 @@ public class Order{
 
 
     public int getTotalQuantity() {return this.amount;}
+
+
+    public String getStatus() {return this.status;}
+
+
+    /**
+     * set the status of this order
+     */
+    public void setStatus(String s) {this.status = s;}
 
 
 }
