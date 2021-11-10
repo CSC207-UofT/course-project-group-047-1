@@ -1,22 +1,21 @@
 package Controllers;
 
-//This is a file writing class for GroceryItem's, they are stored in a file called Inventory.txt
-
-import Entities.Customer;
 import Entities.GroceryItem;
-
 import java.io.*;
 import java.util.ArrayList;
 
 
+//this is a file writing class for GroceryItem's, they are stored in a file called Inventory.txt
 public class GroceryInventory {
 
-    String path = System.getProperty("user.dir") + File.separator + "Inventory.txt";
+    private final String path = System.getProperty("user.dir") + File.separator + "Inventory.txt";
 
-    //An ArrayList that store GroceryItems in Inventory.txt
+
+    //an ArrayList that store GroceryItems in Inventory.txt
     private final ArrayList<GroceryItem> items = new ArrayList<>();
 
-    //Constructor
+
+    //constructor, read the file and collect all GroceryItems into an ArrayList: items
     public GroceryInventory() {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
@@ -28,14 +27,15 @@ public class GroceryInventory {
                 GroceryItem g = new GroceryItem(Integer.parseInt(line), name, price, quantity);
                 this.items.add(g);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    //Push changes in items into inventory.txt
-    public void UpdateInventory() {
+    //push changes in items into inventory.txt
+    public void updateInventory() {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
             this.clear();
             for (GroceryItem item : this.items) {
@@ -56,7 +56,7 @@ public class GroceryInventory {
     }
 
 
-    //Return a string representation of GroceryItems in the store
+    //return a string representation of GroceryItems in the store
     public String view() {
 
         StringBuilder string = new StringBuilder();
@@ -73,7 +73,7 @@ public class GroceryInventory {
     }
 
 
-    //Delete everything in Inventory.txt
+    //delete everything in Inventory.txt
     public void clear() throws IOException {
         PrintWriter writer = new PrintWriter(new FileWriter(path));
         writer.print("");
@@ -81,23 +81,23 @@ public class GroceryInventory {
     }
 
 
-    //Reduce the quantity of item with id by n
-    public void Reduce(int id, int n) {
+    //reduce the quantity of item with id by n
+    public void reduce(int id, int n) {
         for (GroceryItem item: this.items) {
             if (item.getId() == id) {
                 item.reduce(n);
             }
         }
-        this.UpdateInventory();
+        this.updateInventory();
     }
 
 
-    //Remove item's in items from the store
-    public void Remove(ArrayList<GroceryItem> items) {
+    //remove item's in items from the store
+    public void remove(ArrayList<GroceryItem> items) {
         for (GroceryItem item: items) {
-            this.Reduce(item.getId(), item.getQuantity());
+            this.reduce(item.getId(), item.getQuantity());
         }
-        this.UpdateInventory();
+        this.updateInventory();
     }
 
 

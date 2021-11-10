@@ -87,6 +87,7 @@ public class Main {
                     case 1:
                         this.create_account_menu();
                         end = true;
+                        break;
 
                     case 2:
 
@@ -122,7 +123,7 @@ public class Main {
 
         }
 
-        manager.add_customer(account);
+        manager.addCustomer(account);
         System.out.println("\nAccount created, please login");
         this.login_menu();
 
