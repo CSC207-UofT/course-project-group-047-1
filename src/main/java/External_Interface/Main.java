@@ -191,6 +191,49 @@ public class Main {
 
     }
 
+    /**
+     * display items in user's shopping cart
+     * offer user two choices
+     *
+     * choice 1: remove items from their shopping cart
+     * choice 2: go back to shoppingMenu
+     */
+    public void cartMenu() {
+
+        boolean end = false;
+
+        while(!end) {
+            if (cart.isEmpty()) {
+                System.out.println(red + "\nyou have nothing in your cart, please continue shopping or exit" + reset);
+                end = true;
+            } else {
+                System.out.println(green + "\nBelow is what you have in your shopping cart\n" + reset);
+                System.out.println(this.cart.view());
+                System.out.println("\nEnter 1 to remove items");
+                System.out.println("Enter 2 to go back shopping");
+                System.out.print(blue + "\nPlease enter your choice: " + reset);
+                int num = input.nextInt();
+
+                switch (num) {
+
+                    case 1:
+                        System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
+                        int id = input.nextInt();
+                        System.out.print(blue + "\nPlease enter the quantity you want to remove: " + reset);
+                        int quantity = input.nextInt();
+                        cart.removeItem(id, quantity);
+                        items.add(id, quantity);
+                        System.out.println("\nRemove success");
+
+                    case 2:
+                        end = true;
+                        break;
+                }
+
+            }
+
+        }
+
 
     /**
      * check out menu, tell user how many items they bought
