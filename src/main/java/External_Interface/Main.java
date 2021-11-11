@@ -192,7 +192,40 @@ public class Main {
     }
 
 
-    public void confirmMenu() {}
+    /**
+     * check out menu, tell user how many items they bought
+     * how much money they need to bring and remind them to
+     * arrive the store before the store close at 9pm
+     */
+    public void checkOutMenu() {
+        System.out.println("\nWelcome, your order has been created, you bought " + cart.getQuantity() + " items");
+        System.out.println("You need to pay a total of $" + cart.getTotalPrice());
+        System.out.println("Please remember to bring enough money and visit our store before 9pm");
+        Orders.addOrder(this.name, cart.getQuantity(), cart.getTotalPrice(), "open");
+        this.confirmMenu();
+    }
+
+
+    /**
+     * ask the user to confirm that they picked up their items
+     */
+    public void confirmMenu() {
+
+        while (true) {
+            System.out.println("\nPlease enter 1 to confirm that you picked up your items ");
+            System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
+            System.out.println(blue + "\nPlease confirm after you picked up your items: ");
+            int num = input.nextInt();
+            if (num==1) {
+                Orders.closeAll(this.name);
+                System.out.println("Thank you for visiting our store");
+                break;
+            } else {
+                System.out.println(red + "\nInvalid input" + reset);
+            }
+        }
+    }
+
 
     public void shoppingMenu() {}
 

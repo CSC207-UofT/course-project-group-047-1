@@ -2,6 +2,7 @@ package Controllers;
 
 import Use_Case.Order;
 import java.io.*;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -73,6 +74,51 @@ public class OrderManager{
             }
         }
         return false;
+    }
+
+
+    /**
+     * close all orders associate to this customer
+     * @param name: customer's name
+     */
+    public void closeAll(String name){
+        for (Order o: this.orders){
+            if (Objects.equals(o.getCustomer(), name)){o.setStatus("closed");}
+        }
+        this.update();
+    }
+
+
+    /**
+     * clear the entire file
+     */
+    public void clear() throws IOException{
+        PrintWriter writer = new PrintWriter(new FileWriter(path));
+        writer.print("");
+        writer.close();
+    }
+
+
+    /**
+     * update the file according to the ArrayList
+     */
+    public void update(){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))){
+            this.clear();
+            for (Order ord: this.orders){
+                String name = ord.getCustomer();
+                writer.write(name);
+                writer.newLine();
+                writer.write(Integer.toString(ord.getTotalQuantity()));
+                writer.newLine();
+                writer.write(String.valueOf(ord.getValue()));
+                writer.newLine();
+                writer.write(ord.getStatus());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
