@@ -179,11 +179,11 @@ public class Main {
         System.out.println();
 
         switch (num) {
-            case 1 -> {
+            case 1: {
                 this.cart = new ShoppingCart();
                 this.shoppingMenu();
             }
-            case 2 -> {
+            case 2: {
                 System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
             }
@@ -294,7 +294,57 @@ public class Main {
     }
 
 
-    public void shoppingMenu() {}
+    /**
+    * display items in the store
+    * offer user four choices
+    *
+    * choice 1: add an item which will call addItem method
+    * choice 2: view their shopping cart which will call the cartMenu method
+    * choice 3: checkout, which will call the checkOutMenu
+    * choice 4: exit the program, all items in shopping cart will be placed back to inventory
+    */
+    public void shoppingMenu() {
+
+        boolean end = false;
+
+        while (!end) {
+
+            System.out.println(green + "\nPlease view our item list\n" + reset);
+            System.out.println(items.view());
+            System.out.println("Enter 1 to add item to your shopping cart");
+            System.out.println("Enter 2 to view your shopping cart");
+            System.out.println("Enter 3 to checkout");
+            System.out.println("Enter 4 to exit");
+            System.out.print(blue + "\nPlease enter your choice: " + reset);
+            int num = input.nextInt();
+
+            switch (num) {
+
+                case 1:
+                    addItem();
+                    break;
+
+                case 2:
+                    cartMenu();
+                    break;
+
+                case 3:
+                    if (cart.isEmpty()) {
+                        System.out.println(red + "\nYou cannot checkout with empty shopping cart" + reset);
+                    }
+                    else {
+                        end = true;
+                        this.checkOutMenu();
+                    }
+                    break;
+
+                case 4:
+                    items.putBack(cart.getItems());
+                    end = true;
+                    break;
+            }
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -303,5 +353,4 @@ public class Main {
         m.mainMenu();
 
     }
-
 }
