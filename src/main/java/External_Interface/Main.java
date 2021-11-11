@@ -227,6 +227,30 @@ public class Main {
     }
 
 
+    /**
+     * a helper method for shoppingMenu, add an item into user's shopping cart
+     *and remove that item from inventory
+     */
+    public void addItem(){
+        int id;
+        int quantity;
+        System.out.print(blue + "\nPlease inter the item id: " + reset);
+        id = input.nextInt();
+        while (true){
+            System.out.print(blue + "\nPlease enter amount you want: " + reset);
+            quantity = input.nextInt();
+            if (quantity <= items.getQuantity(id)){break;}
+            else {
+                System.out.println(red + "\ninvalid number, Please try again");
+            }
+        }
+        cart.addItem(items.createItem(id, quantity));
+        items.reduce(id, quantity);
+        System.out.println("\nitem added successfully");
+
+    }
+
+
     public void shoppingMenu() {}
 
 
