@@ -105,4 +105,65 @@ public class GroceryInventory {
     }
 
 
+    /**
+     *  increases the quantity of item with id by n
+     *
+     * @param id:  int
+     * @param n:   int
+     */
+    public void add(int id, int n) {
+        for (GroceryItem item : this.items) {
+            if (item.getId() == id) {
+                item.add(n);
+            }
+        }
+        this.updateInventory();
+    }
+
+
+    /**
+     * puts the given items back into the inventory
+     *
+     * @param list: ArrayList<GroceryItem>
+     */
+    public void putBack(ArrayList<GroceryItem> list) {
+        for (GroceryItem item : list) {
+            int id = item.getId();
+            int q = item.getQuantity();
+            this.add(id, q);
+        }
+    }
+
+
+    /**
+     * creates a new GroceryItem with a given id and quantity from the inventory
+     *
+     * @param id:  int
+     * @param q:   int
+     */
+    public GroceryItem createItem(int id, int q) {
+        for (GroceryItem i : this.items) {
+            if (i.getId() == id) {
+                String name = i.getName();
+                double price = i.getPrice();
+                return new GroceryItem(id, name, price, q);
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * returns the quantity of a given object
+     *
+     * @param id:  int
+     */
+    public int getQuantity(int id) {
+        for (GroceryItem i : this.items) {
+            if (i.getId() == id) {
+                return i.getQuantity();
+            }
+        }
+        return 0;
+    }
 }
