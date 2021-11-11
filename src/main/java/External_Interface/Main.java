@@ -68,7 +68,7 @@ public class Main {
      * ask the user for their username and pin, call a method in AccountManager
      * that checks the credentials to determine if an account exists. If so, then
      * call customerMenu, if not ask the user to try again or create an account.
-     * If an account has an open order, then
+     * If an account has an open order, then call confirmMenu.
      */
     public void loginMenu() {
 
@@ -179,11 +179,11 @@ public class Main {
         System.out.println();
 
         switch (num) {
-            case 1: {
+            case 1 -> {
                 this.cart = new ShoppingCart();
                 this.shoppingMenu();
             }
-            case 2: {
+            case 2 -> {
                 System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
             }
@@ -215,24 +215,36 @@ public class Main {
                 int num = input.nextInt();
 
                 switch (num) {
-
-                    case 1:
-                        System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
-                        int id = input.nextInt();
-                        System.out.print(blue + "\nPlease enter the quantity you want to remove: " + reset);
-                        int quantity = input.nextInt();
-                        cart.removeItem(id, quantity);
-                        items.add(id, quantity);
-                        System.out.println("\nRemove success");
-
-                    case 2:
-                        end = true;
-                        break;
+                    case 1 -> this.removeItem();
+                    case 2 -> end = true;
                 }
-
             }
-
         }
+    }
+
+
+    /**
+     * a helper method for cartMenu,
+     * ask the user the id of item they want to remove
+     * and the quantity
+     */
+    public void removeItem () {
+
+        System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
+        int id = input.nextInt();
+        while (true) {
+            System.out.print(blue + "\nPlease enter the quantity you want to remove: " + reset);
+            int quantity = input.nextInt();
+            if (quantity <= cart.getAmount(id)) {
+                cart.removeItem(id, quantity);
+                items.add(id, quantity);
+                System.out.println("\nRemove success");
+                break;
+            } else {
+                System.out.println(red + "\nInvalid number, please try again" + reset);
+            }
+        }
+
     }
 
 
@@ -256,15 +268,18 @@ public class Main {
     public void confirmMenu() {
 
         while (true) {
-            System.out.println("\nPlease enter 1 to confirm that you picked up your items ");
+            System.out.println("\nPlease enter 1 to confirm that you picked up your items");
+            System.out.println("\nEnter 2 to exit");
             System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
-            System.out.println(blue + "\nPlease confirm after you picked up your items: ");
+            System.out.print(blue + "\nPlease enter your choice: " + reset);
             int num = input.nextInt();
             if (num==1) {
                 Orders.closeAll(this.name);
-                System.out.println("Thank you for visiting our store");
                 break;
-            } else {
+            } else if(num == 2) {
+                System.exit(0);
+                break;
+            } else{
                 System.out.println(red + "\nInvalid input" + reset);
             }
         }
@@ -273,7 +288,7 @@ public class Main {
 
     /**
      * a helper method for shoppingMenu, add an item into user's shopping cart
-     *and remove that item from inventory
+     * and remove that item from inventory
      */
     public void addItem(){
         int id;
@@ -354,4 +369,7 @@ public class Main {
         m.mainMenu();
 
     }
+
+
+
 }
