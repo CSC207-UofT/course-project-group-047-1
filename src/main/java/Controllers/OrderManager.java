@@ -45,5 +45,5 @@ public class OrderManager{
         Order o = new Order(name, quantity, price);
         this.orders.add(o);
     }
-    
+
 }
