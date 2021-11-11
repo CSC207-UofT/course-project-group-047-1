@@ -113,4 +113,17 @@ public class ShoppingCart {
         return this.items;
     }
 
+
+    /**
+     * @param id: id of a GroceryItem
+     * @return: return the quantity of the item with id in shopping cart
+     */
+    public int getAmount(int id) {
+        for (GroceryItem i: this.items) {
+            if (i.getId() == id) {return i.getQuantity();}
+        }
+        return 0;
+    }
+
+
 }
