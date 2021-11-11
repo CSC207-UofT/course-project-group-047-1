@@ -5,17 +5,18 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-//this is a file writing class for GroceryItem's, they are stored in a file called Inventory.txt
+/**
+ * this is a file writing class that store GroceryItem into Inventory.txt
+ */
 public class GroceryInventory {
 
     private final String path = System.getProperty("user.dir") + File.separator + "Inventory.txt";
-
-
-    //an ArrayList that store GroceryItems in Inventory.txt
     private final ArrayList<GroceryItem> items = new ArrayList<>();
 
 
-    //constructor, read the file and collect all GroceryItems into an ArrayList: items
+    /**
+     * constructor, read the file and collect all items into an ArrayList
+     */
     public GroceryInventory() {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
@@ -34,9 +35,12 @@ public class GroceryInventory {
 
     }
 
-    //push changes in items into inventory.txt
+
+    /**
+     * push changes in the ArrayList into Inventory.txt
+     */
     public void updateInventory() {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
             this.clear();
             for (GroceryItem item : this.items) {
                 String id = Integer.toString(item.getId());
@@ -56,7 +60,9 @@ public class GroceryInventory {
     }
 
 
-    //return a string representation of GroceryItems in the store
+    /**
+     * @return: return a string representation of GroceryItems in the store
+     */
     public String view() {
 
         StringBuilder string = new StringBuilder();
@@ -73,7 +79,9 @@ public class GroceryInventory {
     }
 
 
-    //delete everything in Inventory.txt
+    /**
+     * clear the file
+     */
     public void clear() throws IOException {
         PrintWriter writer = new PrintWriter(new FileWriter(path));
         writer.print("");
@@ -81,9 +89,14 @@ public class GroceryInventory {
     }
 
 
-    //reduce the quantity of item with id by n
+    /**
+     * reduce the quantity of an item with id by n
+     *
+     * @param id: int
+     * @param n:  int
+     */
     public void reduce(int id, int n) {
-        for (GroceryItem item: this.items) {
+        for (GroceryItem item : this.items) {
             if (item.getId() == id) {
                 item.reduce(n);
             }
@@ -92,13 +105,65 @@ public class GroceryInventory {
     }
 
 
-    //remove item's in items from the store
-    public void remove(ArrayList<GroceryItem> items) {
-        for (GroceryItem item: items) {
-            this.reduce(item.getId(), item.getQuantity());
+    /**
+     *  increases the quantity of item with id by n
+     *
+     * @param id:  int
+     * @param n:   int
+     */
+    public void add(int id, int n) {
+        for (GroceryItem item : this.items) {
+            if (item.getId() == id) {
+                item.add(n);
+            }
         }
         this.updateInventory();
     }
 
 
+    /**
+     * puts the given items back into the inventory
+     *
+     * @param list: ArrayList<GroceryItem>
+     */
+    public void putBack(ArrayList<GroceryItem> list) {
+        for (GroceryItem item : list) {
+            int id = item.getId();
+            int q = item.getQuantity();
+            this.add(id, q);
+        }
+    }
+
+
+    /**
+     * creates a new GroceryItem with a given id and quantity from the inventory
+     *
+     * @param id:  int
+     * @param q:   int
+     */
+    public GroceryItem createItem(int id, int q) {
+        for (GroceryItem i : this.items) {
+            if (i.getId() == id) {
+                String name = i.getName();
+                double price = i.getPrice();
+                return new GroceryItem(id, name, price, q);
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * returns the quantity of a given object
+     *
+     * @param id:  int
+     */
+    public int getQuantity(int id) {
+        for (GroceryItem i : this.items) {
+            if (i.getId() == id) {
+                return i.getQuantity();
+            }
+        }
+        return 0;
+    }
 }
