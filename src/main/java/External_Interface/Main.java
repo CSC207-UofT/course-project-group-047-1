@@ -202,7 +202,7 @@ public class Main {
 
         boolean end = false;
 
-        while(!end) {
+        while (!end) {
             if (cart.isEmpty()) {
                 System.out.println(red + "\nyou have nothing in your cart, please continue shopping or exit" + reset);
                 end = true;
@@ -233,6 +233,7 @@ public class Main {
             }
 
         }
+    }
 
 
     /**
