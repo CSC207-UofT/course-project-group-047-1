@@ -52,17 +52,6 @@ public class AccountManager{
         this.accounts.put(user, pin);
     }
 
-
-    /**
-     * create and return an account
-     * @param name: String
-     * @param pin: int
-     * @return: Account
-     */
-    public Account createAccount (String name, int pin) {
-        return new Account(name, pin);
-    }
-
     /**
      * check credentials
      * @param username: String

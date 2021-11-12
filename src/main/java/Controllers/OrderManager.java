@@ -36,13 +36,15 @@ public class OrderManager{
 
 
     /**
-     * add an order to Order.txt
-     * @param name: String
-     * @param quantity: int
-     * @param price: double
-     * @param status: String
+     * add an order to the system
+     * @param ord: order to be added
      */
-    public void addOrder(String name, int quantity, double price, String status) {
+    public void addOrder(Order ord) {
+
+        String name = ord.getCustomer();
+        int quantity = ord.getTotalQuantity();
+        double price = ord.getValue();
+        String status = ord.getStatus();
 
         try(BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
             fileWriter.write(name);
@@ -56,8 +58,7 @@ public class OrderManager{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Order o = new Order(name, quantity, price, status);
-        this.orders.add(o);
+        this.orders.add(ord);
     }
 
 
