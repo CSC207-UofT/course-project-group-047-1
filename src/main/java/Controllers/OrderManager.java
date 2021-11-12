@@ -11,7 +11,8 @@ import java.util.Objects;
  */
 public class OrderManager{
 
-    private final String path = System.getProperty("user.dir") + File.separator + "Orders.txt";
+    private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
+            "main" + File.separator + "java" + File.separator + "Files" + File.separator + "Orders.txt";
     private final ArrayList<Order> orders = new ArrayList<>();
 
 
