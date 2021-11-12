@@ -4,6 +4,9 @@ import Controllers.AccountManager;
 import Controllers.GroceryInventory;
 import Controllers.OrderManager;
 import Controllers.ShoppingCart;
+import Use_Case.Account;
+import Use_Case.Order;
+
 import java.util.Scanner;
 
 
@@ -152,7 +155,8 @@ public class Main {
 
         }
 
-        manager.addCustomer(manager.createAccount(username, pin));
+        Account a = new Account(username, pin);
+        manager.addCustomer(a);
         System.out.println("\nAccount created, please login");
         this.loginMenu();
 
@@ -179,14 +183,14 @@ public class Main {
         System.out.println();
 
         switch (num) {
-            case 1 -> {
+            case 1:
                 this.cart = new ShoppingCart();
                 this.shoppingMenu();
-            }
-            case 2 -> {
+                break;
+            case 2:
                 System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
-            }
+                break;
         }
 
     }
@@ -215,8 +219,12 @@ public class Main {
                 int num = input.nextInt();
 
                 switch (num) {
-                    case 1 -> this.removeItem();
-                    case 2 -> end = true;
+                    case 1:
+                        this.removeItem();
+                        break;
+                    case 2:
+                        end = true;
+                        break;
                 }
             }
         }
@@ -257,7 +265,8 @@ public class Main {
         System.out.println("\nWelcome, your order has been created, you bought " + cart.getQuantity() + " items");
         System.out.println("You need to pay a total of $" + cart.getTotalPrice());
         System.out.println("Please remember to bring enough money and visit our store before 9pm");
-        Orders.addOrder(this.name, cart.getQuantity(), cart.getTotalPrice(), "open");
+        Order ord = new Order(this.name, cart.getQuantity(), cart.getTotalPrice(), "open");
+        Orders.addOrder(ord);
         this.confirmMenu();
     }
 
