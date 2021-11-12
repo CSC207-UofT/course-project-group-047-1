@@ -171,7 +171,7 @@ public class Main {
 
         System.out.println();
         System.out.println(green + "Welcome to customer menu, please enter your choice\n" + reset);
-        System.out.println("Enter 1 to view item list");
+        System.out.println("Enter 1 to start shopping");
         System.out.println("Enter 2 to Exit");
         System.out.print(blue + "\nEnter your choice: " + reset);
         int num = input.nextInt();
