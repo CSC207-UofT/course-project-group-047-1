@@ -10,7 +10,8 @@ import java.util.ArrayList;
  */
 public class GroceryInventory {
 
-    private final String path = System.getProperty("user.dir") + File.separator + "Inventory.txt";
+    private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
+            "main" + File.separator + "java" + File.separator + "Files" + File.separator + "inventory.txt";
     private final ArrayList<GroceryItem> items = new ArrayList<>();
 
 

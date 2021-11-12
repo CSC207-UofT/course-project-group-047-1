@@ -10,7 +10,8 @@ import java.util.Hashtable;
  */
 public class AccountManager{
 
-    private final String path = System.getProperty("user.dir") + File.separator + "Accounts.txt";
+    private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
+            "main" + File.separator + "java" + File.separator + "Files" + File.separator + "Accounts.txt";
     private final Hashtable<String, String> accounts = new Hashtable<>();
 
 
@@ -32,11 +33,10 @@ public class AccountManager{
 
 
     /**
-     * add a account
+     * add an account
      * @param account: account to be added
      */
     public void addCustomer(Account account) {
-        //add a new account to the hashtable
         String user = account.getUsername();
         String pin = Integer.toString(account.getPin());
 
@@ -48,9 +48,10 @@ public class AccountManager{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        //add a new account to the hashtable
         this.accounts.put(user, pin);
     }
+
 
     /**
      * check credentials
