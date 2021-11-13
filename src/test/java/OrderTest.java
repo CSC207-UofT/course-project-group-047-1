@@ -1,5 +1,3 @@
-package Use_Case;
-
 import Entities.Customer;
 import Entities.GroceryItem;
 import Use_Case.Order;
