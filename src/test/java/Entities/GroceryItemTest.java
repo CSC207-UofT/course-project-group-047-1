@@ -1,3 +1,5 @@
+package Entities;
+
 import Entities.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
