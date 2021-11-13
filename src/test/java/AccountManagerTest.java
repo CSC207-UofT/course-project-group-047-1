@@ -1,5 +1,4 @@
-package Controllers;
-
+import Controllers.AccountManager;
 import Use_Case.Account;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AccountManagerTest {
+public class AccountManagerTest {
     AccountManager manager;
     Account account1;
     Account account2;
