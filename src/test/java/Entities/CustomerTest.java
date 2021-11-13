@@ -1,3 +1,5 @@
+package Entities;
+
 import Entities.Customer;
 import org.junit.Before;
 import org.junit.Test;
