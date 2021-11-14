@@ -1,29 +1,37 @@
-package external_interface;
+package External_Interface;
 
-import controllers.CustomerAccountManager;
-import controllers.GroceryInventory;
-import controllers.OrderManager;
-import controllers.ShoppingCart;
-import use_case.CustomerAccount;
-import use_case.Order;
+import Controllers.AccountManager;
+import Controllers.GroceryInventory;
+import Controllers.OrderManager;
+import Controllers.ShoppingCart;
+import Use_Case.Account;
+import Use_Case.Order;
 
 import java.util.Scanner;
 
 
 /**
- * This class accepts user input and convert them into system output, and it is the only class that should be run.
+ * This class accepts user input and convert them into system output, and it's the only class that should be run.
  */
 public class Main {
 
 
     String name;
     Scanner input = new Scanner(System.in);
-    CustomerAccountManager manager = new CustomerAccountManager();
+    AccountManager manager = new AccountManager();
     GroceryInventory items = new GroceryInventory();
     OrderManager Orders = new OrderManager();
     ShoppingCart cart;
+    Boolean mainBool;
+    Boolean loginBool;
+    Boolean createBool;
+    Boolean customerBool;
+    Boolean cartBool;
+    Boolean removeBool;
+    Boolean checkoutBool;
+    Boolean confirmBool;
+    Boolean shoppingBool;
 
-    //For colorful text
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
@@ -31,14 +39,15 @@ public class Main {
 
 
     /**
-     * A welcome menu that provides three choices for the users
+     * a Welcome menu, provide three choices for users
      *
-     * Choice 1: create an account, which will call the createAccountMenu method
-     * Choice 2: login to an account, which will call the loginMenu method
-     * Choice 3: exit, will exit the program
+     * choice 1: create an account, which will call createAccountMenu method
+     * choice 2: login to an account, which will call loginMenu method
+     * choice 3: exit, exit the program
      */
-    public void mainMenu() {
+    public void mainMenu(){
 
+        mainBool = true;
         System.out.println(green + "\nWelcome to our store, please select your choice\n" + reset);
         System.out.println("Enter 1 to create account");
         System.out.println("Enter 2 to login to account");
@@ -69,16 +78,17 @@ public class Main {
 
 
     /**
-     * Asks the user for their username and pin, calls a method in the CustomerAccountManager
+     * ask the user for their username and pin, call a method in AccountManager
      * that checks the credentials to determine if an account exists. If so, then
-     * calls the customerMenu. If not, asks the user to try again or create an account.
-     * If an account has an open order, then calls the confirmMenu.
+     * call customerMenu, if not ask the user to try again or create an account.
+     * If an account has an open order, then call confirmMenu.
      */
     public void loginMenu() {
 
         String username;
         int pin;
         boolean end = false;
+        loginBool = true;
 
         System.out.println();
         System.out.println(green + "Welcome to login page" + reset);
@@ -132,13 +142,14 @@ public class Main {
 
 
     /**
-     * Asks the user to set up an account by providing a username and pin,
-     * then calls the loginMenu method
+     * ask the user to set up an account by providing a username and pin,
+     * then call the loginMenu method
      */
     public void createAccountMenu() {
 
         String username;
         int pin;
+        createBool = true;
 
         System.out.println();
         System.out.println(green + "Welcome to create account page" + reset);
@@ -151,14 +162,14 @@ public class Main {
 
         if (manager.contains(username, pin)) {
 
-            System.out.println(red + "CustomerAccount already exists, please login" + reset);
+            System.out.println(red + "Account already exists, please login" + reset);
             this.loginMenu();
 
         }
 
-        CustomerAccount a = new CustomerAccount(username, pin);
-        manager.addAccount(a);
-        System.out.println("\nCustomerAccount created, please login");
+        Account a = new Account(username, pin);
+        manager.addCustomer(a);
+        System.out.println("\nAccount created, please login");
         this.loginMenu();
 
         System.exit(0);
@@ -167,13 +178,14 @@ public class Main {
 
 
     /**
-     * Provides two choices for the user
+     * provide two choices for user
      *
-     * Choice 1: start shopping, which will call the shoppingMenu method
-     * Choice 2: exit, will exit the program
+     * choice 1: start shopping, which will call shoppingMenu method
+     * choice 2: exit, exit the program
      */
     public void customerMenu() {
 
+        customerBool = true;
         System.out.println();
         System.out.println(green + "Welcome to customer menu, please enter your choice\n" + reset);
         System.out.println("Enter 1 to start shopping");
@@ -188,27 +200,26 @@ public class Main {
                 this.cart = new ShoppingCart();
                 this.shoppingMenu();
                 break;
-
             case 2:
                 System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
                 break;
-            }
         }
 
+    }
 
-
-
+    
     /**
-     * Displays the items in the user's shopping cart
-     * Offers user two choices
+     * display items in user's shopping cart
+     * offer user two choices
      *
-     * Choice 1: remove items from their shopping cart
-     * Choice 2: go back to the shoppingMenu
+     * choice 1: remove items from their shopping cart
+     * choice 2: go back to shoppingMenu
      */
     public void cartMenu() {
 
         boolean end = false;
+        cartBool = true;
 
         while (!end) {
             if (cart.isEmpty()) {
@@ -236,12 +247,13 @@ public class Main {
 
 
     /**
-     * A helper method for the cartMenu
-     * Asks the user for the id of the item they want to remove
+     * a helper method for cartMenu,
+     * ask the user the id of item they want to remove
      * and the quantity
      */
-    public void removeItem() {
+    public void removeItem () {
 
+        removeBool = true;
         System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
         int id = input.nextInt();
         while (true) {
@@ -261,11 +273,12 @@ public class Main {
 
 
     /**
-     * Checkout menu, tells the user how many items they bought,
-     * how much money they need to bring, and reminds them to
+     * check out menu, tell user how many items they bought
+     * how much money they need to bring and remind them to
      * arrive the store before the store close at 9pm
      */
     public void checkOutMenu() {
+        checkoutBool = true;
         System.out.println("\nWelcome, your order has been created, you bought " + cart.getQuantity() + " items");
         System.out.println("You need to pay a total of $" + cart.getTotalPrice());
         System.out.println("Please remember to bring enough money and visit our store before 9pm");
@@ -276,23 +289,24 @@ public class Main {
 
 
     /**
-     * Asks the user to confirm that they picked up their items
+     * ask the user to confirm that they picked up their items
      */
     public void confirmMenu() {
 
+        confirmBool = true;
         while (true) {
-            System.out.println("\nEnter 1 to confirm that you picked up your items");
+            System.out.println("\nPlease enter 1 to confirm that you picked up your items");
             System.out.println("\nEnter 2 to exit");
             System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
             System.out.print(blue + "\nPlease enter your choice: " + reset);
             int num = input.nextInt();
-            if (num == 1) {
+            if (num==1) {
                 Orders.closeAll(this.name);
                 break;
-            } else if (num == 2) {
+            } else if(num == 2) {
                 System.exit(0);
                 break;
-            } else {
+            } else{
                 System.out.println(red + "\nInvalid input" + reset);
             }
         }
@@ -300,20 +314,19 @@ public class Main {
 
 
     /**
-     * A helper method for the shoppingMenu
-     * Adds an item into the user's shopping cart and removes that item from the inventory
+     * a helper method for shoppingMenu, add an item into user's shopping cart
+     * and remove that item from inventory
      */
-    public void addItem() {
+    public void addItem(){
         int id;
         int quantity;
         System.out.print(blue + "\nPlease inter the item id: " + reset);
         id = input.nextInt();
-        while (true) {
+        while (true){
             System.out.print(blue + "\nPlease enter amount you want: " + reset);
             quantity = input.nextInt();
-            if (quantity <= items.getQuantity(id)) {
-                break;
-            } else {
+            if (quantity <= items.getQuantity(id)){break;}
+            else {
                 System.out.println(red + "\ninvalid number, Please try again");
             }
         }
@@ -325,16 +338,17 @@ public class Main {
 
 
     /**
-     * Displays the items in the store
-     * Offers the user four choices
-     *
-     * Choice 1: add an item, which will call the addItem method
-     * Choice 2: view their shopping cart, which will call the cartMenu method
-     * Choice 3: checkout, which will call the checkOutMenu
-     * Choice 4: exit the program, all items in shopping cart will be placed back to inventory
-     */
+    * display items in the store
+    * offer user four choices
+    *
+    * choice 1: add an item which will call addItem method
+    * choice 2: view their shopping cart which will call the cartMenu method
+    * choice 3: checkout, which will call the checkOutMenu
+    * choice 4: exit the program, all items in shopping cart will be placed back to inventory
+    */
     public void shoppingMenu() {
-        
+
+        shoppingBool = true;
         boolean end = false;
 
         while (!end) {
@@ -361,7 +375,8 @@ public class Main {
                 case 3:
                     if (cart.isEmpty()) {
                         System.out.println(red + "\nYou cannot checkout with empty shopping cart" + reset);
-                    } else {
+                    }
+                    else {
                         end = true;
                         this.checkOutMenu();
                     }
@@ -382,6 +397,7 @@ public class Main {
         m.mainMenu();
 
     }
+
 
 
 }
