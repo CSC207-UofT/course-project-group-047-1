@@ -1,8 +1,10 @@
 Design document 
 
 \
-Our project domain is a grocery order reservation app.
+Specification:
 
+
+Our project domain is a grocery order reservation app. 
 We are designing a program for grocery stores like Walmart or T&T. In phase 0 the program 
 allows users to register, login. Now in phase 1, users can view and order groceries from the
 store. The customers are able to see the id, name, price, and quantity in stock of each item.
@@ -13,7 +15,7 @@ the program and go to pick up their stuffs, when they come back and run the prog
 the program will stop them from continue shopping, until they confirmed that they pick up their stuffs.
 
 \
-A general walk through
+A general walk through:
 
 a user run the program by running **"Main"** class, then they can create an "Account", the **"Main"** class will 
 call **"AccountManager"** class to store this **"Account"** to **"Accounts.txt"** file. Then the user will be brought to 
