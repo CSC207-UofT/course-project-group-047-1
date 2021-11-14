@@ -1,15 +1,9 @@
-package Controllers;
-
+import Controllers.AccountManager;
 import Entities.Customer;
-
-import java.io.*;
-import java.util.Hashtable;
-
 import Use_Case.Account;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class AccountManagerTest {
@@ -28,12 +22,12 @@ public class AccountManagerTest {
     @Test(timeout = 50)
     public void testAddCustomer() {
         accountManager.addAccount(account1);
-        assertEquals(true, accountManager.contains("name", 12345));
+        assertTrue(accountManager.contains("name", 12345));
     }
 
     @Test(timeout = 50)
     public void testContains() {
         accountManager.addAccount(account1);
-        assertEquals(accountManager.contains("name", 12345), true);
+        assertTrue(accountManager.contains("name", 12345));
     }
 }

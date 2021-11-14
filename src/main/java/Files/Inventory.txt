@@ -17,4 +17,4 @@ pomegranate
 5
 mask
 1.0
-990
+100

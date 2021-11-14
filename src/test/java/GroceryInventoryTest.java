@@ -1,7 +1,5 @@
-package Controllers;
 import java.io.*;
-import java.util.Hashtable;
-
+import Controllers.GroceryInventory;
 import Entities.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,14 +10,12 @@ public class GroceryInventoryTest {
     GroceryInventory groceryInventory;
     GroceryItem groceryItem1;
     GroceryItem groceryItem2;
-    ShoppingCart shoppingCart;
 
     @Before
     public void setUp() {
         groceryInventory = new GroceryInventory();
         groceryItem1 = new GroceryItem(1, "Grape", 1.99, 20);
         groceryItem2 = new GroceryItem(2, "Orange", 2.99, 10);
-        shoppingCart = new ShoppingCart();
     }
 
     @Test(timeout = 50)
@@ -46,8 +42,6 @@ public class GroceryInventoryTest {
 
     @Test(timeout = 50)
     public void testPutBack() {
-        groceryInventory.putBack(shoppingCart.getItems());
-        assertEquals(true, shoppingCart.isEmpty());
     }
 
     /** I'm unsure about this one

@@ -1,15 +1,10 @@
 import Controllers.OrderManager;
 import Entities.Customer;
-import Entities.GroceryItem;
 import Use_Case.Order;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,14 +30,14 @@ public class OrderManagerTest {
     }
 
     @Test(timeout = 50)
-    public void testaddOrder() {
+    public void testAddOrder() {
         manager.addOrder(order);
         assertTrue(manager.haveOrder(order.getCustomer()));
 
     }
 
     @Test(timeout = 50)
-    public void testhaveOrder() {
+    public void testHaveOrder() {
         manager.addOrder(order);
         assertTrue(manager.haveOrder(order.getCustomer()));
         assertFalse(manager.haveOrder("abc"));
@@ -50,7 +45,7 @@ public class OrderManagerTest {
     }
 
     @Test(timeout = 50)
-    public void testcloseAll() {
+    public void testCloseAll() {
         manager.addOrder(order);
         manager.closeAll(order.getCustomer());
         assertEquals("closed", order.getStatus());

@@ -1,11 +1,8 @@
 import Controllers.ShoppingCart;
 import Entities.GroceryItem;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShoppingCartTest {
@@ -24,19 +21,20 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void testaddItem() {
+    public void testAddItem() {
         boolean have = false;
         cart.addItem(item1);
         for (GroceryItem i: cart.getItems()) {
-            if (i == item1){
+            if (i == item1) {
                 have = true;
+                break;
             }
         }
-        assertEquals(true, have);
+        assertTrue(have);
     }
 
     @Test
-    public void testremoveItem() {
+    public void testRemoveItem() {
         GroceryItem target = item1;
         cart.removeItem(item2.getId(), 2);
         for (GroceryItem i: cart.getItems()) {
@@ -49,7 +47,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void testgetTotalPrice() {
+    public void testGetTotalPrice() {
         cart.addItem(item1);
         assertEquals(466.20, cart.getTotalPrice());
     }
@@ -62,27 +60,27 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void testview() {
+    public void testView() {
         String s = cart.view();
         assertEquals("2 Orange x 30, Price: 8.88$ each\n", s);
     }
 
     @Test
-    public void testgetQuantity() {
+    public void testGetQuantity() {
         assertEquals(cart.getQuantity(), 30);
         cart.addItem(item1);
         assertEquals(cart.getQuantity(), 50);
     }
 
     @Test
-    public void testgetItems() {
-        ArrayList<GroceryItem> c = new ArrayList<GroceryItem>();
+    public void testGetItems() {
+        ArrayList<GroceryItem> c = new ArrayList<>();
         c.add(item2);
         assertEquals(c, cart.getItems());
     }
 
     @Test
-    public void testgetAmount() {
+    public void testGetAmount() {
         assertEquals(30, cart.getAmount(2));
         cart.addItem(item1);
         assertEquals(20, cart.getAmount(1));

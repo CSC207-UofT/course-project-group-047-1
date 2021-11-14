@@ -22,15 +22,15 @@ public class Main {
     GroceryInventory items = new GroceryInventory();
     OrderManager Orders = new OrderManager();
     ShoppingCart cart;
-    Boolean mainBool;
-    Boolean loginBool;
-    Boolean createBool;
-    Boolean customerBool;
-    Boolean cartBool;
-    Boolean removeBool;
-    Boolean checkoutBool;
-    Boolean confirmBool;
-    Boolean shoppingBool;
+    public Boolean mainBool;
+    public Boolean loginBool;
+    public Boolean createBool;
+    public Boolean customerBool;
+    public Boolean cartBool;
+    public Boolean removeBool;
+    public Boolean checkoutBool;
+    public Boolean confirmBool;
+    public Boolean shoppingBool;
 
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
