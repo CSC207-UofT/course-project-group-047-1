@@ -1,4 +1,6 @@
+import Controllers.OrderManager;
 import Entities.Customer;
+import Entities.GroceryItem;
 import Use_Case.Order;
 
 import org.junit.Before;
@@ -12,19 +14,25 @@ public class OrderManagerTest {
     Customer customer;
     int amount;
     Double price;
+    String status;
+    OrderManager manager;
 
     @Before
     public void setUp() {
         path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
                 "main" + File.separator + "java" + File.separator + "Files" + File.separator + "Orders.txt";
         customer = new Customer("cos1");
-        amount = 2;
-        price =
-        order = new Order(Customer customer, int amount, Double price);
+        amount = 10;
+        price = 130.23;
+        order = new Order(customer, amount, price);
+        status = order.getStatus();
+        manager = new OrderManager();
     }
 
     @Test(timeout = 50)
     public void testaddOrder() {
+        manager.addOrder(order);
+
     }
 
     @Test(timeout = 50)
