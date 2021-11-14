@@ -1,17 +1,18 @@
 import Controllers.ShoppingCart;
 import Entities.GroceryItem;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShoppingCartTest {
+
     ShoppingCart cart;
     GroceryItem item1;
     GroceryItem item2;
 
 
-    @BeforeEach
+    @Before
     public void setUp() {
         cart = new ShoppingCart();
         item1 = new GroceryItem(1, "Grape", 9.99, 20);
@@ -20,7 +21,8 @@ public class ShoppingCartTest {
 
     }
 
-    @Test
+
+    @Test(timeout = 50)
     public void testAddItem() {
         boolean have = false;
         cart.addItem(item1);
@@ -49,7 +51,7 @@ public class ShoppingCartTest {
     @Test
     public void testGetTotalPrice() {
         cart.addItem(item1);
-        assertEquals(466.20, cart.getTotalPrice());
+        assertEquals(466.20, cart.getTotalPrice(), 5.0);
     }
 
     @Test

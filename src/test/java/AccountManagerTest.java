@@ -20,7 +20,7 @@ public class AccountManagerTest {
     }
 
     @Test(timeout = 50)
-    public void testAddCustomer() {
+    public void testAddAccount() {
         accountManager.addAccount(account1);
         assertTrue(accountManager.contains("name", 12345));
     }

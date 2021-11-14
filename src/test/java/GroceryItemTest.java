@@ -29,4 +29,14 @@ public class GroceryItemTest {
         item.reduce(10);
         assertEquals(10, item.getQuantity());
     }
+
+    @Test(timeout = 50)
+    public void testAdd() {
+        item.add(0);
+        assertEquals(20, item.getQuantity());
+        item.add(10);
+        assertEquals(30, item.getQuantity());
+    }
+
+
 }

@@ -1,4 +1,4 @@
-import java.io.*;
+import java.util.ArrayList;
 import Controllers.GroceryInventory;
 import Entities.GroceryItem;
 import org.junit.Before;
@@ -8,63 +8,51 @@ import static org.junit.Assert.assertEquals;
 public class GroceryInventoryTest {
 
     GroceryInventory groceryInventory;
-    GroceryItem groceryItem1;
-    GroceryItem groceryItem2;
+
 
     @Before
     public void setUp() {
         groceryInventory = new GroceryInventory();
-        groceryItem1 = new GroceryItem(1, "Grape", 1.99, 20);
-        groceryItem2 = new GroceryItem(2, "Orange", 2.99, 10);
     }
+
 
     @Test(timeout = 50)
     public void testCreateItem() {
-        assertEquals(groceryItem1, groceryInventory.createItem(1, 20));
+        GroceryItem n = groceryInventory.createItem(5, 10);
+        assertEquals(10, n.getQuantity());
     }
+
 
     @Test(timeout = 50)
     public void testGetQuantity() {
-        assertEquals(20, groceryInventory.getQuantity(1));
+        assertEquals(100, groceryInventory.getQuantity(5));
     }
+
 
     @Test(timeout = 50)
     public void testAdd() {
-        groceryInventory.add(1, 5);
-        assertEquals(25, groceryInventory.getQuantity(1));
+        groceryInventory.add(5, 5);
+        assertEquals(105, groceryInventory.getQuantity(5));
+        groceryInventory.reduce(5, 5);
     }
+
 
     @Test(timeout = 50)
     public void testReduce() {
-        groceryInventory.reduce(1, 5);
-        assertEquals(15, groceryInventory.getQuantity(1));
+        groceryInventory.reduce(4, 5);
+        assertEquals(95, groceryInventory.getQuantity(4));
+        groceryInventory.add(4,5);
     }
+
 
     @Test(timeout = 50)
     public void testPutBack() {
+        ArrayList<GroceryItem> items = new ArrayList<>();
+        items.add(groceryInventory.createItem(5, 1));
+        groceryInventory.putBack(items);
+        assertEquals(101, groceryInventory.getQuantity(5));
+        groceryInventory.reduce(5, 1);
     }
 
-    /** I'm unsure about this one
-     *
-     */
-    @Test(timeout = 50)
-    public void testClear() throws IOException {
-        groceryInventory.clear();
-        assertEquals("", groceryInventory.view());
-    }
-
-    @Test(timeout = 50)
-    public void testView() {
-        groceryInventory.createItem(1, 20);
-        groceryInventory.add(1, 20);
-        assertEquals("1 Grape x 20, Price: 1.99$ each", groceryInventory.view());
-    }
-
-    @Test(timeout = 50)
-    public void testUpdateInventory() {
-        groceryInventory.add(1, 20);
-        groceryInventory.updateInventory();
-        assertEquals("1 Grape x 20, Price: 1.99$ each", groceryInventory.view());
-    }
 
 }
