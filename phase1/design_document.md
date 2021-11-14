@@ -75,8 +75,7 @@ Strategy pattern in pull request 18 but, it turns out violating Clean Architectu
 
 what has worked well:
 
-1: Our program is working well and is quite useful as we expected, lots of features like colorful text, tolerance for 
-error.
+1: Our program is working well and is quite useful as we expected, lots of features like colorful text.
 
 2: Our group is working well together, we communicate efficiently
 
