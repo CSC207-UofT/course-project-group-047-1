@@ -27,6 +27,7 @@ public class Main {
     Boolean createBool;
     Boolean customerBool;
     Boolean cartBool;
+    Boolean removeBool;
     Boolean checkoutBool;
     Boolean confirmBool;
     Boolean shoppingBool;
@@ -252,6 +253,7 @@ public class Main {
      */
     public void removeItem () {
 
+        removeBool = true;
         System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
         int id = input.nextInt();
         while (true) {

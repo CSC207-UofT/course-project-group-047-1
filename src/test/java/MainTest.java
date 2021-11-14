@@ -80,17 +80,27 @@ public class MainTest {
 
     @Test(timeout = 50)
     public void testCartMenu() {
-
+        main.cartMenu();
+        int input = scanner.nextInt();
+        if (!shoppingCart.isEmpty()) {
+            if (input == 1) {
+                assertTrue(main.removeBool);
+            }
+        }
     }
 
     @Test(timeout = 50)
     public void testRemoveItem() {
-
+        main.cartMenu();
+        int input = scanner.nextInt();
+        /**
+         * incomplete
+         */
     }
 
     @Test(timeout = 50)
     public void testCheckOutMenu() {
-
+        assertTrue(main.confirmBool);
     }
 
     @Test(timeout = 50)
