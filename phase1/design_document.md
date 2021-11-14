@@ -101,7 +101,7 @@ open questions:
 1: the two issues listed on issues page on GitHub
 
 2: What other design patterns our codes can implement? We have been struggling about this for a while, we tried to
-Strategy pattern in pull request 18 but, it turns out violating Clean Architecture. You are welcome to give advice.
+use Strategy pattern in pull request 18 but, it turns out violating Clean Architecture. You are welcome to give advice.
 
 what has worked well:
 
