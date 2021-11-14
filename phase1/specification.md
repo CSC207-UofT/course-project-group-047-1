@@ -1,8 +1,25 @@
 Our project domain is a grocery order reservation app.
 
-We are designing a program for grocery stores like Walmart or T&T. In phase 0 the program allows users to register, login. Now in phase 1, users can view and order groceries from the store. The customers are able to see the id, name, price, and quantity in stock of each item. Each user has their own shopping cart, they can add items into their shopping cart, or remove items. At any time, users can view the items in their shopping cart. When they are satisfied, they can checkout, in the checkout page users will be asked to confirm if they pickup their items. At this point, users can choose to exit the program and go to pickup their stuffs, when they come back and run the program and login back to their accounts, the program will stop them from continue shopping, until they confirmed that they pickup their stuffs.
+We are designing a program for grocery stores like Walmart or T&T. In phase 0 the program 
+allows users to register, login. Now in phase 1, users can view and order groceries from the
+store. The customers are able to see the id, name, price, and quantity in stock of each item.
+Each user has their own shopping cart, they can add items into their shopping cart, or remove
+items. At any time, users can view the items in their shopping cart. When they are satisfied, they can check out, 
+in the checkout page users will be asked to confirm if they pick up their items. At this point, users can choose to exit
+the program and go to pick up their stuffs, when they come back and run the program and login back to their accounts,
+the program will stop them from continue shopping, until they confirmed that they pick up their stuffs.
 
 
-A General walkthrough
+A general walk through
 
-a user run the program by running "Main" class, then they can create an "Account", the "Main" class will call "AccountManager" class to store this "Account" to "Accounts.txt" file. Then the user will be brought to a login page, after login the "Main" class will initiate a "ShoppingCart" for this "Customer". The user can now choose to exit the program or start shopping. While shopping, the user can add "GroceryItems" into their "ShoppingCart" by specifing the "id" and "quantity" of the items they want, when they do that the "Main" class will call "GroceryInventory" class to remove those "GroceryItems" from "inventory.txt" and add them to user's "ShoppingCart". The user can view what's in their shopping cart, and remove items from it. When the user is satisfied, they can go to checkout, which will create an "Order" with an "open" status, and "OrderManager" will add this "Order" into "Orders.txt" file. the user will be asked to confirm if they picked up their order, after they confirmed, "OrderManager" will set the order's status to "closed", and write that change into "Orders.txt" file.
+a user run the program by running **"Main"** class, then they can create an "Account", the **"Main"** class will 
+call **"AccountManager"** class to store this **"Account"** to **"Accounts.txt"** file. Then the user will be brought to 
+a login page, after login the **"Main"** class will initiate a **"ShoppingCart"** for this **"Customer"**. The user can 
+now choose to exit the program or start shopping. While shopping, the user can add **"GroceryItem"** into their
+**"ShoppingCart"** by specifying the **"id"** and **"quantity"** of the items they want, when they do that the**"Main"** class
+will call **"GroceryInventory"** class to remove those **"GroceryItems"** from **"inventory.txt"** and add them to user's
+**"ShoppingCart"**. The user can view what's in their **"ShoppingCart"**, and remove items from it. When the user is 
+satisfied, they can go to checkout, which will create an **"Order"** with an **"open"** status, and **"OrderManager"** will
+add this **"Order"** into **"Orders.txt"** file. the user will be asked to confirm if they picked up their order, after
+they confirmed, **"OrderManager"** will set the order's status to **"closed"**, and write that change into **"Orders.txt"**
+file.
