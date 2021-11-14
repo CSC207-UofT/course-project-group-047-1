@@ -17,7 +17,7 @@ project can be more useful.
 \
 SOLID & Clean Architecture:
 
-During our implementations we have noticed some violations, for example, when we were trying to implement a Strategy
+During our implementations we have noticed some violations, for example, We tried to implement a Strategy
 pattern in pull request 18. But later we found out that **"GroceryItem"** which is an entity imports classes on
 external interface level, which clearly violation both Clean Architecture and SOLID principles, so in pull request
 28 we fixed it, and we included a class diagram under phase 1 folder to remind us the relationship between
