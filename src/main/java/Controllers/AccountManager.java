@@ -36,7 +36,7 @@ public class AccountManager{
      * add an account
      * @param account: account to be added
      */
-    public void addCustomer(Account account) {
+    public void addAccount(Account account) {
         String user = account.getUsername();
         String pin = Integer.toString(account.getPin());
 

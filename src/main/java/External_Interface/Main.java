@@ -168,7 +168,7 @@ public class Main {
         }
 
         Account a = new Account(username, pin);
-        manager.addCustomer(a);
+        manager.addAccount(a);
         System.out.println("\nAccount created, please login");
         this.loginMenu();
 
