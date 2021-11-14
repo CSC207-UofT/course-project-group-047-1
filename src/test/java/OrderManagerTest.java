@@ -55,21 +55,4 @@ public class OrderManagerTest {
         manager.closeAll(order.getCustomer());
         assertEquals("closed", order.getStatus());
     }
-
-    @Test(timeout = 50)
-    public void testclear() throws IOException {
-        manager.clear();
-        String line1;
-        int count = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            while ((line1 = reader.readLine()) != null) {
-                count += 1;
-            }
-            }
-        assertEquals(0, count);
-    }
-
-    @Test(timeout = 50)
-    public void testupdate() {
-    }
 }
