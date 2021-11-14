@@ -115,7 +115,7 @@ Unfortunately our teammate Yiyu Li dropped the course
 
 * Yicong Luo
     * Working on Main class, design documents, code refactoring
-    * Will be focusing on class External_Interface.Main in the future
+    * Will be focusing on Main class and code refactoring in the future
 
 * Khloe Tsang
     * Working on Testing, Main class
