@@ -12,5 +12,5 @@ Variables:
 * cart
 
 Collaborators:
-* Controllers.ShoppingCart
-* Controllers.AccountManager
+* controllers.ShoppingCart
+* controllers.AccountManager

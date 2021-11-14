@@ -1,6 +1,6 @@
 Our project domain is a mix of Inventory System and Delivery Service App.
 
-Our program is designed for grocery stores like Walmart or T&T. Our CRC model includes 12 classes, together they allow users to perform different tasks, such as creating account, and edit personal information. This function is supported by classes Customer and  CustomerAccountManager. Customers can also view different items, and put their prefered items in a shopping cart. The information about items in store are associated with several classes including External_Interface.Main, GroceryItem, and GroceryInventory. For the function of ordering, we have classes Order, OrderArrangeSystem, and OrderTrackingSystem.
+Our program is designed for grocery stores like Walmart or T&T. Our CRC model includes 12 classes, together they allow users to perform different tasks, such as creating account, and edit personal information. This function is supported by classes Customer and  CustomerAccountManager. Customers can also view different items, and put their prefered items in a shopping cart. The information about items in store are associated with several classes including external_interface.Main, GroceryItem, and GroceryInventory. For the function of ordering, we have classes Order, OrderArrangeSystem, and OrderTrackingSystem.
 
 After the customers made the payment, their orders will be finalized and the DeliveryMatchingSystem class will match order to a delivery man. When the delivery man delivers the ordered items to the delivery address, they can make a confirmation through the OrderArrangeSystem class. The whole shopping process is trackable by the customers through our program.
 
@@ -23,11 +23,11 @@ Fortunately, our skeleton codes are working well, they can support users to perf
 Group member & responsibilities
 
 * Yicong Luo
-  * Skeleton code: Grocery Inventory, Store, External_Interface.Main, Controllers.AccountManager, Customer, GroceryItem
-  * Will be focusing on class External_Interface.Main in the future
+  * Skeleton code: Grocery Inventory, Store, external_interface.Main, controllers.AccountManager, Customer, GroceryItem
+  * Will be focusing on class external_interface.Main in the future
 
 * Khloe Tsang
-  * Skeleton code: Controllers.AccountManager
+  * Skeleton code: controllers.AccountManager
   * Will be focusing on class OrderTrackingSystem in the future
 
 * Wenzhen Wang

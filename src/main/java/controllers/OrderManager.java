@@ -1,26 +1,27 @@
-package Controllers;
+package controllers;
 
-import Use_Case.Order;
+import use_case.Order;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
 /**
- * this is a file writing class for Order's, they are stored in a file called Orders.txt
+ * This is a file writing class that stores orders into Order.txt
  */
-public class OrderManager{
+public class OrderManager {
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "Files" + File.separator + "Orders.txt";
+            "main" + File.separator + "java" + File.separator + "files" + File.separator + "Orders.txt";
     private final ArrayList<Order> orders = new ArrayList<>();
 
 
     /**
-     * constructor
-     * read Order.txt and collect all orders into an ArrayList
+     * Constructor
+     * Reads Order.txt and collects all orders into an ArrayList
      */
-    public OrderManager(){
+    public OrderManager() {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -37,8 +38,9 @@ public class OrderManager{
 
 
     /**
-     * add an order to the system
-     * @param ord: order to be added
+     * Adds an order to the system
+     *
+     * @param ord: is the order to be added
      */
     public void addOrder(Order ord) {
 
@@ -47,7 +49,7 @@ public class OrderManager{
         double price = ord.getValue();
         String status = ord.getStatus();
 
-        try(BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
+        try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
             fileWriter.write(name);
             fileWriter.newLine();
             fileWriter.write(Integer.toString(quantity));
@@ -64,14 +66,17 @@ public class OrderManager{
 
 
     /**
-     * check if a customer has an open order
+     * Checks if the customer has an open order
+     *
      * @param name: name of customer
-     * @return: return true if the customer has an open order, false if otherwise
+     * @return true if the customer has an open order, false if otherwise
      */
     public boolean haveOrder(String name) {
-        for (Order o: this.orders) {
+        for (Order o : this.orders) {
             if (Objects.equals(o.getCustomer(), name)) {
-                if (Objects.equals(o.getStatus(), "open")) {return true;}
+                if (Objects.equals(o.getStatus(), "open")) {
+                    return true;
+                }
             }
         }
         return false;
@@ -79,21 +84,24 @@ public class OrderManager{
 
 
     /**
-     * close all orders associate to this customer
-     * @param name: customer's name
+     * Closes all orders associate to this customer
+     *
+     * @param name: is the customer's name
      */
-    public void closeAll(String name){
-        for (Order o: this.orders){
-            if (Objects.equals(o.getCustomer(), name)){o.setStatus("closed");}
+    public void closeAll(String name) {
+        for (Order o : this.orders) {
+            if (Objects.equals(o.getCustomer(), name)) {
+                o.setStatus("closed");
+            }
         }
         this.update();
     }
 
 
     /**
-     * clear the entire file
+     * Clears the entire file
      */
-    public void clear() throws IOException{
+    public void clear() throws IOException {
         PrintWriter writer = new PrintWriter(new FileWriter(path));
         writer.print("");
         writer.close();
@@ -101,12 +109,12 @@ public class OrderManager{
 
 
     /**
-     * update the file according to the ArrayList
+     * Updates the file according to the ArrayList
      */
-    public void update(){
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))){
+    public void update() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
             this.clear();
-            for (Order ord: this.orders){
+            for (Order ord : this.orders) {
                 String name = ord.getCustomer();
                 writer.write(name);
                 writer.newLine();

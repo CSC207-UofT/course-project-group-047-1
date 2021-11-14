@@ -1,5 +1,5 @@
-import Controllers.ShoppingCart;
-import Entities.GroceryItem;
+import controllers.ShoppingCart;
+import entities.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;

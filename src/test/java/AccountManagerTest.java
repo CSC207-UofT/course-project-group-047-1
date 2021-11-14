@@ -1,6 +1,6 @@
-import Controllers.AccountManager;
-import Entities.Customer;
-import Use_Case.Account;
+import controllers.AccountManager;
+import entities.Customer;
+import use_case.Account;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;

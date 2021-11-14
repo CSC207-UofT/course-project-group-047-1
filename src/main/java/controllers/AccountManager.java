@@ -1,23 +1,24 @@
-package Controllers;
+package controllers;
 
-import Use_Case.Account;
+import use_case.Account;
+
 import java.io.*;
 import java.util.Hashtable;
 
 
 /**
- * a file  writing class that stores Accounts in a file called Accounts.txt
+ * A file writing class that stores all accounts into Account.txt
  */
-public class AccountManager{
+public class AccountManager {
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "Files" + File.separator + "Accounts.txt";
+            "main" + File.separator + "java" + File.separator + "files" + File.separator + "Accounts.txt";
     private final Hashtable<String, String> accounts = new Hashtable<>();
 
 
     /**
-     * constructor
-     * read Account.txt and collect all accounts into a hashmap
+     * Constructor
+     * Reads Account.txt and collects all accounts into a hashmap
      */
     public AccountManager() {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
@@ -33,14 +34,15 @@ public class AccountManager{
 
 
     /**
-     * add an account
-     * @param account: account to be added
+     * Adds an account
+     *
+     * @param account: is the account to be added
      */
     public void addAccount(Account account) {
         String user = account.getUsername();
         String pin = Integer.toString(account.getPin());
 
-        try(BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
+        try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
             fileWriter.write(user);
             fileWriter.newLine();
             fileWriter.write(pin);
@@ -54,10 +56,11 @@ public class AccountManager{
 
 
     /**
-     * check credentials
-     * @param username: String
-     * @param pin: int
-     * @return: true if pin is right, false if otherwise
+     * Checks credentials
+     *
+     * @param username: is the username of the account
+     * @param pin:      is the pin of the account
+     * @return true if pin is correct, false if otherwise
      */
     public boolean contains(String username, int pin) {
         if (this.accounts.containsKey(username)) {

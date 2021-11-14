@@ -1,8 +1,8 @@
-package Entities;
+package entities;
 
 
 /**
- * a customer is a user of the program
+ * A customer is a user of the program
  */
 public class Customer{
 
@@ -11,21 +11,21 @@ public class Customer{
 
 
     /**
-     * constructor
-     * @param name: String
+     * Constructor
+     * @param name: is the name of the customer
      */
     public Customer (String name){this.name = name;}
 
 
     /**
-     * @return: String
+     * Returns the name of the customer
      */
     public String getName(){return this.name;}
 
 
     /**
-     * change the name of the customer
-     * @param name: String: new name
+     * Change the name of the customer
+     * @param name: the new name for this customer
      */
     public void changeName(String name) {this.name = name;}
 }

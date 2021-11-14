@@ -1,8 +1,8 @@
-import Controllers.AccountManager;
-import Controllers.GroceryInventory;
-import Controllers.OrderManager;
-import Controllers.ShoppingCart;
-import External_Interface.Main;
+import controllers.AccountManager;
+import controllers.GroceryInventory;
+import controllers.OrderManager;
+import controllers.ShoppingCart;
+import external_interface.Main;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

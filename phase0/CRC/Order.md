@@ -13,6 +13,6 @@ Variables:
 Collaborators:
 * Customer
 * DeliveryMatchingSystem
-* Controllers.ShoppingCart
+* controllers.ShoppingCart
 * OrderTrackingSystem
 * OrderArrangeSystem

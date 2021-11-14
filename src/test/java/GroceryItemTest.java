@@ -1,4 +1,4 @@
-import Entities.GroceryItem;
+import entities.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
 

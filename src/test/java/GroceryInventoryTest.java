@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import Controllers.GroceryInventory;
-import Entities.GroceryItem;
+import controllers.GroceryInventory;
+import entities.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
