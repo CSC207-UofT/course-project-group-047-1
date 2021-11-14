@@ -50,7 +50,7 @@ a hard dependency between **"AccountManager"** and **"Account"**, making each mo
 independently. In the future, we will probably continue to use this pattern as we extend our project.
 
 \
-Package Strategy & Code refactoring:
+Package Strategy & Codes refactoring & Organization:
 
 We put our classes into packages by four layers, from high level to low level: entity, use_case, controller, 
 external_interface, and another folder for txt files. We think this is easy for anyone to locate a class file 
@@ -60,8 +60,9 @@ we used to have a class called **"storeManager"**, but later we found that it ha
 anther class called **"GroceryInventory"**, so we combined these two classes in pull request 22, which 
 also helped us to adhere to Single Responsibility Principle. We also tried 
 to shorten long methods, for example in pull request 46 we extracted a method from another 
-method in **"Main"** class. We also documented every method and class in our program to ensure that anyone
-can understand what our codes are doing
+method in **"Main"** class. Our **"Main"** class involves user inputs and switching cases 
+which makes it hard to test, but still our tests managed to cover most of our methods. We also documented 
+every method and class in our program to ensure that anyone can understand what our codes are doing.
 
 \
 Progress report:
