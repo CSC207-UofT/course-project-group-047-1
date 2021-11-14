@@ -1,7 +1,8 @@
-package Controllers;
 import java.io.*;
 import java.util.Hashtable;
 
+import Controllers.GroceryInventory;
+import Controllers.ShoppingCart;
 import Entities.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,8 +35,10 @@ public class GroceryInventoryTest {
 
     @Test(timeout = 50)
     public void testAdd() {
+        groceryInventory.createItem(1, 20);
         groceryInventory.add(1, 5);
-        assertEquals(25, groceryInventory.getQuantity(1));
+        int actual = groceryInventory.getQuantity(1);
+        assertEquals(25, actual);
     }
 
     @Test(timeout = 50)
@@ -48,15 +51,6 @@ public class GroceryInventoryTest {
     public void testPutBack() {
         groceryInventory.putBack(shoppingCart.getItems());
         assertEquals(true, shoppingCart.isEmpty());
-    }
-
-    /** I'm unsure about this one
-     *
-     */
-    @Test(timeout = 50)
-    public void testClear() throws IOException {
-        groceryInventory.clear();
-        assertEquals("", groceryInventory.view());
     }
 
     @Test(timeout = 50)

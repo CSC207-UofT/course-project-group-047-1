@@ -1,16 +1,20 @@
-package External_Interface;
-
 import Controllers.AccountManager;
 import Controllers.GroceryInventory;
 import Controllers.OrderManager;
 import Controllers.ShoppingCart;
+import External_Interface.Main;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MainTest {
 
@@ -31,42 +35,50 @@ public class MainTest {
         main = new Main();
     }
 
-    @Test(timeout = 50)
+    @Test(timeout = 100)
     public void testMainMenu() {
-        int input = scanner.nextInt();
+        ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputContent));
         main.mainMenu();
-        if (input == 1) {
-            assertTrue(main.createBool);
+        String expectedOutput = "\nWelcome to our store, please select your choice\n" +
+                "Enter 1 to create account\nEnter 2 to login to account\nEnter 3 to Exit" +
+                "\nEnter your choice: ";
+        assertEquals(expectedOutput, outputContent.toString());
+        if (scanner.hasNext()) {
+            if (scanner.nextInt() == 1) {
+                assertEquals(true, main.createBool);
+            }
+            else if (scanner.nextInt() == 2) {
+                assertEquals(true, main.loginBool);
+            }
         }
-        else if (input == 2) {
-            assertTrue(main.loginBool);
-        }
+        scanner.close();
     }
 
     @Test(timeout = 50)
     public void testLoginMenu() {
-        int p = scanner.nextInt();
         String u = scanner.nextLine();
+        int p = scanner.nextInt();
         main.loginMenu();
         if (accountManager.contains(u, p)) {
             if (orderManager.haveOrder(u)) {
-                assertTrue(main.confirmBool);
+                assertEquals(true, main.confirmBool);
             }
             else {
-                assertTrue(main.customerBool);
+                assertEquals(true, main.customerBool);
             }
         }
         else if (p == 1) {
-            assertTrue(main.createBool);
+            assertEquals(true, main.createBool);
         }
     }
 
     @Test(timeout = 50)
     public void testCreateAccountMenu() {
-        int p = scanner.nextInt();
         String u = scanner.nextLine();
+        int p = scanner.nextInt();
         main.createAccountMenu();
-        assertTrue(main.loginBool);
+        assertEquals(true, main.loginBool);
     }
 
     @Test(timeout = 50)
@@ -74,7 +86,7 @@ public class MainTest {
         int input = scanner.nextInt();
         main.customerMenu();
         if (input == 1) {
-            assertTrue(main.shoppingBool);
+            assertEquals(true, main.shoppingBool);
         }
     }
 
@@ -84,7 +96,7 @@ public class MainTest {
         int input = scanner.nextInt();
         if (!shoppingCart.isEmpty()) {
             if (input == 1) {
-                assertTrue(main.removeBool);
+                assertEquals(true, main.removeBool);
             }
         }
     }
@@ -92,7 +104,8 @@ public class MainTest {
     @Test(timeout = 50)
     public void testRemoveItem() {
         main.cartMenu();
-        int input = scanner.nextInt();
+        int id = scanner.nextInt();
+        int quantity = scanner.nextInt();
         /**
          * incomplete
          */
@@ -100,27 +113,52 @@ public class MainTest {
 
     @Test(timeout = 50)
     public void testCheckOutMenu() {
-        assertTrue(main.confirmBool);
+        ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputContent));
+        main.checkOutMenu();
+        String expectedOutput = "\nWelcome, your order has been created, you bought " + shoppingCart.getQuantity() +
+                " items\nYou need to pay a total of $" + shoppingCart.getTotalPrice() + "Please remember to bring enough" +
+                " money and visit our store before 9pm";
+        assertEquals(expectedOutput, outputContent.toString());
     }
 
     @Test(timeout = 50)
     public void testConfirmMenu() {
-
+        main.confirmMenu();
+        int input = scanner.nextInt();
+        if (input==1) {
+            assertFalse(orderManager.haveOrder(main.name));
+        }
     }
 
     @Test(timeout = 50)
     public void testAddItem() {
-
+        main.shoppingMenu();
+        int id = scanner.nextInt();
+        int amount = scanner.nextInt();
+        int original = groceryInventory.getQuantity(id);
+        shoppingCart.addItem(groceryInventory.createItem(id, amount));
+        assertEquals((original - amount), groceryInventory.getQuantity(id));
     }
 
     @Test(timeout = 50)
     public void testShoppingMenu() {
-
-    }
-
-    @Test(timeout = 50)
-    public void testMain() {
-
+        main.shoppingMenu();
+        int input = scanner.nextInt();
+        if (input==1) {
+            assertTrue(main.addBool);
+        }
+        else if (input==2) {
+            assertTrue(main.cartBool);
+        }
+        else if (input==3) {
+            if (!shoppingCart.isEmpty()) {
+                assertTrue(main.checkoutBool);
+            }
+        }
+        else if (input==4) {
+            assertTrue(shoppingCart.isEmpty());
+        }
     }
 
 }
