@@ -1,8 +1,8 @@
-package Entities;
+package entities;
 
 
 /**
- * a GroceryItem stores the information of an item in store for sale
+ * A GroceryItem stores the information of an item in the store
  */
 public class GroceryItem {
     private final int id;
@@ -12,11 +12,12 @@ public class GroceryItem {
 
 
     /**
-     * constructor
-     * @param id: a unique integer for each item
-     * @param name: a unique name for each item
-     * @param price: each item has a price
-     * @param quantity: each item has a quantity
+     * Constructor
+     *
+     * @param id:       is the id of the item
+     * @param name:     is the name of the item
+     * @param price:    is the price of the item
+     * @param quantity: is the quantity in stock of the item
      */
     public GroceryItem(int id, String name, double price, int quantity) {
         this.id = id;
@@ -27,7 +28,7 @@ public class GroceryItem {
 
 
     /**
-     * get methods
+     * Get methods
      */
     public int getId() {
         return this.id;
@@ -50,7 +51,7 @@ public class GroceryItem {
 
 
     /**
-     * reduce the quantity of this item by n
+     * Reduces the quantity in stock of the item by n
      */
     public void reduce(int n) {
         this.quantity -= n;
@@ -58,7 +59,7 @@ public class GroceryItem {
 
 
     /**
-     * add the quantity of this item by n
+     * Adds the quantity in stock of the item by n
      */
     public void add(int n) {this.quantity += n;}
 }

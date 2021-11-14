@@ -1,22 +1,24 @@
-package Controllers;
+package controllers;
 
-import Entities.GroceryItem;
+import entities.GroceryItem;
+
 import java.io.*;
 import java.util.ArrayList;
 
 
 /**
- * this is a file writing class that store GroceryItem into Inventory.txt
+ * This is a file writing class that stores all grocery items in the store into Inventory.txt
  */
 public class GroceryInventory {
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "Files" + File.separator + "inventory.txt";
+            "main" + File.separator + "java" + File.separator + "files" + File.separator + "inventory.txt";
     private final ArrayList<GroceryItem> items = new ArrayList<>();
 
 
     /**
-     * constructor, read the file and collect all items into an ArrayList
+     * Constructor
+     * Reads the file and collects all items into an ArrayList
      */
     public GroceryInventory() {
 
@@ -38,7 +40,7 @@ public class GroceryInventory {
 
 
     /**
-     * push changes in the ArrayList into Inventory.txt
+     * Push changes in the ArrayList into the Inventory.txt file
      */
     public void updateInventory() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
@@ -62,7 +64,7 @@ public class GroceryInventory {
 
 
     /**
-     * @return: return a string representation of GroceryItems in the store
+     * @return a string representation of GroceryItems in the store
      */
     public String view() {
 
@@ -81,7 +83,7 @@ public class GroceryInventory {
 
 
     /**
-     * clear the file
+     * Clears the file
      */
     public void clear() throws IOException {
         PrintWriter writer = new PrintWriter(new FileWriter(path));
@@ -91,10 +93,10 @@ public class GroceryInventory {
 
 
     /**
-     * reduce the quantity of an item with id by n
+     * Reduces the quantity in stock of an item with id by n
      *
-     * @param id: int
-     * @param n:  int
+     * @param id: is the id of the item to be reduced
+     * @param n:  is the quantity reduced of the item
      */
     public void reduce(int id, int n) {
         for (GroceryItem item : this.items) {
@@ -107,10 +109,10 @@ public class GroceryInventory {
 
 
     /**
-     *  increases the quantity of item with id by n
+     * Increases the quantity in stock of an item with id by n
      *
-     * @param id:  int
-     * @param n:   int
+     * @param id: is the id of the item to be increased
+     * @param n:  is the quantity increased of the item
      */
     public void add(int id, int n) {
         for (GroceryItem item : this.items) {
@@ -123,9 +125,9 @@ public class GroceryInventory {
 
 
     /**
-     * puts the given items back into the inventory
+     * Puts the given items back into the inventory
      *
-     * @param list: ArrayList<GroceryItem>
+     * @param list is a list of grocery items
      */
     public void putBack(ArrayList<GroceryItem> list) {
         for (GroceryItem item : list) {
@@ -137,10 +139,10 @@ public class GroceryInventory {
 
 
     /**
-     * creates a new GroceryItem with a given id and quantity from the inventory
+     * Creates a new GroceryItem with a given id and quantity from the inventory
      *
-     * @param id:  int
-     * @param q:   int
+     * @param id: is the id of the item
+     * @param q:  is the quantity in stock of the item
      */
     public GroceryItem createItem(int id, int q) {
         for (GroceryItem i : this.items) {
@@ -155,9 +157,9 @@ public class GroceryInventory {
 
 
     /**
-     * returns the quantity of a given object
+     * Returns the quantity in stock of a given item
      *
-     * @param id:  int
+     * @param id: is the id of the item
      */
     public int getQuantity(int id) {
         for (GroceryItem i : this.items) {

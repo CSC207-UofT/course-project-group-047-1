@@ -1,12 +1,12 @@
-package Use_Case;
+package use_case;
 
-import Entities.Customer;
+import entities.Customer;
 
 
 /**
- * an order records a purchase by a customer
+ * An order records a purchase by a customer
  */
-public class Order{
+public class Order {
 
     private final String name;
     private final int amount;
@@ -15,12 +15,13 @@ public class Order{
 
 
     /**
-     * constructor
-     * @param name: name of customer
-     * @param amount: amount of item bought
-     * @param price: total value of items
+     * Constructor
+     *
+     * @param name:   is the name of the customer who placed the order
+     * @param amount: is the total quantity of items in the order
+     * @param price:  is the total price of items in the order
      */
-    public Order(String name, int amount, Double price){
+    public Order(String name, int amount, Double price) {
         this.name = name;
         this.amount = amount;
         this.price = price;
@@ -29,9 +30,9 @@ public class Order{
 
 
     /**
-     * another constructor
+     * Another constructor
      */
-    public Order(Customer customer, int amount, Double price){
+    public Order(Customer customer, int amount, Double price) {
         this.name = customer.getName();
         this.amount = amount;
         this.price = price;
@@ -40,9 +41,9 @@ public class Order{
 
 
     /**
-     * another constructor
+     * Another constructor
      */
-    public Order(String name, int amount, Double price, String status){
+    public Order(String name, int amount, Double price, String status) {
         this.name = name;
         this.amount = amount;
         this.price = price;
@@ -50,9 +51,8 @@ public class Order{
     }
 
 
-
     /**
-     * get methods
+     * Get methods
      */
     public String getCustomer() {return this.name;}
 
@@ -67,7 +67,7 @@ public class Order{
 
 
     /**
-     * set the status of this order
+     * Set the status of the order
      */
     public void setStatus(String s) {this.status = s;}
 

@@ -1,4 +1,4 @@
-import Use_Case.Account;
+import use_case.Account;
 import org.junit.Before;
 import org.junit.Test;
 

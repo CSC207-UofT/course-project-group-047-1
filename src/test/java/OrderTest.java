@@ -1,6 +1,6 @@
-import Entities.Customer;
-import Entities.GroceryItem;
-import Use_Case.Order;
+import entities.Customer;
+import entities.GroceryItem;
+import use_case.Order;
 import org.junit.Before;
 import org.junit.Test;
 

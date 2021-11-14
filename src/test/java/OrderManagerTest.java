@@ -1,6 +1,6 @@
-import Controllers.OrderManager;
-import Entities.Customer;
-import Use_Case.Order;
+import controllers.OrderManager;
+import entities.Customer;
+import use_case.Order;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.File;
@@ -20,7 +20,7 @@ public class OrderManagerTest {
     @Before
     public void setUp() {
         path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-                "main" + File.separator + "java" + File.separator + "Files" + File.separator + "Orders.txt";
+                "main" + File.separator + "java" + File.separator + "files" + File.separator + "Orders.txt";
         customer = new Customer("cos1");
         amount = 10;
         price = 130.23;
