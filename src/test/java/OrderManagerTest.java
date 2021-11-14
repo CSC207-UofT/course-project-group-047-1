@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import java.io.File;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class OrderManagerTest {
     String path;
     Order order;
@@ -32,11 +34,14 @@ public class OrderManagerTest {
     @Test(timeout = 50)
     public void testaddOrder() {
         manager.addOrder(order);
+        assertTrue(manager.haveOrder(order.getCustomer()));
 
     }
 
     @Test(timeout = 50)
     public void testhaveOrder() {
+        manager.addOrder(order);
+
     }
 
     @Test(timeout = 50)
