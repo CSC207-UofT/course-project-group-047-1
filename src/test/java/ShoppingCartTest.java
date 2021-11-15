@@ -5,7 +5,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class ShoppingCartTest {
+
 
     ShoppingCart cart;
     GroceryItem item1;
@@ -35,6 +37,7 @@ public class ShoppingCartTest {
         assertTrue(have);
     }
 
+
     @Test
     public void testRemoveItem() {
         GroceryItem target = item1;
@@ -48,11 +51,13 @@ public class ShoppingCartTest {
         assertEquals(28, target.getQuantity());
     }
 
+
     @Test
     public void testGetTotalPrice() {
         cart.addItem(item1);
         assertEquals(466.20, cart.getTotalPrice(), 5.0);
     }
+
 
     @Test
     public void testisEmpty() {
@@ -61,11 +66,13 @@ public class ShoppingCartTest {
         assertTrue(cart.isEmpty());
     }
 
+
     @Test
     public void testView() {
         String s = cart.view();
         assertEquals("2 Orange x 30, Price: 8.88$ each\n", s);
     }
+
 
     @Test
     public void testGetQuantity() {
@@ -74,6 +81,7 @@ public class ShoppingCartTest {
         assertEquals(cart.getQuantity(), 50);
     }
 
+
     @Test
     public void testGetItems() {
         ArrayList<GroceryItem> c = new ArrayList<>();
@@ -81,10 +89,13 @@ public class ShoppingCartTest {
         assertEquals(c, cart.getItems());
     }
 
+
     @Test
     public void testGetAmount() {
         assertEquals(30, cart.getAmount(2));
         cart.addItem(item1);
         assertEquals(20, cart.getAmount(1));
     }
+
+
 }

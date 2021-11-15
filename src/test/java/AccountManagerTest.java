@@ -8,9 +8,11 @@ import static org.junit.Assert.assertTrue;
 
 public class AccountManagerTest {
 
+
     AccountManager accountManager;
     Customer customer1;
     Account account1;
+
 
     @Before
     public void setUp() {
@@ -19,15 +21,19 @@ public class AccountManagerTest {
         account1 = new Account(customer1, 12345);
     }
 
+
     @Test(timeout = 50)
     public void testAddAccount() {
         accountManager.addAccount(account1);
         assertTrue(accountManager.contains("name", 12345));
     }
 
+
     @Test(timeout = 50)
     public void testContains() {
         accountManager.addAccount(account1);
         assertTrue(accountManager.contains("name", 12345));
     }
+
+
 }

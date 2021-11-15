@@ -5,7 +5,17 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+
+/**
+ * We are not testing updateInventory and clear methods because
+ * calling these methods can interrupt the normal function of
+ * the program
+ *
+ * We are also not testing view because this method subjects to
+ * the content of Inventory.txt.
+ */
 public class GroceryInventoryTest {
+
 
     GroceryInventory groceryInventory;
 

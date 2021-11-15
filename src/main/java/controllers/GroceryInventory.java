@@ -83,7 +83,7 @@ public class GroceryInventory {
 
 
     /**
-     * Clears the file
+     * Wipes everything in the file
      */
     public void clear() throws IOException {
         PrintWriter writer = new PrintWriter(new FileWriter(path));

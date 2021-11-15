@@ -67,7 +67,6 @@ public class MainTest {
 
     @Test(timeout = 50)
     public void testMainMenu() {
-        main.mainMenu();
     }
 
 
@@ -97,7 +96,6 @@ public class MainTest {
 
     @Test(timeout = 50)
     public void testConfirmMenu() {
-
     }
 
     @Test(timeout = 50)
@@ -107,7 +105,6 @@ public class MainTest {
 
     @Test(timeout = 50)
     public void testShoppingMenu() {
-
     }
 
     @Test(timeout = 50)

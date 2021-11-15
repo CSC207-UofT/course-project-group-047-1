@@ -6,7 +6,6 @@ import controllers.OrderManager;
 import controllers.ShoppingCart;
 import use_case.Account;
 import use_case.Order;
-
 import java.util.Scanner;
 
 
@@ -196,17 +195,19 @@ public class Main {
         System.out.println();
 
         switch (num) {
-            case 1 -> {
+            case 1:
                 this.cart = new ShoppingCart();
                 this.shoppingMenu();
-            }
-            case 2 -> {
+                break;
+
+            case 2:
                 System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
+                break;
             }
         }
 
-    }
+
 
 
     /**
@@ -234,8 +235,12 @@ public class Main {
                 int num = input.nextInt();
 
                 switch (num) {
-                    case 1 -> this.removeItem();
-                    case 2 -> end = true;
+                    case 1:
+                        this.removeItem();
+                        break;
+                    case 2:
+                        end = true;
+                        break;
                 }
             }
         }
@@ -291,7 +296,7 @@ public class Main {
 
         confirmBool = true;
         while (true) {
-            System.out.println("\nPlease enter 1 to confirm that you picked up your items");
+            System.out.println("\nEnter 1 to confirm that you picked up your items");
             System.out.println("\nEnter 2 to exit");
             System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
             System.out.print(blue + "\nPlease enter your choice: " + reset);

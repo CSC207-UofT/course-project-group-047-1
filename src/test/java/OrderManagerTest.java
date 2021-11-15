@@ -4,10 +4,14 @@ import use_case.Order;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.File;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * We are not testing updateInventory and clear methods because
+ * calling these methods can interrupt the normal function of
+ * the program
+ */
 public class OrderManagerTest {
     String path;
     Order order;
@@ -16,6 +20,7 @@ public class OrderManagerTest {
     Double price;
     String status;
     OrderManager manager;
+
 
     @Before
     public void setUp() {
@@ -29,12 +34,14 @@ public class OrderManagerTest {
         manager = new OrderManager();
     }
 
+
     @Test(timeout = 50)
     public void testAddOrder() {
         manager.addOrder(order);
         assertTrue(manager.haveOrder(order.getCustomer()));
 
     }
+
 
     @Test(timeout = 50)
     public void testHaveOrder() {
@@ -44,10 +51,13 @@ public class OrderManagerTest {
 
     }
 
+
     @Test(timeout = 50)
     public void testCloseAll() {
         manager.addOrder(order);
         manager.closeAll(order.getCustomer());
         assertEquals("closed", order.getStatus());
     }
+
+
 }
