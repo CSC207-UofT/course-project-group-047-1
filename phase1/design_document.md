@@ -94,7 +94,7 @@ independently. In the future, we will probably continue to use this pattern as w
 Package Strategy & Codes refactoring & Organization:
 
 We put our classes into packages by four layers, from high level to low level: entity, use_case, controller, and 
-external_interface The folder 'files' is to store text files. We think this is easy for us to locate a class file or a 
+external_interface, and another folder 'files' is to store text files. We think this is easy for us to locate a class file or a 
 text file, and if anyone wants to extend our project by adding new classes they know where to put these classes. This 
 also helps us to be clear on which class belongs to which layer so that we don't accidentally violate the clean 
 architecture. During our implementations, we consistently checked for codes smells and bad coding styles. For example, 
