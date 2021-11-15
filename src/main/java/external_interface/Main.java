@@ -151,7 +151,7 @@ public class Main {
 
         if (manager.contains(username, pin)) {
 
-            System.out.println(red + "CustomerAccount already exists, please login" + reset);
+            System.out.println(red + "\nCustomerAccount already exists, please login" + reset);
             this.loginMenu();
 
         }
