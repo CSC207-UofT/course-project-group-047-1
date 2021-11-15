@@ -1,4 +1,4 @@
-Class name: controllers.AccountManager(Use case)
+Class name: controllers.CustomerAccountManager(Use case)
 
 Responsibilities:
 * Manage customers accounts registered in this store.

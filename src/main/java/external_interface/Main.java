@@ -1,11 +1,12 @@
 package external_interface;
 
-import controllers.AccountManager;
+import controllers.CustomerAccountManager;
 import controllers.GroceryInventory;
 import controllers.OrderManager;
 import controllers.ShoppingCart;
-import use_case.Account;
+import use_case.CustomerAccount;
 import use_case.Order;
+
 import java.util.Scanner;
 
 
@@ -17,7 +18,7 @@ public class Main {
 
     String name;
     Scanner input = new Scanner(System.in);
-    AccountManager manager = new AccountManager();
+    CustomerAccountManager manager = new CustomerAccountManager();
     GroceryInventory items = new GroceryInventory();
     OrderManager Orders = new OrderManager();
     ShoppingCart cart;
@@ -68,7 +69,7 @@ public class Main {
 
 
     /**
-     * Asks the user for their username and pin, calls a method in the AccountManager
+     * Asks the user for their username and pin, calls a method in the CustomerAccountManager
      * that checks the credentials to determine if an account exists. If so, then
      * calls the customerMenu. If not, asks the user to try again or create an account.
      * If an account has an open order, then calls the confirmMenu.
@@ -150,14 +151,14 @@ public class Main {
 
         if (manager.contains(username, pin)) {
 
-            System.out.println(red + "Account already exists, please login" + reset);
+            System.out.println(red + "CustomerAccount already exists, please login" + reset);
             this.loginMenu();
 
         }
 
-        Account a = new Account(username, pin);
+        CustomerAccount a = new CustomerAccount(username, pin);
         manager.addAccount(a);
-        System.out.println("\nAccount created, please login");
+        System.out.println("\nCustomerAccount created, please login");
         this.loginMenu();
 
         System.exit(0);
