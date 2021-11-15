@@ -63,8 +63,9 @@ which adheres to Open/Close principle. We also ensured that the interfaces in ou
 example, we have an **"Account"** interface which only have two necessary getter methods so that we are adhering
 to the Interface Segregation Principle. We also ensured our subclass like **"CustomerAccount"** overrides all 
 methods that it inherits, which adheres to Liskov Substitution Principle. And
-finally as explained before, our higher level modules do not depend on lower modules, and we also have abstract 
-classes for higher module to depend on, so we are also following the Dependency Inversion Principle.
+finally as explained before, we are adhering Clean Architecture
+like our higher level modules do not depend on lower modules, and there is no dependencies between
+same level modules, so we are also following the Dependency Inversion Principle.
 
 
 \
