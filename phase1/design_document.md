@@ -9,18 +9,22 @@ login. Now in phase 1, users can view and order groceries from the store. Custom
 and quantity in stock of each item. Each user has their own shopping cart, and they can add items to their shopping 
 cart, or remove items. At any time, users can view the items in their shopping cart. When they are satisfied, they can 
 check out. On the checkout page, users will be asked to confirm if they picked up their items. At this point, users can 
-choose to exit the program and go pick up their stuff. When they rerun the program and login back into their account, 
+choose to exit the program and go pick up their stuff. When they rerun the program and login back into their 
+customerAccount, 
 the program will stop them from continuing shopping until they confirmed that they picked up their order.
 
 \
 A general walk through:
 
-A user runs the program by running the **"Main"** class, then they can create an **"Account"**, and the **"Main"** 
-class will call the **"AccountManager"** class to store this **"Account"** into the **"Accounts.txt"** file. Then, 
+A user runs the program by running the **"Main"** class, then they can create an **"CustomerAccount"**, and 
+the **"Main"** 
+class will call the **"CustomerAccountManager"** class to store this **"CustomerAccount"** into the 
+**"CustomerAccounts.txt"** file.
+Then, 
 the user will be brought to a login page. After login, the **"Main"** class will initiate a **"ShoppingCart"** for 
 this **"Customer"**. The user can now choose to exit the program or start shopping. While shopping, the user can add 
 **"GroceryItem"** into their **"ShoppingCart"** by specifying the **"id"** and **"quantity"** of the item. When they 
-do that, the**"Main"** class will call the **"GroceryInventory"** class to remove those **"GroceryItems"** from the 
+do that, the **"Main"** class will call the **"GroceryInventory"** class to remove those **"GroceryItems"** from the 
 **"inventory.txt"** and add them to the user's **"ShoppingCart"**. The user can view what's in their **"ShoppingCart"**, 
 and remove items from it. When the user is satisfied, they can check out, which will create an **"Order"** with an 
 **"open"** status. The **"OrderManager"** will add this **"Order"** into the **"Orders.txt"** file. The user will be 
@@ -45,32 +49,45 @@ SOLID & Clean Architecture:
 During our implementations we have noticed some violations, for example, we tried to implement a Strategy pattern in 
 pull request #18. But later we found out that **"GroceryItem"**, which is an entity, imports classes in the external 
 interface level, which clearly is a violation of both the Clean Architecture and the SOLID principles. So in pull
-request #28, we fixed it, and we included a class diagram under the phase 1 folder to remind us of the relationship 
-between each class. During our implementations, we also consistently check imports in classes we wrote to ensure that 
+request #28, we fixed it. During our implementations, we also consistently check imports in classes we wrote to ensure that 
 there are no dependencies on the same level and to ensure that higher-level modules do not depend on lower modules. 
-We also ensured that each class has only one responsibility, for example, we have three different file writing classes
+We also have a UML diagram under phase 1 folder to demonstrate Clean Architecture.
+For Single responsibility principle, we
+ensured that each class has only one responsibility, for example, we have three different file writing classes
 for three different objects stored in three different text files. We also documented the responsibilities for every 
-class in our program, making our project easier for extensions. One problem with our current design is that we are 
-using the **"Main"** class to coordinate everything. This reduces the dependencies between other classes but increases 
-the size and complexity of the **"Main"** class. For example, if someone wants to introduce a new entity in our 
-program, then he/she might also have to add and modify methods in the **"Main"** class instead of extending it, which 
-might violate the Open/Closed Principle. However, we included a diagram under the phase 1 folder, which tells the 
-relationship between each method in the **"Main"** class, to help others to understand the **"Main"** class.
+class in our program, making our program easier to understand and extend. Our program have an abstract class
+**"userAccount"**, so in phase 2 when we extend our project we might want to bring back the delivery system we can 
+create a new class called DeliveryAccount that extend this abstract class.
+We can also create a new corresponding Controller class for it, neither action will change the existing classes
+which adheres to Open/Close principle. We also ensured that the interfaces in our program are small as possible. For 
+example, we have an **"Account"** interface which only have two necessary getter methods so that we are adhering
+to the Interface Segregation Principle. We also ensured our subclass like **"CustomerAccount"** overrides all 
+methods that it inherits, and have more methods implemented, which adheres to Liskov Substitution Principle. And
+finally as explained before, our higher level modules do not depend on lower modules, and we also have abstract 
+classes for higher module to depend on, so we are also following the Dependency Inversion Principle.
+
 
 \
 Design Pattern:
 
-For the design pattern, we are using the Dependency Injection Pattern in **"AccountManager"** and **"OrderManager"** 
-classes, and this is also another effort we made to ensure our program adheres to Clean Architecture. This pattern says 
-that instead of using the "new" keyword to create an object inside a method in another class, we should pass the object 
-as a parameter to that method. For example, in the **"AccountManager"** class there is an **"addAccount"** method, 
-which adds an **"Account"** into the **"Accounts.txt"** file. An **"Account"** has a username and a pin. Before using 
+For the design pattern, we are using the Dependency Injection Pattern in **"CustomerAccountManager"** and 
+**"OrderManager"** 
+classes, and this is also another effort we made to ensure our program adheres to Clean Architecture. 
+This pattern says 
+that instead of using the "new" keyword to create an object inside a method in another class, we should pass
+the object 
+as a parameter to that method. For example, in the **"CustomerAccountManager"** class there is an 
+**"addAccount"** method, 
+which adds an **"CustomerAccount"** into the **"CustomerAccounts.txt"** file. A **"CustomerAccount"** has a username 
+and a pin. Before using 
 this pattern we were passing the username and the pin as parameters into the **"addAccount"** method and created an 
-**"Account"** inside this method. This creates a hard dependency between **"AccountManager"** and **"Account"**, which 
-makes each module harder to test. By using the Dependency Injection pattern, we pass an **"Account"** as a parameter to 
-the **"addAccount"** method (see pull request #48), and let the **"Main"** class creates this account. As we mentioned 
-above, this complicates the **"Main"** class but the advantage is that this will remove a hard dependency between the 
-**"AccountManager"** class and the **"Account"** class, making each module easier to test and easier to use 
+**"CustomerAccount"** inside this method. This creates a hard dependency between 
+**"CustomerAccountManager"** and **"CustomerAccount"**, which 
+makes each module harder to test. By using the Dependency Injection pattern,
+we pass a **"CustomerAccount"** as a parameter to 
+the **"addAccount"** method (see pull request #48), and let the **"Main"** class creates this CustomerAccount. 
+This complicates the **"Main"** class but the advantage is that this will remove a hard dependency between the 
+**"CustomerAccountManager"** class and the **"CustomerAccount"** class, making each module easier to test and easier to use 
 independently. In the future, we will probably continue to use this pattern as we extend our project.
 
 \
@@ -84,8 +101,13 @@ architecture. During our implementations, we consistently checked for codes smel
 we had a class called **"storeManager"**, but then, we found that it has the same responsibility as another class 
 called **"groceryInventory"**. So we combined these two classes in pull request #22, which also helped us to adhere 
 to the Single Responsibility Principle. We also tried to shorten long methods, for example in pull request #46, we 
-extracted a method from a method in the **"Main"** class. Our **"Main"** class involves user inputs and switching 
-cases which makes it hard to test, but our tests to covers most of other methods. We also documented every 
+extracted a method from a method in the **"Main"** class. One problem with our current design is that we are
+using the **"Main"** class to coordinate everything. This reduces the dependencies between other classes but increases
+the size and complexity of the **"Main"** class. Our **"Main"** class also involves a lot of user inputs and switching 
+cases which makes it hard to test, but our tests covers most of other methods. We also included a diagram under 
+phase 1 folder, which tells the
+relationship between each method in the **"Main"** class, to help others to understand the **"Main"** class, and
+documented every 
 method and class in our program to ensure that anyone can understand what our codes are doing.
 
 \
@@ -121,7 +143,7 @@ Unfortunately our teammate Yiyu Li dropped the course
     * Will be focusing on Testing in the future
 
 * Wenzhen Wang
-    * Working on AccountManager class, GroceryInventory class, 
+    * Working on CustomerAccountManager class, GroceryInventory class, 
     * Will be focusing on the file writing classes in the future
 
 * Peijun Lu
@@ -129,7 +151,7 @@ Unfortunately our teammate Yiyu Li dropped the course
     * Will be focusing on design pattern in the future
 
 * Qin Xu
-    * Working on Account, Customer, Main class, and testing
+    * Working on CustomerAccount, Customer, Main class, and testing
     * Will be focusing on testing and Main class in the future
 
 * Zhaoyu Yan

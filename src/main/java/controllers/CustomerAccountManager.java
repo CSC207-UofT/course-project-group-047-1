@@ -1,26 +1,26 @@
 package controllers;
 
-import use_case.Account;
+import use_case.CustomerAccount;
 
 import java.io.*;
 import java.util.Hashtable;
 
 
 /**
- * A file writing class that stores all accounts into Account.txt
+ * A file writing class that stores all accounts into CustomerAccount.txt
  */
-public class AccountManager {
+public class CustomerAccountManager {
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "files" + File.separator + "Accounts.txt";
+            "main" + File.separator + "java" + File.separator + "files" + File.separator + "CustomerAccounts.txt";
     private final Hashtable<String, String> accounts = new Hashtable<>();
 
 
     /**
      * Constructor
-     * Reads Account.txt and collects all accounts into a hashmap
+     * Reads CustomerAccount.txt and collects all accounts into a hashmap
      */
-    public AccountManager() {
+    public CustomerAccountManager() {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -34,13 +34,13 @@ public class AccountManager {
 
 
     /**
-     * Adds an account
+     * Adds an CustomerAccount
      *
-     * @param account: is the account to be added
+     * @param customerAccount: is the CustomerAccount to be added
      */
-    public void addAccount(Account account) {
-        String user = account.getUsername();
-        String pin = Integer.toString(account.getPin());
+    public void addAccount(CustomerAccount customerAccount) {
+        String user = customerAccount.getUsername();
+        String pin = Integer.toString(customerAccount.getPin());
 
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path, true))) {
             fileWriter.write(user);
@@ -50,7 +50,7 @@ public class AccountManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //add a new account to the hashtable
+        //add a new CustomerAccount to the hashtable
         this.accounts.put(user, pin);
     }
 
