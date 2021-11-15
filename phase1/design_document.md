@@ -85,7 +85,7 @@ we had a class called **"storeManager"**, but then, we found that it has the sam
 called **"groceryInventory"**. So we combined these two classes in pull request #22, which also helped us to adhere 
 to the Single Responsibility Principle. We also tried to shorten long methods, for example in pull request #46, we 
 extracted a method from a method in the **"Main"** class. Our **"Main"** class involves user inputs and switching 
-cases which makes it hard to test, but still, our tests managed to cover most of our methods. We also documented every 
+cases which makes it hard to test, but our tests to covers most of other methods. We also documented every 
 method and class in our program to ensure that anyone can understand what our codes are doing.
 
 \
@@ -98,6 +98,9 @@ Open questions:
 2: What other design patterns can our codes implement? We have been struggling with this for a while, and we tried to 
 use the Strategy pattern in pull request #18l, but it turns out violates the Clean Architecture. We hope to get some 
 advice.
+
+3: Main class is difficult to test, since it involves user's input, we tried to simulate those input but, they are 
+not working and everytime we try to run we get no such element exception. We will do more research on this in phase 2.
 
 What has worked well:
 

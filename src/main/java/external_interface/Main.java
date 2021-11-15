@@ -21,16 +21,8 @@ public class Main {
     GroceryInventory items = new GroceryInventory();
     OrderManager Orders = new OrderManager();
     ShoppingCart cart;
-    public Boolean mainBool;
-    public Boolean loginBool;
-    public Boolean createBool;
-    public Boolean customerBool;
-    public Boolean cartBool;
-    public Boolean removeBool;
-    public Boolean checkoutBool;
-    public Boolean confirmBool;
-    public Boolean shoppingBool;
 
+    //For colorful text
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
@@ -46,7 +38,6 @@ public class Main {
      */
     public void mainMenu() {
 
-        mainBool = true;
         System.out.println(green + "\nWelcome to our store, please select your choice\n" + reset);
         System.out.println("Enter 1 to create account");
         System.out.println("Enter 2 to login to account");
@@ -87,7 +78,6 @@ public class Main {
         String username;
         int pin;
         boolean end = false;
-        loginBool = true;
 
         System.out.println();
         System.out.println(green + "Welcome to login page" + reset);
@@ -148,7 +138,6 @@ public class Main {
 
         String username;
         int pin;
-        createBool = true;
 
         System.out.println();
         System.out.println(green + "Welcome to create account page" + reset);
@@ -184,7 +173,6 @@ public class Main {
      */
     public void customerMenu() {
 
-        customerBool = true;
         System.out.println();
         System.out.println(green + "Welcome to customer menu, please enter your choice\n" + reset);
         System.out.println("Enter 1 to start shopping");
@@ -220,7 +208,6 @@ public class Main {
     public void cartMenu() {
 
         boolean end = false;
-        cartBool = true;
 
         while (!end) {
             if (cart.isEmpty()) {
@@ -254,7 +241,6 @@ public class Main {
      */
     public void removeItem() {
 
-        removeBool = true;
         System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
         int id = input.nextInt();
         while (true) {
@@ -279,7 +265,6 @@ public class Main {
      * arrive the store before the store close at 9pm
      */
     public void checkOutMenu() {
-        checkoutBool = true;
         System.out.println("\nWelcome, your order has been created, you bought " + cart.getQuantity() + " items");
         System.out.println("You need to pay a total of $" + cart.getTotalPrice());
         System.out.println("Please remember to bring enough money and visit our store before 9pm");
@@ -294,7 +279,6 @@ public class Main {
      */
     public void confirmMenu() {
 
-        confirmBool = true;
         while (true) {
             System.out.println("\nEnter 1 to confirm that you picked up your items");
             System.out.println("\nEnter 2 to exit");
@@ -349,8 +333,7 @@ public class Main {
      * Choice 4: exit the program, all items in shopping cart will be placed back to inventory
      */
     public void shoppingMenu() {
-
-        shoppingBool = true;
+        
         boolean end = false;
 
         while (!end) {
