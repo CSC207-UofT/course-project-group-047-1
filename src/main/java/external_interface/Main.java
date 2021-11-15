@@ -15,22 +15,22 @@ import java.util.Scanner;
  */
 public class Main {
 
-
     String name;
     Scanner input = new Scanner(System.in);
     AccountManager manager = new AccountManager();
     GroceryInventory items = new GroceryInventory();
     OrderManager Orders = new OrderManager();
     ShoppingCart cart;
-    Boolean mainBool;
-    Boolean loginBool;
-    Boolean createBool;
-    Boolean customerBool;
-    Boolean cartBool;
-    Boolean removeBool;
-    Boolean checkoutBool;
-    Boolean confirmBool;
-    Boolean shoppingBool;
+    public boolean mainBool;
+    public boolean loginBool;
+    public boolean createBool;
+    public boolean customerBool;
+    public boolean cartBool;
+    public boolean removeBool;
+    public boolean checkoutBool;
+    public boolean confirmBool;
+    public boolean shoppingBool;
+    public boolean addBool;
 
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
@@ -281,7 +281,7 @@ public class Main {
         checkoutBool = true;
         System.out.println("\nWelcome, your order has been created, you bought " + cart.getQuantity() + " items");
         System.out.println("You need to pay a total of $" + cart.getTotalPrice());
-        System.out.println("Please remember to bring enough money and visit our store before 9pm");
+        System.out.println("");
         Order ord = new Order(this.name, cart.getQuantity(), cart.getTotalPrice(), "open");
         Orders.addOrder(ord);
         this.confirmMenu();
@@ -320,6 +320,7 @@ public class Main {
     public void addItem(){
         int id;
         int quantity;
+        addBool = true;
         System.out.print(blue + "\nPlease inter the item id: " + reset);
         id = input.nextInt();
         while (true){
