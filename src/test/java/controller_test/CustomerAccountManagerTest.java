@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 
-public class userAccountManagerTest {
+public class CustomerAccountManagerTest {
 
 
     CustomerAccountManager userAccountManager;
