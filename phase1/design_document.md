@@ -56,13 +56,13 @@ For Single responsibility principle, we
 ensured that each class has only one responsibility, for example, we have three different file writing classes
 for three different objects stored in three different text files. We also documented the responsibilities for every 
 class in our program, making our program easier to understand and extend. Our program have an abstract class
-**"userAccount"**, so in phase 2 when we extend our project we might want to bring back the delivery system, then we can 
+**"UserAccount"**, so in phase 2 when we extend our project we might want to bring back the delivery system, then we can 
 create a new class called DeliveryAccount that extend this abstract class.
 We can also create a new corresponding Controller class for it, neither action will change the existing classes
 which adheres to Open/Close principle. We also ensured that the interfaces in our program are small as possible. For 
 example, we have an **"Account"** interface which only have two necessary getter methods so that we are adhering
 to the Interface Segregation Principle. We also ensured our subclass like **"CustomerAccount"** overrides all 
-methods that it inherits, and have more methods implemented, which adheres to Liskov Substitution Principle. And
+methods that it inherits, which adheres to Liskov Substitution Principle. And
 finally as explained before, our higher level modules do not depend on lower modules, and we also have abstract 
 classes for higher module to depend on, so we are also following the Dependency Inversion Principle.
 
