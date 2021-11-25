@@ -1,7 +1,6 @@
 package controller_test;
 
 import controllers.OrderManager;
-import entities.Customer;
 import use_case.Order;
 import org.junit.Before;
 import org.junit.Test;

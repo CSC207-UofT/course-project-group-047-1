@@ -1,7 +1,6 @@
 package controller_test;
 
 import controllers.CustomerAccountManager;
-import entities.Customer;
 import use_case.CustomerAccount;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,5 @@
 package use_case;
 
-import entities.Customer;
-
 
 /**
  * An account stores the username and pin of a customer's account
