@@ -1,6 +1,5 @@
 package use_case_test;
 
-import entities.Customer;
 import entities.GroceryItem;
 import use_case.Order;
 import org.junit.Before;

@@ -1,7 +1,5 @@
 package use_case;
 
-import entities.Customer;
-
 
 /**
  * An order records a purchase by a customer
