@@ -12,4 +12,7 @@ public class Balance {
         this.bal = 0;
     }
 
+    public Balance(int b) {
+        this.bal = b;
+    }
 }
