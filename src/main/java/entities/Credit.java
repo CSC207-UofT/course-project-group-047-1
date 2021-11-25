@@ -16,4 +16,8 @@ public class Credit {
         this.cred -= c;
     }
 
+    public void setCred(double c) {
+        this.cred = c;
+    }
+
 }
