@@ -45,24 +45,35 @@ public class CustomerAccount extends UserAccount {
     public int getPin() {return this.pin;}
 
 
-    public Credit getcred() {return this.cred;}
+    public Credit getCred() {return this.cred;}
 
-    public Balance getbal() {return this.balance;}
 
-    public String getcolor() {return this.color;}
+    public Balance getBal() {return this.balance;}
+
+
+    public String getColor() {return this.color;}
 
 
 
 
     public void resetUsername(String new_name) {this.username = new_name;}
 
+
     public void resetPin(int new_pin) {this.pin = new_pin;}
+
 
     public void setColor(String color) {this.color = color;}
 
 
 
-    public void addcred(double x) {this.cred.addCredit(x);}
+    public void addCred(double x) {this.cred.addCredit(x);}
 
-    public void addbal(double y){this.balance.addBal(y);}
+
+    public void addBal(double y){this.balance.addBal(y);}
+
+
+    public void reduceCred(double x) {this.cred.removeCredit(x);}
+
+
+    public void reduceBal(double y){this.balance.removeBal(y);}
 }
