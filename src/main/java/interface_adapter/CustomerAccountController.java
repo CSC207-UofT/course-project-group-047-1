@@ -71,4 +71,14 @@ public class CustomerAccountController {
             }
         }
     }
+
+
+    public void changeUsername(String name, String newName){
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.resetUsername(newName);
+            }
+        }
+    }
+
 }
