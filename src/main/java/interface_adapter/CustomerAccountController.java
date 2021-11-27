@@ -19,7 +19,6 @@ public class CustomerAccountController {
 
     /**
      * Constructor
-     * Reads CustomerAccount.txt and collects all accounts into a hashmap
      */
     public CustomerAccountController(CustomerDataAccess db) {
         this.db = db;
@@ -55,9 +54,17 @@ public class CustomerAccountController {
     }
 
 
+
+    //TODO
     public boolean exists() {
         return true;
     }
 
+
+    //TODO change the color preference of an account
+    public void changeColor(String name, String color) {}
+
+    //TODO implement method for change username, Pin, add balance, change color preference, color preference has
+    // three options, the default colors, allBlack, and Reverse.
 
 }

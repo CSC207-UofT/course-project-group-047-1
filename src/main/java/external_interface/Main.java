@@ -19,8 +19,8 @@ public class Main {
     String name;
     Scanner input = new Scanner(System.in);
     CustomerAccountController manager = new CustomerAccountController(new CustomerAccountAccess());
-    GroceryInventory items = new GroceryInventory();
-    OrderController Orders = new OrderController();
+    GroceryInventory items = new GroceryInventory(new InventoryAccess());
+    OrderController Orders = new OrderController(new OrderAccess());
     ShoppingCart cart;
 
     //For colorful text
@@ -282,7 +282,7 @@ public class Main {
 
         while (true) {
             System.out.println("\nEnter 1 to confirm that you picked up your items");
-            System.out.println("\nEnter 2 to exit");
+            System.out.println("Enter 2 to exit");
             System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
             System.out.print(blue + "\nPlease enter your choice: " + reset);
             int num = input.nextInt();

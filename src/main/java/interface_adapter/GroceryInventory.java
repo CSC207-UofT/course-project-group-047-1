@@ -1,68 +1,31 @@
 package interface_adapter;
 
 import entity.GroceryItem;
+import use_case.InventoryDataAccess;
 
 import java.io.*;
 import java.util.ArrayList;
 
 
 /**
- * This is a file writing class that stores all grocery items in the store into Inventory.txt
+ * This class manage all items in store
  */
 public class GroceryInventory {
 
-    private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "files" + File.separator + "inventory.txt";
-    private final ArrayList<GroceryItem> items = new ArrayList<>();
+    private InventoryDataAccess db;
+    private ArrayList<GroceryItem> items = new ArrayList<>();
 
 
     /**
      * Constructor
-     * Reads the file and collects all items into an ArrayList
      */
-    public GroceryInventory() {
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String name = reader.readLine();
-                double price = Double.parseDouble(reader.readLine());
-                int quantity = Integer.parseInt(reader.readLine());
-                GroceryItem g = new GroceryItem(Integer.parseInt(line), name, price, quantity);
-                this.items.add(g);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public GroceryInventory(InventoryDataAccess db) {
+        this.db = db;
+        items = this.db.read();
     }
 
 
-    /**
-     * Push changes in the ArrayList into the Inventory.txt file
-     */
-    public void updateInventory() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
-            this.clear();
-            for (GroceryItem item : this.items) {
-                String id = Integer.toString(item.getId());
-                writer.write(id);
-                writer.newLine();
-                writer.write(item.getName());
-                writer.newLine();
-                writer.write(String.valueOf(item.getPrice()));
-                writer.newLine();
-                String q = Integer.toString(item.getQuantity());
-                writer.write(q);
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
+    //TODO migrate this method to OrderPresenter
     /**
      * @return a string representation of GroceryItems in the store
      */
@@ -82,14 +45,8 @@ public class GroceryInventory {
     }
 
 
-    /**
-     * Wipes everything in the file
-     */
-    public void clear() throws IOException {
-        PrintWriter writer = new PrintWriter(new FileWriter(path));
-        writer.print("");
-        writer.close();
-    }
+    //TODO this method check if n is an id that exists
+    public boolean exists() {return true;}
 
 
     /**
@@ -104,7 +61,7 @@ public class GroceryInventory {
                 item.reduce(n);
             }
         }
-        this.updateInventory();
+        this.db.update(this.items);
     }
 
 
@@ -120,7 +77,7 @@ public class GroceryInventory {
                 item.add(n);
             }
         }
-        this.updateInventory();
+        this.db.update(this.items);
     }
 
 
