@@ -9,8 +9,8 @@ import entities.Credit;
 public class CustomerAccount extends UserAccount {
 
 
-    private final String username;
-    private final int pin;
+    private String username;
+    private int pin;
     Credit cred;
     Balance balance;
     String color;
@@ -45,4 +45,11 @@ public class CustomerAccount extends UserAccount {
     public int getPin() {return this.pin;}
 
 
+
+
+    public void resetUsername(String new_name) {this.username = new_name;}
+
+    public void resetPin(int new_pin) {this.pin = new_pin;}
+
+    public void setColor(String color) {this.color = color;}
 }
