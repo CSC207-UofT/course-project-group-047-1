@@ -59,4 +59,11 @@ public class Order {
     public void setStatus(String s) {this.status = s;}
 
 
+    public String return_info(){
+        String info = "Status: " + this.getStatus() + "Total number of items: "
+                + Integer.toString(this.getTotalQuantity()) + "Total price: " + Double.toString(this.getValue());
+        return info;
+    }
+
+
 }
