@@ -33,13 +33,8 @@ public class Balance {
      * @param b: the amount to be removed
      * @return: returns true if the amount is successfully removed (balance isn't negative)
      */
-    public boolean removeBal(double b) {
-        if (b <= this.bal) {
-            this.bal -= b;
-            return true;
-        } else {
-            return false;
-        }
+    public void removeBal(double b) {
+        this.bal -= b;
     }
 
     /**
