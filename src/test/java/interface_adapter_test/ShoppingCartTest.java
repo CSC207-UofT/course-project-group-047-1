@@ -1,4 +1,4 @@
-package controller_test;
+package interface_adapter_test;
 
 import interface_adapter.ShoppingCart;
 import entity.GroceryItem;
