@@ -2,7 +2,7 @@ package external_interface;
 
 import controllers.CustomerAccountController;
 import controllers.GroceryInventory;
-import controllers.OrderManager;
+import controllers.OrderController;
 import controllers.ShoppingCart;
 import use_case.CustomerAccount;
 import use_case.Order;
@@ -20,7 +20,7 @@ public class Main {
     Scanner input = new Scanner(System.in);
     CustomerAccountController manager = new CustomerAccountController(new CustomerAccountAccess());
     GroceryInventory items = new GroceryInventory();
-    OrderManager Orders = new OrderManager();
+    OrderController Orders = new OrderController();
     ShoppingCart cart;
 
     //For colorful text
