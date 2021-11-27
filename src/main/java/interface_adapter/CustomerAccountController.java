@@ -81,4 +81,12 @@ public class CustomerAccountController {
         }
     }
 
+
+    public void changePin(String name, int pin){
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.resetPin(pin);
+            }
+        }
+    }
 }
