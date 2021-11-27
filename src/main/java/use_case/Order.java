@@ -30,17 +30,6 @@ public class Order {
     /**
      * Another constructor
      */
-    public Order(Customer customer, int amount, Double price) {
-        this.name = customer.getName();
-        this.amount = amount;
-        this.price = price;
-        this.status = "open";
-    }
-
-
-    /**
-     * Another constructor
-     */
     public Order(String name, int amount, Double price, String status) {
         this.name = name;
         this.amount = amount;
