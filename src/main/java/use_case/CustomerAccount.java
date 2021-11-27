@@ -54,10 +54,10 @@ public class CustomerAccount extends UserAccount {
     public int getPin() {return this.pin;}
 
 
-    public Credit getCred() {return this.cred;}
+    public double getCred() {return this.cred.getCred();}
 
 
-    public Balance getBal() {return this.balance;}
+    public double getBal() {return this.balance.getBal();}
 
 
     public String getColor() {return this.color;}
