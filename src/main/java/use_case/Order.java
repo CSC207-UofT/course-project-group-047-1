@@ -58,8 +58,7 @@ public class Order {
      */
     public void setStatus(String s) {this.status = s;}
 
-
-    public String return_info(){
+    public String returnInfo(){
         return "Status: " + this.getStatus() + "Total number of items: "
                 + this.getTotalQuantity() + "Total price: " + this.getValue();
     }

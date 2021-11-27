@@ -54,8 +54,8 @@ public class CustomerAccountAccess implements CustomerDataAccess {
             for(CustomerAccount a: accounts) {
                 String name = a.getUsername();
                 int pin = a.getPin();
-                double credit = a.getCred().getCred();
-                double balance = a.getBal().getBal();
+                double credit = a.getCred();
+                double balance = a.getBal();
                 String color = a.getColor();
                 fileWriter.write(name);
                 fileWriter.newLine();
