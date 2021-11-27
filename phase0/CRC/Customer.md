@@ -13,4 +13,4 @@ Variables:
 
 Collaborators:
 * controllers.ShoppingCart
-* controllers.CustomerAccountManager
+* controllers.CustomerAccountController
