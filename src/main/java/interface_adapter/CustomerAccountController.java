@@ -89,4 +89,14 @@ public class CustomerAccountController {
             }
         }
     }
+
+
+    public void addBalance(String name, double n){
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.addBal(n);
+            }
+        }
+    }
+    
 }
