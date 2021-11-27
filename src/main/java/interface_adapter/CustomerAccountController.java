@@ -1,4 +1,4 @@
-package controllers;
+package interface_adapter;
 
 import use_case.CustomerAccount;
 import use_case.CustomerDataAccess;

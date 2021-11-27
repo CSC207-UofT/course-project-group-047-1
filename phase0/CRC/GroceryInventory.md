@@ -8,4 +8,4 @@ Variables:
 
 Collaborators:
 * GroceryItem
-* controllers.ShoppingCart
+* interface_adapter.ShoppingCart

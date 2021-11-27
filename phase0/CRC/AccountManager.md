@@ -1,4 +1,4 @@
-Class name: controllers.CustomerAccountController(Use case)
+Class name: interface_adapter.CustomerAccountController(Use case)
 
 Responsibilities:
 * Manage customers accounts registered in this store.

@@ -1,6 +1,6 @@
-package controllers;
+package interface_adapter;
 
-import entities.GroceryItem;
+import entity.GroceryItem;
 
 import java.util.ArrayList;
 
