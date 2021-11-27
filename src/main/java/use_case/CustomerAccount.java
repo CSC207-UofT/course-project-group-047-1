@@ -1,4 +1,6 @@
 package use_case;
+import entities.Balance;
+import entities.Credit;
 
 
 /**
@@ -9,6 +11,9 @@ public class CustomerAccount extends UserAccount {
 
     private final String username;
     private final int pin;
+    Credit cred;
+    Balance balance;
+    String color;
 
 
     /**
@@ -17,9 +22,12 @@ public class CustomerAccount extends UserAccount {
      * @param username: the username of the account
      * @param pin:      the password of the account
      */
-    public CustomerAccount(String username, int pin) {
+    public CustomerAccount(String username, int pin, Credit cred, Balance balance, String color) {
         this.username = username;
         this.pin = pin;
+        this.cred = cred;
+        this.balance = balance;
+        this.color = "default";
     }
 
 

@@ -2,6 +2,10 @@ package entities;
 
 public class Credit {
 
+    public Credit (double cred){
+        this.cred = cred;
+    }
+
     private double cred;
 
     public Credit() {
