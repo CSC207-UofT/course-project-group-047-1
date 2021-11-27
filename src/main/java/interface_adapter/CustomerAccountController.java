@@ -63,4 +63,12 @@ public class CustomerAccountController {
         return false;
     }
 
+
+    public void changeColor(String name, String color) {
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.setColor(color);
+            }
+        }
+    }
 }
