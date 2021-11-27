@@ -12,7 +12,7 @@ public class CustomerAccountAccess implements CustomerDataAccess {
 
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "files" + File.separator + "CustomerAccounts.txt";
+            "main" + File.separator + "java" + File.separator + "file" + File.separator + "CustomerAccounts.txt";
 
 
     @Override

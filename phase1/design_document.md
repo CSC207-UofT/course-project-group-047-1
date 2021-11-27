@@ -38,7 +38,7 @@ After receiving feedback from phase 0, we realized that our project structure do
 because some of our higher-level classes have a dependency on lower-level classes. Our TA also pointed out that our 
 controller classes should not interact on the same level since we are using a higher-order class to coordinate. So in 
 pull request #10, we changed our project structure by adjusting class level and removing inappropriate imports so that 
-our future implementations adhere to clean architecture. We also put our files into different folders so that our codes 
+our future implementations adhere to clean architecture. We also put our file into different folders so that our codes 
 are more organized and easier for us to work with. And we deleted a few classes and functionalities (specifically the 
 delivery system) from our program as our TA pointed out that our project scope is too large, and we should make it 
 smaller so that our project can be more useful.
@@ -54,7 +54,7 @@ there are no dependencies on the same level and to ensure that higher-level modu
 We also have a UML diagram under phase 1 folder to demonstrate Clean Architecture.
 For Single responsibility principle, we
 ensured that each class has only one responsibility, for example, we have three different file writing classes
-for three different objects stored in three different text files. We also documented the responsibilities for every 
+for three different objects stored in three different text file. We also documented the responsibilities for every 
 class in our program, making our program easier to understand and extend. Our program have an abstract class
 **"UserAccount"**, so in phase 2 when we extend our project we might want to bring back the delivery system, then we can 
 create a new class called DeliveryAccount that extend this abstract class.
@@ -95,7 +95,7 @@ independently. In the future, we will probably continue to use this pattern as w
 Package Strategy & Codes refactoring & Organization:
 
 We put our classes into packages by four layers, from high level to low level: entity, use_case, controller, and 
-external_interface, and another folder 'files' is to store text files. We think this is easy for us to locate a class file or a 
+external_interface, and another folder 'file' is to store text file. We think this is easy for us to locate a class file or a 
 text file, and if anyone wants to extend our project by adding new classes they know where to put these classes. This 
 also helps us to be clear on which class belongs to which layer so that we don't accidentally violate the clean 
 architecture. During our implementations, we consistently checked for codes smells and bad coding styles. For example, 
