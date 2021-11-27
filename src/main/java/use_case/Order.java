@@ -6,7 +6,7 @@ package use_case;
  */
 public class Order {
 
-    private final String name;
+    private String name;
     private final int amount;
     private final double price;
     private String status;
@@ -60,10 +60,11 @@ public class Order {
 
 
     public String return_info(){
-        String info = "Status: " + this.getStatus() + "Total number of items: "
-                + Integer.toString(this.getTotalQuantity()) + "Total price: " + Double.toString(this.getValue());
-        return info;
+        return "Status: " + this.getStatus() + "Total number of items: "
+                + this.getTotalQuantity() + "Total price: " + this.getValue();
     }
+
+    public void resetUsername(String new_name) {this.name = new_name;}
 
 
 }
