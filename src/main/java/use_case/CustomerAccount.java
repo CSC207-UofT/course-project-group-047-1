@@ -24,15 +24,6 @@ public class CustomerAccount extends UserAccount {
 
 
     /**
-     * Another constructor
-     */
-    public CustomerAccount(Customer customer, int pin) {
-        this.username = customer.getName();
-        this.pin = pin;
-    }
-
-
-    /**
      * Returns the username of the account
      */
     @Override
