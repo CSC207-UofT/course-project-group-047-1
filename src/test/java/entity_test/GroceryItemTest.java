@@ -1,6 +1,6 @@
 package entity_test;
 
-import entities.GroceryItem;
+import entity.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package use_case;
 
-import entities.GroceryItem;
+import entity.GroceryItem;
 
 import java.util.ArrayList;
 

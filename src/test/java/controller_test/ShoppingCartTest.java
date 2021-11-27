@@ -1,7 +1,7 @@
 package controller_test;
 
-import controllers.ShoppingCart;
-import entities.GroceryItem;
+import interface_adapter.ShoppingCart;
+import entity.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package use_case;
-import entities.Balance;
-import entities.Credit;
+import entity.Balance;
+import entity.Credit;
 
 
 /**

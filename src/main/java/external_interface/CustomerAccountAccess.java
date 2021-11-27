@@ -1,7 +1,7 @@
 package external_interface;
 
-import entities.Balance;
-import entities.Credit;
+import entity.Balance;
+import entity.Credit;
 import use_case.CustomerAccount;
 import use_case.CustomerDataAccess;
 

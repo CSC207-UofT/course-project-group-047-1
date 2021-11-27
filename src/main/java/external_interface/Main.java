@@ -1,9 +1,9 @@
 package external_interface;
 
-import controllers.CustomerAccountController;
-import controllers.GroceryInventory;
-import controllers.OrderController;
-import controllers.ShoppingCart;
+import interface_adapter.CustomerAccountController;
+import interface_adapter.GroceryInventory;
+import interface_adapter.OrderController;
+import interface_adapter.ShoppingCart;
 import use_case.CustomerAccount;
 import use_case.Order;
 
