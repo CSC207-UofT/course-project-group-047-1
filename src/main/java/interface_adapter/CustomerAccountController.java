@@ -14,7 +14,7 @@ import java.util.Objects;
 public class CustomerAccountController {
 
     private final CustomerDataAccess db;
-    private ArrayList<CustomerAccount> accounts = new ArrayList<>();
+    private final ArrayList<CustomerAccount> accounts;
 
 
     /**
@@ -54,17 +54,49 @@ public class CustomerAccountController {
     }
 
 
-
-    //TODO
-    public boolean exists() {
-        return true;
+    public boolean exists(String username) {
+        for (CustomerAccount a : this.accounts){
+            if (a.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
-    //TODO change the color preference of an account
-    public void changeColor(String name, String color) {}
+    public void changeColor(String name, String color) {
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.setColor(color);
+            }
+        }
+    }
 
-    //TODO implement method for change username, Pin, add balance, change color preference, color preference has
-    // three options, the default colors, allBlack, and Reverse.
 
+    public void changeUsername(String name, String newName){
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.resetUsername(newName);
+            }
+        }
+    }
+
+
+    public void changePin(String name, int pin){
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.resetPin(pin);
+            }
+        }
+    }
+
+
+    public void addBalance(String name, double n){
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.addBal(n);
+            }
+        }
+    }
+    
 }
