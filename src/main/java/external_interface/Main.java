@@ -1,6 +1,6 @@
 package external_interface;
 
-import controllers.CustomerAccountManager;
+import controllers.CustomerAccountController;
 import controllers.GroceryInventory;
 import controllers.OrderManager;
 import controllers.ShoppingCart;
@@ -18,7 +18,7 @@ public class Main {
 
     String name;
     Scanner input = new Scanner(System.in);
-    CustomerAccountManager manager = new CustomerAccountManager();
+    CustomerAccountController manager = new CustomerAccountController(new CustomerAccountAccess());
     GroceryInventory items = new GroceryInventory();
     OrderManager Orders = new OrderManager();
     ShoppingCart cart;
@@ -69,7 +69,7 @@ public class Main {
 
 
     /**
-     * Asks the user for their username and pin, calls a method in the CustomerAccountManager
+     * Asks the user for their username and pin, calls a method in the CustomerAccountController
      * that checks the credentials to determine if an account exists. If so, then
      * calls the customerMenu. If not, asks the user to try again or create an account.
      * If an account has an open order, then calls the confirmMenu.
@@ -91,7 +91,7 @@ public class Main {
             pin = input.nextInt();
             input.nextLine();
 
-            if (manager.contains(username, pin)) {
+            if (manager.check(username, pin)) {
 
                 System.out.println("\nLogin success");
                 this.name = username;
@@ -149,14 +149,14 @@ public class Main {
         pin = input.nextInt();
         input.nextLine();
 
-        if (manager.contains(username, pin)) {
+        if (manager.check(username, pin)) {
 
             System.out.println(red + "\nCustomerAccount already exists, please login" + reset);
             this.loginMenu();
 
         }
 
-        CustomerAccount a = new CustomerAccount(username, pin);
+        CustomerAccount a = new CustomerAccount(username, pin, 0.0, 0.0, "default");
         manager.addAccount(a);
         System.out.println("\nCustomerAccount created, please login");
         this.loginMenu();

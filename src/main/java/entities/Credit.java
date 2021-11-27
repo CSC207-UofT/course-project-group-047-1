@@ -24,4 +24,6 @@ public class Credit {
         this.cred = c;
     }
 
+    public double getCred() {return this.cred;}
+
 }

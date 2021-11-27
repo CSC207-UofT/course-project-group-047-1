@@ -23,11 +23,11 @@ Fortunately, our skeleton codes are working well, they can support users to perf
 Group member & responsibilities
 
 * Yicong Luo
-  * Skeleton code: Grocery Inventory, Store, external_interface.Main, controllers.CustomerAccountManager, Customer, GroceryItem
+  * Skeleton code: Grocery Inventory, Store, external_interface.Main, controllers.CustomerAccountController, Customer, GroceryItem
   * Will be focusing on class external_interface.Main in the future
 
 * Khloe Tsang
-  * Skeleton code: controllers.CustomerAccountManager
+  * Skeleton code: controllers.CustomerAccountController
   * Will be focusing on class OrderTrackingSystem in the future
 
 * Wenzhen Wang

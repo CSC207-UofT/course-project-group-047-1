@@ -27,8 +27,17 @@ public class CustomerAccount extends UserAccount {
         this.pin = pin;
         this.cred = cred;
         this.balance = balance;
-        this.color = "default";
+        this.color = color;
     }
+
+    public CustomerAccount(String username, int pin, double cred, double balance, String color) {
+        this.username = username;
+        this.pin = pin;
+        this.cred = new Credit(cred);
+        this.balance = new Balance(balance);
+        this.color = color;
+    }
+
 
 
     /**
