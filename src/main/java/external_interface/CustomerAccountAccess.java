@@ -26,7 +26,7 @@ public class CustomerAccountAccess implements CustomerDataAccess {
                 String name = line;
                 line = reader.readLine();
                 int pin = Integer.parseInt(line);
-                reader.readLine();
+                line = reader.readLine();
                 Credit credit = new Credit(Double.parseDouble(line));
                 line = reader.readLine();
                 Balance balance = new Balance(Double.parseDouble(line));

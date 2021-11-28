@@ -1,8 +1,8 @@
 eddy
 1111
-1111.0
-0.0
-default
+10.0
+92.0
+all_black
 brendan
 1111
 0.0

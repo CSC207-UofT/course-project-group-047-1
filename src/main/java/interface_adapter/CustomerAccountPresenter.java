@@ -37,31 +37,31 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     public String viewName() {
         this.update();
-        return "Username: " + this.account.getUsername() + "\n";
+        return this.account.getUsername();
     }
 
 
-    public String viewPin() {
+    public int viewPin() {
         this.update();
-        return "Pin: " + this.account.getPin() + "\n";
+        return this.account.getPin();
     }
 
 
-    public String viewBal() {
+    public double viewBal() {
         this.update();
-        return "Balance: " + this.account.getBal() + "\n";
+        return this.account.getBal();
     }
 
 
-    public String viewCred() {
+    public double viewCred() {
         this.update();
-        return "Credit: " + this.account.getCred() + "\n";
+        return this.account.getCred();
     }
 
 
     public String viewColor() {
         this.update();
-        return "Color Preference: " + this.account.getColor() + "\n";
+        return this.account.getColor();
     }
 
 
