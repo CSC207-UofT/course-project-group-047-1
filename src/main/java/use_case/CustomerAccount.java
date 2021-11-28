@@ -6,7 +6,7 @@ import entity.Credit;
 /**
  * An account stores the username and pin of a customer's account
  */
-public class CustomerAccount extends UserAccount {
+public class CustomerAccount implements Account {
 
 
     private String username;

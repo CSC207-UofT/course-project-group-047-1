@@ -1,8 +1,9 @@
-package interface_adapter;
+package use_case;
 
 import entity.GroceryItem;
 
 import java.util.ArrayList;
+
 
 /**
  * A ShoppingCart temporarily stores grocery items for customers.

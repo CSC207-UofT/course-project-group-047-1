@@ -1,11 +1,7 @@
 package external_interface;
 
-import interface_adapter.CustomerAccountController;
-import interface_adapter.GroceryInventory;
-import interface_adapter.OrderController;
-import interface_adapter.ShoppingCart;
-import use_case.CustomerAccount;
-import use_case.Order;
+import interface_adapter.*;
+import use_case.*;
 
 import java.util.Scanner;
 
@@ -184,16 +180,15 @@ public class Main {
         System.out.println();
 
         switch (num) {
-            case 1:
+            case 1 -> {
                 this.cart = new ShoppingCart();
                 this.shoppingMenu();
-                break;
-
-            case 2:
+            }
+            case 2 -> {
                 System.out.println(green + "Thank you for visiting our store" + reset);
                 System.exit(0);
-                break;
             }
+        }
         }
 
 
@@ -223,12 +218,8 @@ public class Main {
                 int num = input.nextInt();
 
                 switch (num) {
-                    case 1:
-                        this.removeItem();
-                        break;
-                    case 2:
-                        end = true;
-                        break;
+                    case 1 -> this.removeItem();
+                    case 2 -> end = true;
                 }
             }
         }
