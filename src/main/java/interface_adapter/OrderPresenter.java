@@ -4,12 +4,14 @@ import use_case.Order;
 import use_case.OrderDataAccess;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class OrderPresenter {
+
+public class OrderPresenter implements Iterable<Order>{
 
     OrderDataAccess db;
 
-    ArrayList<Order> orders;
+    public ArrayList<Order> orders;
 
     public OrderPresenter(OrderDataAccess db) {
         this.db = db;
@@ -28,6 +30,30 @@ public class OrderPresenter {
             }
         }
         return str.toString();
+    }
+
+
+    @Override
+    public Iterator<Order> iterator() {
+        return new OrderIterator();
+    }
+
+
+    private class OrderIterator implements Iterator<Order>{
+
+        private int order = 0;
+
+        @Override
+        public boolean hasNext() {
+            return this.order < db.read().size();
+        }
+
+
+        @Override
+        public Order next() {
+            this.order += 1;
+            return db.read().get(order);
+        }
     }
 
 

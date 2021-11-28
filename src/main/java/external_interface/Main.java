@@ -340,7 +340,7 @@ public class Main {
         while (!end) {
 
             System.out.println(green + "\nPlease view our item list\n" + reset);
-            System.out.println(items.view());
+            // System.out.println(items.view());
             System.out.println("Enter 1 to add item to your shopping cart");
             System.out.println("Enter 2 to view your shopping cart");
             System.out.println("Enter 3 to checkout");
