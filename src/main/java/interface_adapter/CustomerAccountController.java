@@ -144,5 +144,25 @@ public class CustomerAccountController {
     }
 
 
+    public int getPin(String name){
+        for (CustomerAccount a : this.accounts){
+            if (a.getUsername().equals(name)){
+                return a.getPin();
+            }
+        }
+        return 0;
+    }
+
+
+    public double getBalance(String name){
+        for (CustomerAccount a : this.accounts){
+            if (a.getUsername().equals(name)){
+                return a.getBal();
+            }
+        }
+        return 0;
+    }
+
+
 
 }
