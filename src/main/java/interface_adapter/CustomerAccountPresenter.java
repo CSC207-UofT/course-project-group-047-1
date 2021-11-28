@@ -2,9 +2,9 @@ package interface_adapter;
 
 import use_case.CustomerAccount;
 import use_case.CustomerDataAccess;
-import use_case.Order;
 
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.Iterator;
 
 public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
@@ -16,9 +16,14 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
     public CustomerAccountPresenter(CustomerDataAccess db, String username) {
         this.db = db;
         this.accounts = db.read();
-        for (CustomerAccount a : this.accounts) {
+
+        Iterator<CustomerAccount> itr = this.accounts.iterator();
+
+        while (itr.hasNext()){
+            CustomerAccount a = itr.next();
             if (a.getUsername().equals(username)) {
                 this.account = a;
+                break;
             }
         }
     }
@@ -77,8 +82,9 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
         @Override
         public CustomerAccount next() {
+            int curr_customer = this.customer;
             this.customer += 1;
-            return db.read().get(customer);
+            return db.read().get(curr_customer);
         }
     }
 }

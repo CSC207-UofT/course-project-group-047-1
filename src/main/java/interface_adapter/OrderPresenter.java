@@ -54,9 +54,10 @@ public class OrderPresenter implements Iterable<Order>{
 
         @Override
         public Order next() {
+            int curr_order = this.order;
             this.order += 1;
-            return db.read().get(order);
+            return db.read().get(curr_order);
         }
     }
-    
+
 }
