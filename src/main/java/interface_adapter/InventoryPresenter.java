@@ -2,7 +2,6 @@ package interface_adapter;
 
 import entity.GroceryItem;
 import use_case.InventoryDataAccess;
-import use_case.Order;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,14 +23,14 @@ public class InventoryPresenter implements Iterable<GroceryItem>{
      */
     public String view() {
         this.items = db.read();
+        Iterator<GroceryItem> itr = items.iterator();
 
         StringBuilder string = new StringBuilder();
 
-        for (GroceryItem item : this.items) {
-
+        while (itr.hasNext()){
+            GroceryItem item = itr.next();
             string.append(item.getId()).append(" ").append(item.getName()).append(" x ").append(item.getQuantity())
                     .append(", Price: ").append(item.getPrice()).append("$ each\n");
-
         }
 
         return string.toString();
@@ -57,8 +56,9 @@ public class InventoryPresenter implements Iterable<GroceryItem>{
 
         @Override
         public GroceryItem next() {
+            int curr_item = this.item;
             this.item += 1;
-            return db.read().get(item);
+            return db.read().get(curr_item);
         }
     }
 
