@@ -124,5 +124,25 @@ public class CustomerAccountController {
     }
 
 
+    public String getColor(String name){
+        for (CustomerAccount a : this.accounts){
+            if (a.getUsername().equals(name)){
+                return a.getColor();
+            }
+        }
+        return "";
+    }
+
+
+    public double getCred(String name){
+        for (CustomerAccount a : this.accounts){
+            if (a.getUsername().equals(name)){
+                return a.getCred();
+            }
+        }
+        return 0;
+    }
+
+
 
 }
