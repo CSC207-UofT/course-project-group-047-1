@@ -1,6 +1,6 @@
-package interface_adapter_test;
+package use_case_test;
 
-import interface_adapter.ShoppingCart;
+import use_case.ShoppingCart;
 import entity.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;

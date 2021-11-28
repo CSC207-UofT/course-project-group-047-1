@@ -2,7 +2,8 @@ package use_case;
 
 
 /**
- * An interface for all accounts in the program
+ * An interface for all accounts in the program, also for
+ * future extension
  */
 public interface Account {
 
