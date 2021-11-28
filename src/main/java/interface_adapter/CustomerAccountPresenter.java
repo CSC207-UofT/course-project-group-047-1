@@ -4,7 +4,6 @@ import use_case.CustomerAccount;
 import use_case.CustomerDataAccess;
 
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.Iterator;
 
 public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
