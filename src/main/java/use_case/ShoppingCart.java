@@ -54,6 +54,14 @@ public class ShoppingCart {
     }
 
 
+    public boolean exists(int id) {
+        for (GroceryItem n: this.items) {
+            if (n.getId() == id) {return true;}
+        }
+        return false;
+    }
+
+
     /**
      * Returns the total price of the items in the shopping cart
      */

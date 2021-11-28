@@ -3,6 +3,7 @@ package external_interface;
 import interface_adapter.*;
 import use_case.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -12,18 +13,27 @@ import java.util.Scanner;
 public class Main {
 
 
-    String name;
     Scanner input = new Scanner(System.in);
-    CustomerAccountController manager = new CustomerAccountController(new CustomerAccountAccess());
-    GroceryInventory items = new GroceryInventory(new InventoryAccess());
-    OrderController Orders = new OrderController(new OrderAccess());
     ShoppingCart cart;
+    String name;
+
+    CustomerAccountController accounts = new CustomerAccountController(new CustomerAccountAccess());
+    GroceryInventory items = new GroceryInventory(new InventoryAccess());
+    OrderController orders = new OrderController(new OrderAccess());
+
+    CustomerAccountPresenter accountPresenter;
+    OrderPresenter orderPresenter = new OrderPresenter(new OrderAccess());
+    InventoryPresenter inventoryPresenter = new InventoryPresenter(new InventoryAccess());
 
     //For colorful text
     public final String red = "\u001B[31m";
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
     public final String blue = "\u001B[34m";
+
+    String wel = this.green;
+    String warn = this.red;
+    String in = this.blue;
 
 
     /**
@@ -35,26 +45,44 @@ public class Main {
      */
     public void mainMenu() {
 
-        System.out.println(green + "\nWelcome to our store, please select your choice\n" + reset);
-        System.out.println("Enter 1 to create account");
-        System.out.println("Enter 2 to login to account");
-        System.out.println("Enter 3 to Exit");
-        System.out.print(blue + "\nEnter your choice: " + reset);
-        int num = input.nextInt();
-        input.nextLine();
+        boolean end = false;
+        System.out.println(wel + "\nWelcome to our store, please select your choice\n" + reset);
 
-        switch (num) {
+        while(!end) {
 
-            case 1:
-                this.createAccountMenu();
-                break;
+            try {
+                System.out.println("\nEnter 1 to create account");
+                System.out.println("Enter 2 to login to account");
+                System.out.println("Enter 3 to Exit");
+                System.out.print(blue + "\nEnter your choice: " + reset);
+                int num = input.nextInt();
+                input.nextLine();
 
-            case 2:
-                this.loginMenu();
-                break;
+                switch (num) {
 
-            case 3:
-                break;
+                    case 1:
+                        this.createAccountMenu();
+                        end = true;
+                        break;
+
+                    case 2:
+                        this.loginMenu();
+                        end = true;
+                        break;
+
+                    case 3:
+                        end = true;
+                        break;
+
+                    default:
+                        System.out.print(warn + "\nInvalid input\n" + reset);
+                        break;
+
+                }
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.next();
+            }
 
         }
 
@@ -77,49 +105,40 @@ public class Main {
         boolean end = false;
 
         System.out.println();
-        System.out.println(green + "Welcome to login page" + reset);
+        System.out.println(wel + "Welcome to login page" + reset);
 
         while (!end) {
 
-            System.out.print(blue + "\nPlease enter your customer username: " + reset);
-            username = input.nextLine();
-            System.out.print(blue + "\nPlease enter your PIN number: " + reset);
-            pin = input.nextInt();
-            input.nextLine();
-
-            if (manager.check(username, pin)) {
-
-                System.out.println("\nLogin success");
-                this.name = username;
-                if (Orders.haveOpenOrder(name)) {
-                    System.out.println(red + "\nYou have an unfinished order, please complete this order first" + reset);
-                    this.confirmMenu();
-                } else {
-                    this.customerMenu();
-                }
-                break;
-
-            } else {
-
-                System.out.println(red + "\nWrong username or pin, please create one or try again\n" + reset);
-                System.out.println("Enter 1 to create account");
-                System.out.println("Enter 2 to try again");
-                System.out.print(blue + "\nPlease enter your choice: " + reset);
-                int num = input.nextInt();
+            try {
+                System.out.print(in + "\nPlease enter your username: " + reset);
+                username = input.nextLine();
+                System.out.print(in + "\nPlease enter your PIN number: " + reset);
+                pin = input.nextInt();
                 input.nextLine();
 
-                switch (num) {
+                if (this.accounts.check(username, pin)) {
 
-                    case 1:
-                        this.createAccountMenu();
-                        end = true;
-                        break;
+                    this.name = username;
+                    this.accountPresenter = new CustomerAccountPresenter(new CustomerAccountAccess(), username);
+                    this.setColor();
 
-                    case 2:
-                        break;
+                    System.out.println("\nLogin success");
 
+                    if (this.orders.haveOpenOrder(name)) {
+                        System.out.println(warn + "\nYou have an unfinished order, please complete this order first" + reset);
+                        this.confirmMenu();
+                    } else {
+                        this.customerMenu();
+                    }
+                    end = true;
+
+                } else {
+                    System.out.println(warn + "\nWrong username or pin" + reset);
                 }
 
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.nextLine();
             }
 
         }
@@ -135,29 +154,35 @@ public class Main {
 
         String username;
         int pin;
+        boolean end = false;
 
         System.out.println();
-        System.out.println(green + "Welcome to create account page" + reset);
+        System.out.println(wel + "Welcome to create account page" + reset);
 
-        System.out.print(blue + "\nPlease choose your customer username: " + reset);
-        username = input.nextLine();
-        System.out.print(blue + "\nPlease choose your PIN number: " + reset);
-        pin = input.nextInt();
-        input.nextLine();
+        while (!end) {
 
-        if (manager.check(username, pin)) {
+            try {
+                System.out.print(blue + "\nPlease choose your customer username: " + reset);
+                username = input.nextLine();
+                System.out.print(blue + "\nPlease choose your PIN number: " + reset);
+                pin = input.nextInt();
+                input.nextLine();
 
-            System.out.println(red + "\nCustomerAccount already exists, please login" + reset);
-            this.loginMenu();
+                if (this.accounts.exists(username)) {
+                    System.out.println(warn + "\nUsername already exists" + reset);
+                } else {
+                    CustomerAccount a = new CustomerAccount(username, pin, 0.0, 0.0, "default");
+                    this.accounts.addAccount(a);
+                    System.out.println("\nAccount created, please login");
+                    this.loginMenu();
+                    end = true;
+                }
 
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.nextLine();
+            }
         }
-
-        CustomerAccount a = new CustomerAccount(username, pin, 0.0, 0.0, "default");
-        manager.addAccount(a);
-        System.out.println("\nCustomerAccount created, please login");
-        this.loginMenu();
-
-        System.exit(0);
 
     }
 
@@ -170,27 +195,69 @@ public class Main {
      */
     public void customerMenu() {
 
-        System.out.println();
-        System.out.println(green + "Welcome to customer menu, please enter your choice\n" + reset);
-        System.out.println("Enter 1 to start shopping");
-        System.out.println("Enter 2 to Exit");
-        System.out.print(blue + "\nEnter your choice: " + reset);
-        int num = input.nextInt();
-        input.nextLine();
-        System.out.println();
+        System.out.println(wel + "\nWelcome to customer menu, please enter your choice\n" + reset);
 
-        switch (num) {
-            case 1 -> {
-                this.cart = new ShoppingCart();
-                this.shoppingMenu();
-            }
-            case 2 -> {
-                System.out.println(green + "Thank you for visiting our store" + reset);
-                System.exit(0);
+        boolean end = false;
+        while(!end) {
+            try {
+                System.out.println();
+                System.out.println("Enter 1 to start shopping");
+                System.out.println("Enter 2 to manage your account");
+                System.out.println("Enter 3 to view order history");
+                System.out.println("Enter 4 to Exit");
+
+                System.out.print(in + "\nEnter your choice: " + reset);
+                int num = input.nextInt();
+                input.nextLine();
+                System.out.println();
+
+                switch (num) {
+                    case 1:
+                        this.cart = new ShoppingCart();
+                        this.shoppingMenu();
+                        end = true;
+                        break;
+
+                    case 2:
+                        this.accountSetting();
+                        end = true;
+                        break;
+
+                    case 3:
+                        if (this.orders.haveOrder(this.name)) {
+                            String str = this.orderPresenter.view(this.name);
+                            System.out.println("\nBelow is your history of orders\n");
+                            System.out.println(str);
+                        } else {
+                            System.out.println(warn + "you do not have any order history" + reset);
+                        }
+                        break;
+
+                    case 4:
+                        System.out.println(wel + "Thank you for visiting our store" + reset);
+                        System.exit(0);
+                        end = true;
+                        break;
+
+                    default:
+                        System.out.print(warn + "\nInvalid input\n" + reset);
+                        break;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.nextLine();
             }
         }
-        }
+    }
 
+
+    public void accountSetting() {
+
+    }
+
+
+    public void setColor () {}
 
 
 
@@ -206,23 +273,42 @@ public class Main {
         boolean end = false;
 
         while (!end) {
-            if (cart.isEmpty()) {
-                System.out.println(red + "\nyou have nothing in your cart, please continue shopping or exit" + reset);
-                end = true;
-            } else {
-                System.out.println(green + "\nBelow is what you have in your shopping cart\n" + reset);
-                System.out.println(this.cart.view());
-                System.out.println("\nEnter 1 to remove items");
-                System.out.println("Enter 2 to go back shopping");
-                System.out.print(blue + "\nPlease enter your choice: " + reset);
-                int num = input.nextInt();
 
-                switch (num) {
-                    case 1 -> this.removeItem();
-                    case 2 -> end = true;
+            try {
+                if (cart.isEmpty()) {
+                    System.out.println(warn + "\nyou have nothing in your cart, please continue shopping or exit" + reset);
+                    end = true;
+                } else {
+                    System.out.println(wel + "\nBelow is what you have in your shopping cart\n" + reset);
+                    System.out.println(this.cart.view());
+                    System.out.println("\nEnter 1 to remove items");
+                    System.out.println("Enter 2 to go back shopping");
+                    System.out.print(in + "\nPlease enter your choice: " + reset);
+                    int num = input.nextInt();
+
+                    switch (num) {
+
+                        case 1:
+                            this.removeItem();
+                            break;
+
+                        case 2:
+                            end = true;
+                            break;
+
+                        default:
+                            System.out.print(warn + "\nInvalid input\n" + reset);
+                            break;
+                    }
+
                 }
+
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.next();
             }
         }
+
     }
 
 
@@ -235,18 +321,16 @@ public class Main {
 
         System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
         int id = input.nextInt();
-        while (true) {
+        if (this.cart.exists(id)) {
             System.out.print(blue + "\nPlease enter the quantity you want to remove: " + reset);
             int quantity = input.nextInt();
-            if (quantity <= cart.getAmount(id)) {
+            if (quantity <= cart.getAmount(id) && 0 < quantity) {
                 cart.removeItem(id, quantity);
                 items.add(id, quantity);
                 System.out.println("\nRemove success");
-                break;
-            } else {
-                System.out.println(red + "\nInvalid number, please try again" + reset);
             }
         }
+        System.out.print(warn + "\nInvalid input\n" + reset);
 
     }
 
@@ -257,11 +341,14 @@ public class Main {
      * arrive the store before the store close at 9pm
      */
     public void checkOutMenu() {
-        System.out.println("\nWelcome, your order has been created, you bought " + cart.getQuantity() + " items");
-        System.out.println("You need to pay a total of $" + cart.getTotalPrice());
-        System.out.println("Please remember to bring enough money and visit our store before 9pm");
+        System.out.println(wel + "\nWelcome, your order has been created, you bought " + cart.getQuantity() + " items" + reset);
+        System.out.println("A total of $" + cart.getTotalPrice() +" has been deducted from your account");
+        System.out.println("Please remember to visit our store before 9pm");
         Order ord = new Order(this.name, cart.getQuantity(), cart.getTotalPrice(), "open");
-        Orders.addOrder(ord);
+        this.orders.addOrder(ord);
+        this.accounts.reduceBal(this.name, this.cart.getTotalPrice());
+        this.accounts.addCredit(this.name, this.cart.getTotalPrice());
+
         this.confirmMenu();
     }
 
@@ -271,22 +358,33 @@ public class Main {
      */
     public void confirmMenu() {
 
-        while (true) {
-            System.out.println("\nEnter 1 to confirm that you picked up your items");
-            System.out.println("Enter 2 to exit");
-            System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
-            System.out.print(blue + "\nPlease enter your choice: " + reset);
-            int num = input.nextInt();
-            if (num == 1) {
-                Orders.closeAll(this.name);
-                break;
-            } else if (num == 2) {
-                System.exit(0);
-                break;
-            } else {
-                System.out.println(red + "\nInvalid input" + reset);
+        boolean end = false;
+
+        while (!end) {
+
+            try {
+                System.out.println("\nEnter 1 to confirm that you picked up your items");
+                System.out.println("Enter 2 to exit");
+                System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
+                System.out.print(blue + "\nPlease enter your choice: " + reset);
+                int num = input.nextInt();
+                if (num == 1) {
+                    this.orders.closeAll(this.name);
+                    this.accounts.addCredit(this.name, 1.0);
+                    end = true;
+                } else if (num == 2) {
+                    System.exit(0);
+                    end = true;
+                } else {
+                    System.out.println(warn + "\nInvalid input" + reset);
+                }
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.next();
             }
         }
+
+
     }
 
 
@@ -295,22 +393,19 @@ public class Main {
      * Adds an item into the user's shopping cart and removes that item from the inventory
      */
     public void addItem() {
-        int id;
-        int quantity;
-        System.out.print(blue + "\nPlease inter the item id: " + reset);
-        id = input.nextInt();
-        while (true) {
-            System.out.print(blue + "\nPlease enter amount you want: " + reset);
-            quantity = input.nextInt();
-            if (quantity <= items.getQuantity(id)) {
-                break;
-            } else {
-                System.out.println(red + "\ninvalid number, Please try again");
+
+        System.out.print(blue + "\nPlease enter the id of the item you want to add: " + reset);
+        int id = input.nextInt();
+        if (this.items.exists(id)) {
+            System.out.print(blue + "\nPlease enter the quantity you want to add: " + reset);
+            int quantity = input.nextInt();
+            if (quantity <= this.items.getQuantity(id) && 0 < quantity) {
+                this.cart.addItem(this.items.createItem(id, quantity));
+                this.items.reduce(id, quantity);
+                System.out.println("\nAdd success");
             }
         }
-        cart.addItem(items.createItem(id, quantity));
-        items.reduce(id, quantity);
-        System.out.println("\nitem added successfully");
+        System.out.print(warn + "\nInvalid input\n" + reset);
 
     }
 
@@ -330,40 +425,52 @@ public class Main {
 
         while (!end) {
 
-            System.out.println(green + "\nPlease view our item list\n" + reset);
-            // System.out.println(items.view());
-            System.out.println("Enter 1 to add item to your shopping cart");
-            System.out.println("Enter 2 to view your shopping cart");
-            System.out.println("Enter 3 to checkout");
-            System.out.println("Enter 4 to exit");
-            System.out.print(blue + "\nPlease enter your choice: " + reset);
-            int num = input.nextInt();
+            try {
+                System.out.println(green + "\nPlease view our item list\n" + reset);
+                System.out.println(this.inventoryPresenter.view());
+                System.out.println("Enter 1 to add item to your shopping cart");
+                System.out.println("Enter 2 to view your shopping cart");
+                System.out.println("Enter 3 to checkout");
+                System.out.println("Enter 4 to exit");
+                System.out.print(blue + "\nPlease enter your choice: " + reset);
+                int num = input.nextInt();
 
-            switch (num) {
+                switch (num) {
 
-                case 1:
-                    addItem();
-                    break;
+                    case 1:
+                        addItem();
+                        break;
 
-                case 2:
-                    cartMenu();
-                    break;
+                    case 2:
+                        cartMenu();
+                        break;
 
-                case 3:
-                    if (cart.isEmpty()) {
-                        System.out.println(red + "\nYou cannot checkout with empty shopping cart" + reset);
-                    } else {
+                    case 3:
+                        if (cart.isEmpty()) {
+                            System.out.println(red + "\nYou cannot checkout with empty shopping cart" + reset);
+                        } else {
+                            end = true;
+                            this.checkOutMenu();
+                        }
+                        break;
+
+                    case 4:
+                        items.putBack(cart.getItems());
                         end = true;
-                        this.checkOutMenu();
-                    }
-                    break;
+                        break;
 
-                case 4:
-                    items.putBack(cart.getItems());
-                    end = true;
-                    break;
+                    default:
+                        System.out.print(warn + "\nInvalid input\n" + reset);
+                        break;
+
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.next();
             }
         }
+
     }
 
 
