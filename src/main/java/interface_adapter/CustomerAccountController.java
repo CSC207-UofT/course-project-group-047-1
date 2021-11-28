@@ -102,5 +102,27 @@ public class CustomerAccountController {
         }
         this.db.update(this.accounts);
     }
-    
+
+
+    public void reduceBal(String name, double n) {
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.reduceBal(n);
+            }
+        }
+        this.db.update(this.accounts);
+    }
+
+
+    public void addCredit(String name, double n)  {
+        for (CustomerAccount a : this.accounts) {
+            if (a.getUsername().equals(name)) {
+                a.addCred(n);
+            }
+        }
+        this.db.update(this.accounts);
+    }
+
+
+
 }
