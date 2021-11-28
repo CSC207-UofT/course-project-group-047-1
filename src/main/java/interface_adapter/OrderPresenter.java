@@ -21,14 +21,17 @@ public class OrderPresenter implements Iterable<Order>{
 
     public String view(String name) {
         this.orders = db.read();
+        Iterator<Order> itr = orders.iterator();
 
         StringBuilder str = new StringBuilder();
 
-        for (Order o : this.orders){
-            if (o.getCustomer().equals(name)){
+        while (itr.hasNext()){
+            Order o = itr.next();
+            if (o.getCustomer().equals(name)) {
                 str.append(o.returnInfo());
             }
         }
+
         return str.toString();
     }
 
