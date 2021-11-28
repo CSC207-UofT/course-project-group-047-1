@@ -70,6 +70,7 @@ public class CustomerAccountController {
                 a.setColor(color);
             }
         }
+        this.db.update(this.accounts);
     }
 
 
@@ -79,6 +80,7 @@ public class CustomerAccountController {
                 a.resetUsername(newName);
             }
         }
+        this.db.update(this.accounts);
     }
 
 
@@ -88,6 +90,7 @@ public class CustomerAccountController {
                 a.resetPin(pin);
             }
         }
+        this.db.update(this.accounts);
     }
 
 
@@ -97,6 +100,7 @@ public class CustomerAccountController {
                 a.addBal(n);
             }
         }
+        this.db.update(this.accounts);
     }
     
 }
