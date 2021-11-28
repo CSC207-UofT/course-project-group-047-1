@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class OrderController {
 
-    private OrderDataAccess db;
+    private final OrderDataAccess db;
     private final ArrayList<Order> orders;
 
 
@@ -21,7 +21,7 @@ public class OrderController {
      */
     public OrderController(OrderDataAccess db) {
         this.db = db;
-        this.orders = this.db.read();
+        this.orders = db.read();
     }
 
 
@@ -69,8 +69,12 @@ public class OrderController {
     }
 
 
-    //TODO
-    //when customer change a name the names in order should also change
-    public void changeName(String name, String newName) {}
+    public void changeName(String name, String newName){
+        for (Order o : this.orders){
+            if (o.getCustomer().equals(name)){
+                o.resetUsername(newName);
+            }
+        }
+    }
 
 }
