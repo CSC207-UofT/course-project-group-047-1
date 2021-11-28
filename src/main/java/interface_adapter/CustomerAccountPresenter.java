@@ -18,6 +18,8 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
         Iterator<CustomerAccount> itr = this.accounts.iterator();
 
+        this.account = null;
+
         while (itr.hasNext()){
             CustomerAccount a = itr.next();
             if (a.getUsername().equals(username)) {
