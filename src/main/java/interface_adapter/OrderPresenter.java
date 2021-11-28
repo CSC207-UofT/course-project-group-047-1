@@ -18,6 +18,7 @@ public class OrderPresenter {
 
 
     public String view(String name) {
+        this.orders = db.read();
 
         StringBuilder str = new StringBuilder();
 
@@ -28,5 +29,6 @@ public class OrderPresenter {
         }
         return str.toString();
     }
+
 
 }

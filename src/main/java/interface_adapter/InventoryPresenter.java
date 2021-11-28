@@ -21,6 +21,7 @@ public class InventoryPresenter {
      * @return a string representation of GroceryItems in the store
      */
     public String view() {
+        this.items = db.read();
 
         StringBuilder string = new StringBuilder();
 

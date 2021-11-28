@@ -95,7 +95,7 @@ public class Main {
 
                 System.out.println("\nLogin success");
                 this.name = username;
-                if (Orders.haveOrder(name)) {
+                if (Orders.haveOpenOrder(name)) {
                     System.out.println(red + "\nYou have an unfinished order, please complete this order first" + reset);
                     this.confirmMenu();
                 } else {

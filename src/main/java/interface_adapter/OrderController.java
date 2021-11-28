@@ -42,7 +42,7 @@ public class OrderController {
      * @param name: name of customer
      * @return true if the customer has an open order, false if otherwise
      */
-    public boolean haveOrder(String name) {
+    public boolean haveOpenOrder(String name) {
         for (Order o : this.orders) {
             if (Objects.equals(o.getCustomer(), name)) {
                 if (Objects.equals(o.getStatus(), "open")) {
@@ -76,5 +76,14 @@ public class OrderController {
             }
         }
     }
+
+
+    public boolean haveOrder(String name) {
+        for (Order o: this.orders) {
+            if (Objects.equals(o.getCustomer(), name)) {return true;}
+        }
+        return false;
+    }
+
 
 }
