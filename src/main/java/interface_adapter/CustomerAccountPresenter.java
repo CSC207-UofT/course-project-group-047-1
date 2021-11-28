@@ -8,24 +8,31 @@ import java.util.ArrayList;
 public class CustomerAccountPresenter {
 
     CustomerDataAccess db;
-
     ArrayList<CustomerAccount> accounts;
+    CustomerAccount account;
 
-    public CustomerAccountPresenter(CustomerDataAccess db) {
+    public CustomerAccountPresenter(CustomerDataAccess db, String username) {
         this.db = db;
         this.accounts = db.read();
-    }
-
-    public String view(String name) {
-
         for (CustomerAccount a : this.accounts) {
-            if (a.getUsername().equals(name)) {
-                return "Username: " + a.getUsername() + "\nPin: " + a.getPin() + "\nBalance: " + a.getBal()
-                        + "\nCredit: " + a.getCred() + "\nColor Preference: " + a.getColor() + "\n";
+            if (a.getUsername().equals(username)) {
+                this.account = a;
             }
         }
-
-        return "Account Not Found";
     }
+
+    public String viewName() {return "Username: " + this.account.getUsername() + "\n";}
+
+
+    public String viewPin() {return "Pin: " + this.account.getPin() + "\n";}
+
+
+    public String viewBal() {return "Balance: " + this.account.getBal() + "\n";}
+
+
+    public String viewCred() {return "Credit: " + this.account.getCred() + "\n";}
+
+
+    public String viewColor() {return "Color Preference: " + this.account.getColor() + "\n";}
 
 }
