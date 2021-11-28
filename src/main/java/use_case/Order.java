@@ -58,12 +58,13 @@ public class Order {
      */
     public void setStatus(String s) {this.status = s;}
 
+
     public String returnInfo(){
-        return "Status: " + this.getStatus() + "Total number of items: "
-                + this.getTotalQuantity() + "Total price: " + this.getValue();
+        return "Status: " + this.getStatus() + "\nTotal number of items: " + this.getTotalQuantity()
+                + "\nTotal price: " + this.getValue() + "\n\n";
     }
 
-    public void resetUsername(String new_name) {this.name = new_name;}
 
+    public void resetUsername(String new_name) {this.name = new_name;}
 
 }
