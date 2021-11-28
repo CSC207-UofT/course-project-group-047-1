@@ -4,6 +4,7 @@ import interface_adapter.*;
 import use_case.*;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -30,10 +31,12 @@ public class Main {
     public final String reset = "\u001B[0m";
     public final String green = "\u001B[32m";
     public final String blue = "\u001B[34m";
+    public final String yellow = "\u001B[33m";
 
-    String wel = this.green;
-    String warn = this.red;
-    String in = this.blue;
+    String wel = green;
+    String warn = red;
+    String in = blue;
+    String ord = yellow;
 
 
     /**
@@ -43,6 +46,13 @@ public class Main {
      * Choice 2: login to an account, which will call the loginMenu method
      * Choice 3: exit, will exit the program
      */
+
+
+    public void update() {
+        this.accountPresenter = new CustomerAccountPresenter(new CustomerAccountAccess(), this.name);
+    }
+
+
     public void mainMenu() {
 
         boolean end = false;
@@ -86,7 +96,7 @@ public class Main {
 
         }
 
-        System.out.println(green + "\nThank you for visiting our store" + reset);
+        System.out.println(wel + "\nThank you for visiting our store" + reset);
         input.close();
         System.exit(0);
     }
@@ -112,7 +122,7 @@ public class Main {
             try {
                 System.out.print(in + "\nPlease enter your username: " + reset);
                 username = input.nextLine();
-                System.out.print(in + "\nPlease enter your PIN number: " + reset);
+                System.out.print(in + "\nPlease enter your pin number: " + reset);
                 pin = input.nextInt();
                 input.nextLine();
 
@@ -162,9 +172,9 @@ public class Main {
         while (!end) {
 
             try {
-                System.out.print(blue + "\nPlease choose your customer username: " + reset);
+                System.out.print(in + "\nPlease choose your customer username: " + reset);
                 username = input.nextLine();
-                System.out.print(blue + "\nPlease choose your PIN number: " + reset);
+                System.out.print(in + "\nPlease choose your PIN number: " + reset);
                 pin = input.nextInt();
                 input.nextLine();
 
@@ -213,21 +223,23 @@ public class Main {
 
                 switch (num) {
                     case 1:
-                        this.cart = new ShoppingCart();
-                        this.shoppingMenu();
-                        end = true;
+                        if(this.accountPresenter.viewBal() >= 0) {
+                            this.cart = new ShoppingCart();
+                            this.shoppingMenu();
+                        } else {
+                            System.out.println(warn + "you do not have enough balance" + reset);
+                        }
                         break;
 
                     case 2:
                         this.accountSetting();
-                        end = true;
                         break;
 
                     case 3:
                         if (this.orders.haveOrder(this.name)) {
                             String str = this.orderPresenter.view(this.name);
                             System.out.println("\nBelow is your history of orders\n");
-                            System.out.println(str);
+                            System.out.println(this.ord + str + reset);
                         } else {
                             System.out.println(warn + "you do not have any order history" + reset);
                         }
@@ -235,8 +247,8 @@ public class Main {
 
                     case 4:
                         System.out.println(wel + "Thank you for visiting our store" + reset);
-                        System.exit(0);
                         end = true;
+                        System.exit(0);
                         break;
 
                     default:
@@ -253,12 +265,104 @@ public class Main {
 
 
     public void accountSetting() {
+        System.out.println(wel + "\nWelcome, below is your current information" + reset);
+        boolean end = false;
+
+        while (!end) {
+
+            try {
+                System.out.println("\nyour current username: " + this.accountPresenter.viewName());
+                System.out.println("your current pin: " + this.accountPresenter.viewPin());
+                System.out.println("your current color setting: " + this.accountPresenter.viewColor());
+                System.out.println("your current credit: " + this.accountPresenter.viewCred());
+                System.out.println("your current balance: " + this.accountPresenter.viewBal() + "\n");
+
+                System.out.println("Enter 1 to change your username");
+                System.out.println("Enter 2 to change your pin");
+                System.out.println("Enter 3 to add balance");
+                System.out.println("Enter 4 to change your color setting");
+                System.out.println("Enter 5 to go back");
+
+                System.out.print(in + "\nPlease enter your choice: " + reset);
+                int n = input.nextInt();
+                switch (n) {
+
+                    case 5:
+                        end = true;
+                        break;
+
+                    case 1:
+                        this.changeName();
+                        break;
+
+                    case 2:
+                        this.changePin();
+                        break;
+
+                    case 3:
+                        this.addBalance();
+                        break;
+
+                    case 4:
+                        this.changeColor();
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.print(warn + "\nInvalid input\n" + reset);
+                input.next();
+            }
+        }
 
     }
 
 
-    public void setColor () {}
+    public void changeName() {
+        System.out.print(in + "\nEnter the new username you want: " + reset);
+        String n = input.next();
+        if (this.accounts.exists(n)) {
+            System.out.print(warn + "\nusername already exists\n" + reset);
+        } else {
+            this.accounts.changeUsername(this.name, n);
+            this.orders.changeName(this.name, n);
+            this.name = n;
+            this.update();
+            System.out.println("\nName change success");
+        }
+    }
 
+
+    public void changeColor() {
+
+    }
+
+
+    public void addBalance() {}
+
+
+    public void changePin() {
+        System.out.print(in + "\nEnter the new pin you want: " + reset);
+        int n = input.nextInt();
+        this.accounts.changePin(this.name, n);
+        this.update();
+        System.out.println("\nPin change success");
+
+    }
+
+
+    public void setColor() {
+        String color = this.accountPresenter.viewColor();
+        if (Objects.equals(color, "all_black")) {
+            warn = "";
+            in = "";
+            wel = "";
+            ord = "";
+        } else if(Objects.equals(color, "reverse")) {
+            warn = green;
+            in = yellow;
+            wel = red;
+            ord = blue;
+        }
+    }
 
 
     /**
@@ -319,18 +423,19 @@ public class Main {
      */
     public void removeItem() {
 
-        System.out.print(blue + "\nPlease enter the id of the item you want to remove: " + reset);
+        System.out.print(in + "\nPlease enter the id of the item you want to remove: " + reset);
         int id = input.nextInt();
         if (this.cart.exists(id)) {
-            System.out.print(blue + "\nPlease enter the quantity you want to remove: " + reset);
+            System.out.print(in + "\nPlease enter the quantity you want to remove: " + reset);
             int quantity = input.nextInt();
             if (quantity <= cart.getAmount(id) && 0 < quantity) {
                 cart.removeItem(id, quantity);
                 items.add(id, quantity);
                 System.out.println("\nRemove success");
-            }
-        }
-        System.out.print(warn + "\nInvalid input\n" + reset);
+            } else {System.out.print(warn + "\nInvalid input\n" + reset);}
+
+        } else {System.out.print(warn + "\nInvalid input\n" + reset);}
+
 
     }
 
@@ -348,6 +453,7 @@ public class Main {
         this.orders.addOrder(ord);
         this.accounts.reduceBal(this.name, this.cart.getTotalPrice());
         this.accounts.addCredit(this.name, this.cart.getTotalPrice());
+        this.update();
 
         this.confirmMenu();
     }
@@ -365,12 +471,14 @@ public class Main {
             try {
                 System.out.println("\nEnter 1 to confirm that you picked up your items");
                 System.out.println("Enter 2 to exit");
-                System.out.println(red + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed");
-                System.out.print(blue + "\nPlease enter your choice: " + reset);
+                System.out.println(warn + "\nIMPORTANT NOTICE: Once you confirmed, your order will be closed" + reset);
+                System.out.print(in + "\nPlease enter your choice: " + reset);
                 int num = input.nextInt();
                 if (num == 1) {
                     this.orders.closeAll(this.name);
                     this.accounts.addCredit(this.name, 1.0);
+                    System.out.println(wel + "\nThank you for your order" + reset);
+                    this.update();
                     end = true;
                 } else if (num == 2) {
                     System.exit(0);
@@ -394,18 +502,20 @@ public class Main {
      */
     public void addItem() {
 
-        System.out.print(blue + "\nPlease enter the id of the item you want to add: " + reset);
+        System.out.print(in + "\nPlease enter the id of the item you want to add: " + reset);
         int id = input.nextInt();
         if (this.items.exists(id)) {
-            System.out.print(blue + "\nPlease enter the quantity you want to add: " + reset);
+            System.out.print(in + "\nPlease enter the quantity you want to add: " + reset);
             int quantity = input.nextInt();
             if (quantity <= this.items.getQuantity(id) && 0 < quantity) {
                 this.cart.addItem(this.items.createItem(id, quantity));
                 this.items.reduce(id, quantity);
                 System.out.println("\nAdd success");
+            } else {
+                System.out.print(warn + "\nInvalid input\n" + reset);
             }
-        }
-        System.out.print(warn + "\nInvalid input\n" + reset);
+        } else {System.out.print(warn + "\nInvalid input\n" + reset);}
+
 
     }
 
@@ -426,13 +536,13 @@ public class Main {
         while (!end) {
 
             try {
-                System.out.println(green + "\nPlease view our item list\n" + reset);
+                System.out.println(wel + "\nPlease view our item list\n" + reset);
                 System.out.println(this.inventoryPresenter.view());
                 System.out.println("Enter 1 to add item to your shopping cart");
                 System.out.println("Enter 2 to view your shopping cart");
                 System.out.println("Enter 3 to checkout");
-                System.out.println("Enter 4 to exit");
-                System.out.print(blue + "\nPlease enter your choice: " + reset);
+                System.out.println("Enter 4 to go back");
+                System.out.print(in + "\nPlease enter your choice: " + reset);
                 int num = input.nextInt();
 
                 switch (num) {
@@ -447,7 +557,7 @@ public class Main {
 
                     case 3:
                         if (cart.isEmpty()) {
-                            System.out.println(red + "\nYou cannot checkout with empty shopping cart" + reset);
+                            System.out.println(warn + "\nYou cannot checkout with empty shopping cart" + reset);
                         } else {
                             end = true;
                             this.checkOutMenu();
