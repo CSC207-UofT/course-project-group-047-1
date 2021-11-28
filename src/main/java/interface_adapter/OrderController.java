@@ -75,6 +75,7 @@ public class OrderController {
                 o.resetUsername(newName);
             }
         }
+        this.db.update(this.orders);
     }
 
 
