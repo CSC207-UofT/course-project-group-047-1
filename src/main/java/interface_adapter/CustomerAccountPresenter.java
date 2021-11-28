@@ -21,18 +21,39 @@ public class CustomerAccountPresenter {
         }
     }
 
-    public String viewName() {return "Username: " + this.account.getUsername() + "\n";}
+
+    private void update() {
+        this.accounts = db.read();
+    }
 
 
-    public String viewPin() {return "Pin: " + this.account.getPin() + "\n";}
+    public String viewName() {
+        this.update();
+        return "Username: " + this.account.getUsername() + "\n";
+    }
 
 
-    public String viewBal() {return "Balance: " + this.account.getBal() + "\n";}
+    public String viewPin() {
+        this.update();
+        return "Pin: " + this.account.getPin() + "\n";
+    }
 
 
-    public String viewCred() {return "Credit: " + this.account.getCred() + "\n";}
+    public String viewBal() {
+        this.update();
+        return "Balance: " + this.account.getBal() + "\n";
+    }
 
 
-    public String viewColor() {return "Color Preference: " + this.account.getColor() + "\n";}
+    public String viewCred() {
+        this.update();
+        return "Credit: " + this.account.getCred() + "\n";
+    }
+
+
+    public String viewColor() {
+        this.update();
+        return "Color Preference: " + this.account.getColor() + "\n";
+    }
 
 }
