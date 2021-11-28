@@ -2,10 +2,12 @@ package interface_adapter;
 
 import use_case.CustomerAccount;
 import use_case.CustomerDataAccess;
+import use_case.Order;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class CustomerAccountPresenter {
+public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     CustomerDataAccess db;
     ArrayList<CustomerAccount> accounts;
@@ -56,4 +58,27 @@ public class CustomerAccountPresenter {
         return "Color Preference: " + this.account.getColor() + "\n";
     }
 
+
+    @Override
+    public Iterator<CustomerAccount> iterator() {
+        return new CustomerAccountIterator();
+    }
+
+
+    private class CustomerAccountIterator implements Iterator<CustomerAccount>{
+
+        private int customer = 0;
+
+        @Override
+        public boolean hasNext() {
+            return this.customer < db.read().size();
+        }
+
+
+        @Override
+        public CustomerAccount next() {
+            this.customer += 1;
+            return db.read().get(customer);
+        }
+    }
 }
