@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public class GroceryInventory {
 
-    private InventoryDataAccess db;
-    private ArrayList<GroceryItem> items = new ArrayList<>();
+    private final InventoryDataAccess db;
+    private final ArrayList<GroceryItem> items;
 
 
     /**
@@ -21,32 +21,18 @@ public class GroceryInventory {
      */
     public GroceryInventory(InventoryDataAccess db) {
         this.db = db;
-        items = this.db.read();
+        items = db.read();
     }
 
 
-    //TODO migrate this method to OrderPresenter
-    /**
-     * @return a string representation of GroceryItems in the store
-     */
-    public String view() {
-
-        StringBuilder string = new StringBuilder();
-
-        for (GroceryItem item : this.items) {
-
-            string.append(item.getId()).append(" ").append(item.getName()).append(" x ").append(item.getQuantity())
-                    .append(", Price: ").append(item.getPrice()).append("$ each\n");
-
+    public boolean exists(int id) {
+        for (GroceryItem i : this.items){
+            if (i.getId() == id){
+                return true;
+            }
         }
-
-        return string.toString();
-
+        return false;
     }
-
-
-    //TODO this method check if n is an id that exists
-    public boolean exists() {return true;}
 
 
     /**
