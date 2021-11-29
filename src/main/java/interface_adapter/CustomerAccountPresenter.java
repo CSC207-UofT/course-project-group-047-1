@@ -10,23 +10,10 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     CustomerDataAccess db;
     ArrayList<CustomerAccount> accounts;
-    CustomerAccount account;
 
-    public CustomerAccountPresenter(CustomerDataAccess db, String username) {
+    public CustomerAccountPresenter(CustomerDataAccess db) {
         this.db = db;
         this.accounts = db.read();
-
-        Iterator<CustomerAccount> itr = this.accounts.iterator();
-
-        this.account = null;
-
-        while (itr.hasNext()){
-            CustomerAccount a = itr.next();
-            if (a.getUsername().equals(username)) {
-                this.account = a;
-                break;
-            }
-        }
     }
 
 
@@ -35,33 +22,73 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
     }
 
 
-    public String viewName() {
+    public String viewName(String name) {
         this.update();
-        return this.account.getUsername();
+        Iterator<CustomerAccount> itr = accounts.iterator();
+
+        while (itr.hasNext()){
+            CustomerAccount a = itr.next();
+            if (a.getUsername().equals(name)) {
+                return a.getUsername();
+            }
+        }
+        return "";
     }
 
 
-    public int viewPin() {
+    public int viewPin(String name) {
         this.update();
-        return this.account.getPin();
+        Iterator<CustomerAccount> itr = accounts.iterator();
+
+        while (itr.hasNext()){
+            CustomerAccount a = itr.next();
+            if (a.getUsername().equals(name)) {
+                return a.getPin();
+            }
+        }
+        return 0;
     }
 
 
-    public double viewBal() {
+    public double viewBal(String name) {
         this.update();
-        return this.account.getBal();
+        Iterator<CustomerAccount> itr = accounts.iterator();
+
+        while (itr.hasNext()){
+            CustomerAccount a = itr.next();
+            if (a.getUsername().equals(name)) {
+                return a.getBal();
+            }
+        }
+        return 0;
     }
 
 
-    public double viewCred() {
+    public double viewCred(String name) {
         this.update();
-        return this.account.getCred();
+        Iterator<CustomerAccount> itr = accounts.iterator();
+
+        while (itr.hasNext()){
+            CustomerAccount a = itr.next();
+            if (a.getUsername().equals(name)) {
+                return a.getCred();
+            }
+        }
+        return 0;
     }
 
 
-    public String viewColor() {
+    public String viewColor(String name) {
         this.update();
-        return this.account.getColor();
+        Iterator<CustomerAccount> itr = accounts.iterator();
+
+        while (itr.hasNext()){
+            CustomerAccount a = itr.next();
+            if (a.getUsername().equals(name)) {
+                return a.getColor();
+            }
+        }
+        return "";
     }
 
 
