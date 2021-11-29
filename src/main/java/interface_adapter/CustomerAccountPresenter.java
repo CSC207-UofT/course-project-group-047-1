@@ -24,12 +24,10 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     public String viewName(String name) {
         this.update();
-        Iterator<CustomerAccount> itr = accounts.iterator();
 
-        while (itr.hasNext()){
-            CustomerAccount a = itr.next();
+        for (CustomerAccount a : accounts) {
             if (a.getUsername().equals(name)) {
-                return a.getUsername();
+                return (a.getUsername());
             }
         }
         return "";
@@ -38,10 +36,8 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     public int viewPin(String name) {
         this.update();
-        Iterator<CustomerAccount> itr = accounts.iterator();
 
-        while (itr.hasNext()){
-            CustomerAccount a = itr.next();
+        for (CustomerAccount a : accounts) {
             if (a.getUsername().equals(name)) {
                 return a.getPin();
             }
@@ -52,10 +48,8 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     public double viewBal(String name) {
         this.update();
-        Iterator<CustomerAccount> itr = accounts.iterator();
 
-        while (itr.hasNext()){
-            CustomerAccount a = itr.next();
+        for (CustomerAccount a : accounts) {
             if (a.getUsername().equals(name)) {
                 return a.getBal();
             }
@@ -66,10 +60,8 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     public double viewCred(String name) {
         this.update();
-        Iterator<CustomerAccount> itr = accounts.iterator();
 
-        while (itr.hasNext()){
-            CustomerAccount a = itr.next();
+        for (CustomerAccount a : accounts) {
             if (a.getUsername().equals(name)) {
                 return a.getCred();
             }
@@ -80,10 +72,8 @@ public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
 
     public String viewColor(String name) {
         this.update();
-        Iterator<CustomerAccount> itr = accounts.iterator();
 
-        while (itr.hasNext()){
-            CustomerAccount a = itr.next();
+        for (CustomerAccount a : accounts) {
             if (a.getUsername().equals(name)) {
                 return a.getColor();
             }
