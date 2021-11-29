@@ -3,7 +3,6 @@ package interface_adapter;
 import entity.GroceryItem;
 import use_case.InventoryDataAccess;
 
-import java.io.*;
 import java.util.ArrayList;
 
 
