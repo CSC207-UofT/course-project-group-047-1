@@ -1,14 +1,12 @@
 package use_case;
 
-import entities.Customer;
-
 
 /**
  * An order records a purchase by a customer
  */
 public class Order {
 
-    private final String name;
+    private String name;
     private final int amount;
     private final double price;
     private String status;
@@ -23,17 +21,6 @@ public class Order {
      */
     public Order(String name, int amount, Double price) {
         this.name = name;
-        this.amount = amount;
-        this.price = price;
-        this.status = "open";
-    }
-
-
-    /**
-     * Another constructor
-     */
-    public Order(Customer customer, int amount, Double price) {
-        this.name = customer.getName();
         this.amount = amount;
         this.price = price;
         this.status = "open";
@@ -71,5 +58,13 @@ public class Order {
      */
     public void setStatus(String s) {this.status = s;}
 
+
+    public String returnInfo(){
+        return "Status: " + this.getStatus() + "\nTotal number of items: " + this.getTotalQuantity()
+                + "\nTotal price: " + this.getValue() + "\n\n";
+    }
+
+
+    public void resetUsername(String new_name) {this.name = new_name;}
 
 }

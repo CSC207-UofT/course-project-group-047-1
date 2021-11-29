@@ -1,7 +1,7 @@
-package controller_test;
+package use_case_test;
 
-import controllers.ShoppingCart;
-import entities.GroceryItem;
+import use_case.ShoppingCart;
+import entity.GroceryItem;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;

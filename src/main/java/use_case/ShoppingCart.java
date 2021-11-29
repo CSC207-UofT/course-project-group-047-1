@@ -1,8 +1,9 @@
-package controllers;
+package use_case;
 
-import entities.GroceryItem;
+import entity.GroceryItem;
 
 import java.util.ArrayList;
+
 
 /**
  * A ShoppingCart temporarily stores grocery items for customers.
@@ -50,6 +51,14 @@ public class ShoppingCart {
                 i.reduce(n);
             }
         }
+    }
+
+
+    public boolean exists(int id) {
+        for (GroceryItem n: this.items) {
+            if (n.getId() == id) {return true;}
+        }
+        return false;
     }
 
 
