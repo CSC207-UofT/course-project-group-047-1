@@ -36,4 +36,12 @@ public class CreditTest {
         assertEquals(-1.0, cred1.getCred(), 0.0);
         assertEquals(1.0, cred2.getCred(), 0.0);
     }
+
+    @Test(timeout = 50)
+    public void testSetCred() {
+        cred1.setCred(10);
+        cred2.setCred(10);
+        assertEquals(cred1.getCred(), cred2.getCred(), 0.0);
+    }
+
 }
