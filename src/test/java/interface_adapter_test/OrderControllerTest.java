@@ -49,6 +49,6 @@ public class OrderControllerTest {
     @Test
     public void testHaveOrder() {
         assertTrue(OrderCon.haveOrder("eddy"));
-        assertFalse(OrderCon.haveOrder("hi"));
+        assertFalse(OrderCon.haveOrder("user"));
     }
 }
