@@ -1,7 +1,8 @@
-package interface_adapter;
+package interface_adapter_test;
 
 import entity.GroceryItem;
 import external_interface.InventoryAccess;
+import interface_adapter.GroceryInventory;
 import org.junit.Before;
 import org.junit.Test;
 import use_case.InventoryDataAccess;
@@ -15,7 +16,6 @@ public class GroceryInventoryTest {
     InventoryDataAccess db = new InventoryAccess();
     ArrayList<GroceryItem> items;
     GroceryItem apple;
-
 
     @Before
     public void setUp() {
