@@ -1,5 +1,6 @@
 package use_case_test;
 
+import org.junit.jupiter.api.BeforeEach;
 import use_case.ShoppingCart;
 import entity.GroceryItem;
 import org.junit.Before;
