@@ -28,4 +28,12 @@ public class BalanceTest {
         assertEquals(1.0, bal1.getBal(), 0.0);
         assertEquals(3.0, bal2.getBal(), 0.0);
     }
+
+    @Test(timeout = 50)
+    public void testRemoveBal() {
+        bal1.removeBal(1);
+        bal2.removeBal(1);
+        assertEquals(-1.0, bal1.getBal(), 0.0);
+        assertEquals(1.0, bal2.getBal(), 0.0);
+    }
 }
