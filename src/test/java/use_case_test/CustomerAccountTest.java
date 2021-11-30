@@ -22,36 +22,54 @@ public class CustomerAccountTest {
         customer2 = new CustomerAccount("Mike", 135, 20.0, 10.0, "blue");
     }
 
+    /**
+     * Test for the getUsername method.
+     */
     @Test(timeout = 50)
     public void testGetUsername() {
         assertEquals("Adam", customer1.getUsername());
         assertEquals("Mike", customer2.getUsername());
     }
 
+    /**
+     * Test for the getPin method.
+     */
     @Test(timeout = 50)
     public void testGetPin() {
         assertEquals(123, customer1.getPin());
         assertEquals(135, customer2.getPin());
     }
 
+    /**
+     * Test for the cred method.
+     */
     @Test(timeout = 50)
     public void testCred() {
         assertEquals(50.0, customer1.getCred());
         assertEquals(20.0, customer2.getCred());
     }
 
+    /**
+     * Test for the bal method.
+     */
     @Test(timeout = 50)
     public void testBal() {
         assertEquals(50.0, customer1.getBal());
         assertEquals(10.0, customer2.getBal());
     }
 
+    /**
+     * Test for the getColor method.
+     */
     @Test(timeout = 50)
     public void testGetColor() {
         assertEquals("red", customer1.getColor());
         assertEquals("blue", customer2.getColor());
     }
 
+    /**
+     * Test for the resetUsername method.
+     */
     @Test(timeout = 50)
     public void testResetUsername() {
         assertEquals("Adam", customer1.getUsername());
@@ -60,6 +78,9 @@ public class CustomerAccountTest {
         assertEquals("Mike", customer2.getUsername());
     }
 
+    /**
+     * Test for the resetPin method.
+     */
     @Test(timeout = 50)
     public void testResetPin() {
         assertEquals(123, customer1.getPin());
@@ -67,6 +88,9 @@ public class CustomerAccountTest {
         assertEquals(234, customer1.getPin());
     }
 
+    /**
+     * Test for the setColor method.
+     */
     @Test(timeout = 50)
     public void testSetColor() {
         assertEquals("red", customer1.getColor());
@@ -74,6 +98,9 @@ public class CustomerAccountTest {
         assertEquals("green", customer1.getColor());
     }
 
+     /**
+     * Test for the addCred method.
+     */
     @Test(timeout = 50)
     public void testAddCred() {
         assertEquals(50.0, customer1.getCred());
@@ -81,6 +108,9 @@ public class CustomerAccountTest {
         assertEquals(60.0, customer1.getCred());
     }
 
+    /**
+     * Test for the addBal method.
+     */
     @Test(timeout = 50)
     public void testAddBal() {
         assertEquals(50.0, customer1.getBal());
@@ -88,6 +118,9 @@ public class CustomerAccountTest {
         assertEquals(60.0, customer1.getBal());
     }
 
+    /**
+     * Test for the reduceCred method.
+     */
     @Test(timeout = 50)
     public void testReduceCred() {
         assertEquals(50.0, customer1.getCred());
@@ -95,6 +128,9 @@ public class CustomerAccountTest {
         assertEquals(40.0, customer1.getCred());
     }
 
+    /**
+     * Test for the reduceBal method.
+     */
     @Test(timeout = 50)
     public void testReduceBal() {
         assertEquals(50.0, customer1.getBal());
