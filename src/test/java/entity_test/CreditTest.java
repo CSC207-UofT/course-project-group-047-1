@@ -28,4 +28,12 @@ public class CreditTest {
         assertEquals(1.0, cred1.getCred(), 0.0);
         assertEquals(3.0, cred2.getCred(), 0.0);
     }
+
+    @Test(timeout = 50)
+    public void testRemoveCred() {
+        cred1.removeCredit(1);
+        cred2.removeCredit(1);
+        assertEquals(-1.0, cred1.getCred(), 0.0);
+        assertEquals(1.0, cred2.getCred(), 0.0);
+    }
 }
