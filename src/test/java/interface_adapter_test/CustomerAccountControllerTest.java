@@ -31,7 +31,7 @@ public class CustomerAccountControllerTest {
         CAController.addAccount(account1);
     }
 
-    @Test (timeout = 50)
+    @Test(timeout = 50)
     public void testAddAccount() {
         CAController.addAccount(account2);
         assertTrue(CAController.exists("ats"));

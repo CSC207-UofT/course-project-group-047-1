@@ -19,27 +19,27 @@ public class CustomerAccountPresenterTest {
 
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testViewName() {
         assertEquals("eddy", CAPre.viewName("eddy"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testViewPin() {
         assertEquals(1111, CAPre.viewPin("eddy"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testViewBal() {
         assertEquals(0.0, CAPre.viewBal("eddy"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testViewCred() {
         assertEquals(1.0, CAPre.viewCred("eddy"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testViewColor() {
         assertEquals("invert", CAPre.viewColor("eddy"));
     }
