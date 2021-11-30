@@ -41,7 +41,7 @@ public class CustomerAccountControllerTest {
     public void testCheck() {
         assertTrue(CAController.check("name", 12345));
         assertFalse(CAController.check("name", 12456));
-        assertFalse(CAController.check("jisdjgisbn", 12345));
+        assertFalse(CAController.check("Apple", 12345));
     }
 
     @Test(timeout = 50)

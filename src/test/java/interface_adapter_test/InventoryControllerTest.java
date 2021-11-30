@@ -2,7 +2,7 @@ package interface_adapter_test;
 
 import entity.GroceryItem;
 import external_interface.InventoryAccess;
-import interface_adapter.GroceryInventory;
+import interface_adapter.InventoryController;
 import org.junit.Before;
 import org.junit.Test;
 import use_case.InventoryDataAccess;
@@ -11,15 +11,15 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GroceryInventoryTest {
-    GroceryInventory GroIn;
+public class InventoryControllerTest {
+    InventoryController GroIn;
     InventoryDataAccess db = new InventoryAccess();
     ArrayList<GroceryItem> items;
     GroceryItem apple;
 
     @Before
     public void setUp() {
-        GroIn = new GroceryInventory(db);
+        GroIn = new InventoryController(db);
         apple = new GroceryItem(1, "Apple", 4.0, 5);
         items = new ArrayList<GroceryItem>();
         items.add(apple);

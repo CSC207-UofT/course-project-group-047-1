@@ -21,26 +21,26 @@ public class CustomerAccountPresenterTest {
 
     @Test(timeout = 50)
     public void testViewName() {
-        assertEquals("eddy", CAPre.viewName("eddy"));
+        assertEquals("example", CAPre.viewName("example"));
     }
 
     @Test(timeout = 50)
     public void testViewPin() {
-        assertEquals(1111, CAPre.viewPin("eddy"));
+        assertEquals(1111, CAPre.viewPin("example"));
     }
 
     @Test(timeout = 50)
     public void testViewBal() {
-        assertEquals(0.0, CAPre.viewBal("eddy"));
+        assertEquals(0.0, CAPre.viewBal("example"));
     }
 
     @Test(timeout = 50)
     public void testViewCred() {
-        assertEquals(1.0, CAPre.viewCred("eddy"));
+        assertEquals(1.0, CAPre.viewCred("example"));
     }
 
     @Test(timeout = 50)
     public void testViewColor() {
-        assertEquals("invert", CAPre.viewColor("eddy"));
+        assertEquals("invert", CAPre.viewColor("example"));
     }
 }

@@ -1,5 +1,10 @@
-eddy
+example
 1111
 1.0
 0.0
 invert
+eddy
+1111
+0.0
+0.0
+default
