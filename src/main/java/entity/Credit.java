@@ -2,14 +2,14 @@ package entity;
 
 public class Credit {
 
-    public Credit (double cred){
-        this.cred = cred;
-    }
-
     private double cred;
 
     public Credit() {
         this.cred = 0;
+    }
+
+    public Credit(double cred){
+        this.cred = cred;
     }
 
     public void addCredit(double c) {
