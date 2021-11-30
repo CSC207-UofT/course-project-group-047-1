@@ -22,31 +22,31 @@ public class OrderControllerTest {
         order1 = new Order("User1", 1, 10.0, "open");
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testAddOrder() {
        OrderCon.addOrder(order1);
        assertTrue(OrderCon.haveOrder("User1"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testHaveOpenOrder() {
         assertTrue(OrderCon.haveOpenOrder("User1"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testCloseAll() {
         OrderCon.closeAll("User1");
         assertFalse(OrderCon.haveOpenOrder("User1"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testChangeName() {
         OrderCon.changeName("User1", "User2");
         assertTrue(OrderCon.haveOrder("User2"));
         assertFalse(OrderCon.haveOrder("User1"));
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testHaveOrder() {
         assertTrue(OrderCon.haveOrder("eddy"));
         assertFalse(OrderCon.haveOrder("user"));
