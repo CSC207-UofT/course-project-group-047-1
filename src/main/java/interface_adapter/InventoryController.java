@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * This class manage all items in store
  */
-public class GroceryInventory {
+public class InventoryController {
 
     private final InventoryDataAccess db;
     private final ArrayList<GroceryItem> items;
@@ -18,7 +18,7 @@ public class GroceryInventory {
     /**
      * Constructor
      */
-    public GroceryInventory(InventoryDataAccess db) {
+    public InventoryController(InventoryDataAccess db) {
         this.db = db;
         items = db.read();
     }

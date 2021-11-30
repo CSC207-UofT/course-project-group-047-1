@@ -19,7 +19,7 @@ public class Main {
     private String name;
 
     private final CustomerAccountController accounts = new CustomerAccountController(new CustomerAccountAccess());
-    private final GroceryInventory items = new GroceryInventory(new InventoryAccess());
+    private final InventoryController items = new InventoryController(new InventoryAccess());
     private final OrderController orders = new OrderController(new OrderAccess());
 
     private final CustomerAccountPresenter accountPresenter = new CustomerAccountPresenter(new CustomerAccountAccess());
@@ -487,7 +487,7 @@ public class Main {
         System.out.println("\nyour order has been created, you bought " + cart.getQuantity() + " items");
         System.out.println("A total of $" + cart.getTotalPrice() +" has been deducted from your account");
         System.out.println("Please remember to visit our store before 9pm");
-        Order ord = new Order(this.name, cart.getQuantity(), cart.getTotalPrice(), "open");
+        Order ord = new Order(this.name, cart.getQuantity(), cart.getTotalPrice());
         this.orders.addOrder(ord);
         this.accounts.reduceBal(this.name, this.cart.getTotalPrice());
         this.accounts.addCredit(this.name, this.cart.getTotalPrice());
