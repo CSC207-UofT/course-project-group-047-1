@@ -21,4 +21,11 @@ public class BalanceTest {
         assertEquals(2.0, bal2.getBal(), 0.0);
     }
 
+    @Test(timeout = 50)
+    public void testAddBal() {
+        bal1.addBal(1);
+        bal2.addBal(1);
+        assertEquals(1.0, bal1.getBal(), 0.0);
+        assertEquals(3.0, bal2.getBal(), 0.0);
+    }
 }
