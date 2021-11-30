@@ -1,38 +1,32 @@
 package interface_adapter_test;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import external_interface.CustomerAccountAccess;
+import interface_adapter.CustomerAccountPresenter;
+import org.junit.Before;
+import org.junit.Test;
+import use_case.CustomerDataAccess;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomerAccountPresenterTest {
+public class CustomerAccountPresenterTest {
 
-    @BeforeEach
+    CustomerAccountPresenter CAPre;
+    CustomerDataAccess db = new CustomerAccountAccess();
+
+    @Before
     public void setUp() {
+        CAPre = new CustomerAccountPresenter(db);
 
     }
 
     @Test
     public void testViewName() {
+        assertEquals("eddy", CAPre.viewName("eddy"));
     }
 
     @Test
     public void testViewPin() {
+        assertEquals(1111, CAPre.viewPin("eddy"));
     }
 
-    @Test
-    public void testViewBal() {
-    }
-
-    @Test
-    public void testViewCred() {
-    }
-
-    @Test
-    public void testViewColor() {
-    }
-
-    @Test
-    public void testIterator() {
-    }
 }
