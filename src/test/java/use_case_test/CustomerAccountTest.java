@@ -12,13 +12,13 @@ public class CustomerAccountTest {
     CustomerAccount customer1;
     CustomerAccount customer2;
     Credit cred;
-    Balance balance;
+    Balance bal;
 
     @Before
     public void setUp() {
         cred = new Credit(50.0);
-        balance = new Balance(50.0);
-        customer1 = new CustomerAccount("Adam", 123, cred, balance, "red");
+        bal = new Balance(50.0);
+        customer1 = new CustomerAccount("Adam", 123, cred, bal, "red");
         customer2 = new CustomerAccount("Mike", 135, 20.0, 10.0, "blue");
     }
 
