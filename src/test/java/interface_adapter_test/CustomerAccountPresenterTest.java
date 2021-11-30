@@ -29,4 +29,18 @@ public class CustomerAccountPresenterTest {
         assertEquals(1111, CAPre.viewPin("eddy"));
     }
 
+    @Test
+    public void testViewBal() {
+        assertEquals(0.0, CAPre.viewBal("eddy"));
+    }
+
+    @Test
+    public void testViewCred() {
+        assertEquals(1.0, CAPre.viewCred("eddy"));
+    }
+
+    @Test
+    public void testViewColor() {
+        assertEquals("invert", CAPre.viewColor("eddy"));
+    }
 }
