@@ -48,7 +48,7 @@ public class OrderControllerTest {
 
     @Test(timeout = 50)
     public void testHaveOrder() {
-        assertTrue(OrderCon.haveOrder("eddy"));
+        assertTrue(OrderCon.haveOrder("User1"));
         assertFalse(OrderCon.haveOrder("user"));
     }
 }
