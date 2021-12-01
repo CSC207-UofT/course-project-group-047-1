@@ -58,6 +58,15 @@ public class ShoppingCartTest {
     }
 
     /**
+     * Test for the exists method.
+     */
+    @Test(timeout = 50)
+    public void testExists() {
+        cart.addItem(item1);
+        assertEquals(true, cart.exists(1));
+    }
+
+    /**
      * Test for the getTotalPrice method.
      */
     @Test
