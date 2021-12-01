@@ -18,8 +18,8 @@ public class CustomerAccountTest {
     public void setUp() {
         cred = new Credit(50.0);
         bal = new Balance(50.0);
-        customer1 = new CustomerAccount("Adam", 123, cred, bal, "red");
-        customer2 = new CustomerAccount("Mike", 135, 20.0, 10.0, "blue");
+        customer1 = new CustomerAccount("Adam", 123, cred, bal, "invert");
+        customer2 = new CustomerAccount("Mike", 135, 20.0, 10.0, "all_black");
     }
 
     /**
@@ -63,8 +63,8 @@ public class CustomerAccountTest {
      */
     @Test(timeout = 50)
     public void testGetColor() {
-        assertEquals("red", customer1.getColor());
-        assertEquals("blue", customer2.getColor());
+        assertEquals("invert", customer1.getColor());
+        assertEquals("all_black", customer2.getColor());
     }
 
     /**
@@ -93,9 +93,9 @@ public class CustomerAccountTest {
      */
     @Test(timeout = 50)
     public void testSetColor() {
-        assertEquals("red", customer1.getColor());
-        customer1.setColor("green");
-        assertEquals("green", customer1.getColor());
+        assertEquals("invert", customer1.getColor());
+        customer1.setColor("all_black");
+        assertEquals("all_black", customer1.getColor());
     }
 
      /**
