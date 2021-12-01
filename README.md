@@ -5,6 +5,11 @@ A grocery order reservation app that currently has the following functions:
 - Add and remove items from their shopping cart
 - Check out their shopping cart
 - Confirm pickup of items
+- View order history
+- Change colour settings (default, inverted, all black)
+- Change account information
+- View the account's credit and balance
+- Add to the account's balance
 
 ## System Requirements
 Java 11 or later
