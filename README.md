@@ -18,3 +18,4 @@ Java 11 or later
 1. Clone the repository ```https://github.com/CSC207-UofT/course-project-group-047-1```
 2. Build the project using Gradle
 3. Run the ```Main.java``` file in ```src/main/java/external_interface```
+4. Follow the instructions as provided. Have fun! :)
