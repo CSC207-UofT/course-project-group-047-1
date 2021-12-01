@@ -1,1 +1,15 @@
-To run the program, please download the file, and run Main.java file in src/main/java/external_interface, their will be instructions after you run it. 
+# Group 047 - Grocery Order Reservation App
+A grocery order reservation app that currently has the following functions:
+- Register for and login to an account
+- View and order groceries from the store
+- Add and remove items from their shopping cart
+- Check out their shopping cart
+- Confirm pickup of items
+
+## System Requirements
+Java 11 or later
+
+## Installation and Usage
+1. Clone the repository ```https://github.com/CSC207-UofT/course-project-group-047-1```
+2. Build the project using Gradle
+3. Run the ```Main.java``` file in ```src/main/java/external_interface```
