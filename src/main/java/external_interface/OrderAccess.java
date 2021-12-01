@@ -11,7 +11,7 @@ public class OrderAccess implements OrderDataAccess {
 
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "file" + File.separator + "Orders.txt";
+            "main" + File.separator + "database/file" + File.separator + "Orders.txt";
 
 
     @Override

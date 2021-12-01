@@ -22,6 +22,6 @@ public class OrderPresenterTest {
     public void testView() {
         assertEquals("Status: closed\n" +
                 "Total number of items: 11\n" +
-                "Total price: 10.0\n\n", OrPre.view("eddy"));
+                "Total price: 10.0\n\n", OrPre.view("example"));
     }
 }

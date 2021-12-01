@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CustomerAccountAccessTest {
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "file" + File.separator + "CustomerAccounts.txt";
+            "main" + File.separator + "database/file" + File.separator + "CustomerAccounts.txt";
     CustomerAccountAccess customerAccountAccess = new CustomerAccountAccess();
 
 

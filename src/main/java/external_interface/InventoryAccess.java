@@ -10,7 +10,7 @@ public class InventoryAccess implements InventoryDataAccess {
 
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "file" + File.separator + "inventory.txt";
+            "main" + File.separator + "database/file" + File.separator + "inventory.txt";
 
 
     @Override
