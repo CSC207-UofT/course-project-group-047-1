@@ -15,6 +15,7 @@ public class Main {
 
 
     private final Scanner input = new Scanner(System.in);
+
     private ShoppingCart cart;
     private String name;
 
@@ -256,6 +257,10 @@ public class Main {
     }
 
 
+    /**
+     * Provide user five choices and call
+     * corresponding methods
+     */
     private void accountSetting() {
         System.out.println(wel + "\nWelcome, below is your current information" + reset);
         boolean end = false;
@@ -312,6 +317,9 @@ public class Main {
     }
 
 
+    /**
+     * Allow users to change their name
+     */
     private void changeName() {
         System.out.print(in + "\nEnter the new username you want: " + reset);
         String n = input.next();
@@ -326,6 +334,10 @@ public class Main {
     }
 
 
+    /**
+     * Allow user to change their color setting
+     * three available choices
+     */
     private void changeColor() {
         System.out.println("\nEnter 1 to set default color");
         System.out.println("Enter 2 to set all black color");
@@ -360,6 +372,9 @@ public class Main {
     }
 
 
+    /**
+     * Allow users to add balance to their account
+     */
     private void addBalance() {
         System.out.print(in + "\nEnter the amount you want to add: " + reset);
         double n = input.nextDouble();
@@ -372,6 +387,9 @@ public class Main {
     }
 
 
+    /**
+     * Allow users to change their pin
+     */
     private void changePin() {
         System.out.print(in + "\nEnter the new pin you want: " + reset);
         int n = input.nextInt();
@@ -381,6 +399,9 @@ public class Main {
     }
 
 
+    /**
+     * Allow users to change their color setting
+     */
     private void setColor() {
         String color = this.accountPresenter.viewColor(this.name);
         if (Objects.equals(color, "all_black")) {
@@ -480,7 +501,7 @@ public class Main {
 
     /**
      * Checkout menu, tells the user how many items they bought,
-     * how much money they need to bring, and reminds them to
+     * how much money they paid, and reminds them to
      * arrive the store before the store close at 9pm
      */
     private void checkOutMenu() {
@@ -620,6 +641,9 @@ public class Main {
     }
 
 
+    /**
+     * Launch a menu for user
+     */
     public static void main(String[] args) {
 
         Main m = new Main();
