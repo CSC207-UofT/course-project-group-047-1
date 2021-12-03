@@ -89,9 +89,8 @@ As we mentioned in Clean Architecture we used Dependency Inversion on our Data A
 classes are in the most outer layer and their interface are in use case layer so that our controllers and 
 use case classes can use these data access class without violating the dependency rule.
 
-**Design Pattern:**
 
-Iterator Pattern:
+**Design Pattern:**
 
 We used Iterator Pattern in our three Presenter classes, 
 see [Pull request 91](https://github.com/CSC207-UofT/course-project-group-047-1/pull/91)
