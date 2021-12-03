@@ -68,20 +68,32 @@ public class OrderController {
         this.db.update(this.orders);
     }
 
-
-    public void changeName(String name, String newName){
-        for (Order o : this.orders){
-            if (o.getCustomer().equals(name)){
+    /**
+     * Change the username of a given account in all of its orders
+     *
+     * @param name:    is the username of the account
+     * @param newName: is the new username
+     */
+    public void changeName(String name, String newName) {
+        for (Order o : this.orders) {
+            if (o.getCustomer().equals(name)) {
                 o.resetUsername(newName);
             }
         }
         this.db.update(this.orders);
     }
 
-
+    /**
+     * Checks if an account has any orders
+     *
+     * @param name: is the username of the account
+     * @return true if the account has an order, false if otherwise
+     */
     public boolean haveOrder(String name) {
-        for (Order o: this.orders) {
-            if (Objects.equals(o.getCustomer(), name)) {return true;}
+        for (Order o : this.orders) {
+            if (Objects.equals(o.getCustomer(), name)) {
+                return true;
+            }
         }
         return false;
     }

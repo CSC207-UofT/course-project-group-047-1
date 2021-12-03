@@ -24,9 +24,15 @@ public class InventoryController {
     }
 
 
+    /**
+     * Checks if an id is already been used
+     *
+     * @param id: is the id of the grocery item
+     * @return true if the id is already exist, false if otherwise
+     */
     public boolean exists(int id) {
-        for (GroceryItem i : this.items){
-            if (i.getId() == id){
+        for (GroceryItem i : this.items) {
+            if (i.getId() == id) {
                 return true;
             }
         }
