@@ -16,23 +16,6 @@ can top up their balance through the program. We also included color settings to
 Design Principles, users can choose three types of color setting, default, inverted, and all black.
 
 
-**A general walk through:**
-
-A user runs the program by running the "Main" class, then they can create an "CustomerAccount", and the "Main" 
-class will call the "CustomerAccountController" class to store this "CustomerAccount" into the "CustomerAccounts.txt"
-file. Then, the user will be brought to a login page. After login, the "Main" class will initiate a "ShoppingCart" 
-for this user. While shopping, "InventoryPresenter" will display all the items we have in the 
-store, and the user can
-add "GroceryItem" into their "ShoppingCart" by specifying the "id" and "quantity" of the item. When they do that,
-the "Main" class will call the "InventoryController" class to remove those "GroceryItems" from the "inventory.txt" and 
-add them to the user's "ShoppingCart". The user can view what's in their "ShoppingCart", and remove items from it.
-When the user is satisfied, they can check out, which will create an "Order" with an "open" status. The 
-"OrderController" will add this "Order" into the "Orders.txt" file. The user will be asked to confirm if they picked
-up their order. After they confirmed, the "OrderController" will set the order's status to "closed", and write that 
-change into the "Orders.txt" file. When the user goes back and check his account's order history, "OrderPresenter"
-will display this user's past orders.
-
-
 **Design Decisions:**
 
 In phase 2 We renamed some of our classes to better fit their functions, we also extracted some parts of controller
@@ -106,13 +89,13 @@ controller. The advantage is this can remove a hard dependency between the two c
 easier to use and to be tested separately.
 
 
-**Package Strategy & Codes refactoring & Organization:**
+**Package Strategy & Codes refactoring:**
 
 We put our classes into packages by four layers, from high level to low level: entity, use_case, interface_adapter, 
 and external_interface, and another folder 'file' is to store text file under database. We think this is easy for us to 
 locate a class file or a text file, and if anyone wants to extend our project by adding new classes they 
 know where to put these classes. This also helps us to be clear on which class belongs to which layer so 
-that we don't accidentally violate the clean architecture. Throughout the project constantly checked
+that we don't accidentally violate the clean architecture. Throughout the project we constantly checked
 for codes smells and bad coding styles and fix them as wee see them. For example, we combined 
 classes with the same responsibility, see 
 [Pull request 22](https://github.com/CSC207-UofT/course-project-group-047-1/pull/22). We also
@@ -134,32 +117,34 @@ What has worked well:
 
 Contributions:
 
-Yicong Luo: [Pull request 107](https://github.com/CSC207-UofT/course-project-group-047-1/pull/107/files), 
+Yicong Luo: Has been working on UI and some part of data access,
+[Pull request 107](https://github.com/CSC207-UofT/course-project-group-047-1/pull/107/files), 
 [Pull request 101](https://github.com/CSC207-UofT/course-project-group-047-1/pull/101/files), in these two pull
-requests I added a lot of features in UI.
+requests a lot of features in UI were added.
 
-Khloe Tsang: [Pull request 113](https://github.com/CSC207-UofT/course-project-group-047-1/pull/113/files), 
+Khloe Tsang: Has been working on testing, [Pull request 113](https://github.com/CSC207-UofT/course-project-group-047-1/pull/113/files), 
 [Pull request 50](https://github.com/CSC207-UofT/course-project-group-047-1/pull/50/files), in these two pull requests
-I added a lot of tests.
+a lot of tests were added.
 
-Wenzhen Wang: [Pull request 62](https://github.com/CSC207-UofT/course-project-group-047-1/pull/62/files),
+Wenzhen Wang: Has been working on entity classes,
+[Pull request 62](https://github.com/CSC207-UofT/course-project-group-047-1/pull/62/files),
 [Pull request 114](https://github.com/CSC207-UofT/course-project-group-047-1/pull/114/files),
 in these two pull requests
-I added a lot of entity codes and tests.
+a lot of entity codes and tests were added.
 
-Peijun Lu: [Pull request 79](https://github.com/CSC207-UofT/course-project-group-047-1/pull/79/files), 
+Peijun Lu: Has been working on use case classes and some part of data access,
+[Pull request 79](https://github.com/CSC207-UofT/course-project-group-047-1/pull/79/files), 
 [Pull request 77](https://github.com/CSC207-UofT/course-project-group-047-1/pull/77/files),
 in these two pull requests
-I fix the clean architecture violation by controllers reading file.
+the clean architecture violation by controllers reading file was fixed.
 
-Qin Xu: [Pull request 110](https://github.com/CSC207-UofT/course-project-group-047-1/pull/110/files),
+Qin Xu: Has been working on testing, [Pull request 110](https://github.com/CSC207-UofT/course-project-group-047-1/pull/110/files),
 [Pull request 119](https://github.com/CSC207-UofT/course-project-group-047-1/pull/119/files),
 in these two pull requests
-I added a lot of tests.
+a lot of tests were added.
 
-Zhaoyu Yan: [Pull request 85](https://github.com/CSC207-UofT/course-project-group-047-1/pull/85/files),
+Zhaoyu Yan: Has been working on interface adapter classes and design pattern, 
+[Pull request 85](https://github.com/CSC207-UofT/course-project-group-047-1/pull/85/files),
 [Pull request 93](https://github.com/CSC207-UofT/course-project-group-047-1/pull/93/files),
 in these two pull requests
-I added design pattern and added a lot of codes in controllers
-
-Thank you.
+design pattern and a lot of codes in controllers were added.

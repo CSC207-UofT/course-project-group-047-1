@@ -54,7 +54,7 @@ Our program can also be used
 by small stores that are in shortage of supply or are very popular, because our program can load and save orders, 
 every purchase by an account will be stored so users can safely order items their want.
 
-Our program is less likely to be used by stores that accepts cash. Although the payment system can be deleted but 
+Our program is less likely to be used by stores that accept only cash. Although the payment system can be deleted but 
 normally if a store does not accept online payment
 then most likely then will not need a software like this. we are also not expecting stores that
 do not have long term users like a small computer
