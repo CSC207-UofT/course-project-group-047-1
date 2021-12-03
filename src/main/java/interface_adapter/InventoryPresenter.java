@@ -6,12 +6,18 @@ import use_case.InventoryDataAccess;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class InventoryPresenter implements Iterable<GroceryItem>{
+/**
+ * This class provides a string presentation of the grocery inventory
+ */
+public class InventoryPresenter implements Iterable<GroceryItem> {
 
     InventoryDataAccess db;
 
     ArrayList<GroceryItem> items;
 
+    /**
+     * Constructor
+     */
     public InventoryPresenter(InventoryDataAccess db) {
         this.db = db;
         this.items = db.read();
@@ -19,7 +25,7 @@ public class InventoryPresenter implements Iterable<GroceryItem>{
 
 
     /**
-     * @return a string representation of GroceryItems in the store
+     * Returns a string representation of the grocery inventory in the store
      */
     public String view() {
         this.items = db.read();
@@ -27,7 +33,7 @@ public class InventoryPresenter implements Iterable<GroceryItem>{
 
         StringBuilder string = new StringBuilder();
 
-        while (itr.hasNext()){
+        while (itr.hasNext()) {
             GroceryItem item = itr.next();
             string.append(item.getId()).append(" ").append(item.getName()).append(" x ").append(item.getQuantity())
                     .append(", Price: ").append(item.getPrice()).append("$ each\n");
@@ -38,22 +44,37 @@ public class InventoryPresenter implements Iterable<GroceryItem>{
     }
 
 
+    /**
+     * Returns an iterator that iterates through all grocery items in the store
+     */
     @Override
     public Iterator<GroceryItem> iterator() {
         return new InventoryIterator();
     }
 
 
-    private class InventoryIterator implements Iterator<GroceryItem>{
+    /**
+     * The iterator class for GroceryItem
+     */
+    private class InventoryIterator implements Iterator<GroceryItem> {
 
         private int item = 0;
 
+
+        /**
+         * Check if the iterator has a next element
+         *
+         * @return true if the iterator has a next element, false if otherwise
+         */
         @Override
         public boolean hasNext() {
             return this.item < db.read().size();
         }
 
 
+        /**
+         * Returns the next grocery item in the list
+         */
         @Override
         public GroceryItem next() {
             int curr_item = this.item;
