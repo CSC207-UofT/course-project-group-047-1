@@ -1,6 +1,3 @@
-Design document
-
-
 **Specification:**
 
 Our project domain is a grocery order reservation app. We are designing a program for grocery stores like Walmart or 
