@@ -1,77 +1,169 @@
 Design document
 
 
-Specification:
+**Specification:**
 
-Our project domain is a grocery order reservation app. We are designing a program for grocery stores like Walmart or T&T. In phase 0, the program allows users to register and login. Now in phase 1, users can view and order groceries from the store. Customers are able to see the id, name, price, and quantity in stock of each item. Each user has their own shopping cart, and they can add items to their shopping cart, or remove items. At any time, users can view the items in their shopping cart. When they are satisfied, they can check out. On the checkout page, users will be asked to confirm if they picked up their items. At this point, users can choose to exit the program and go pick up their stuff. When they rerun the program and login back into their customerAccount, the program will stop them from continuing shopping until they confirmed that they picked up their order.
+Our project domain is a grocery order reservation app. We are designing a program for grocery stores like Walmart or 
+T&T. In phase 0, the program allows users to register and login. 
 
+As of phase 1, users can view and order groceries
+from the store. users can see the id, name, price, and quantity in stock of each item. Each user has their
+own shopping cart, and they can add items to their shopping cart, or remove items. At any time, users can view the 
+items in their shopping cart. When they are satisfied, they can check out. On the checkout page, users will be asked
+to confirm if they picked up their items. 
 
-A general walk through:
-
-A user runs the program by running the "Main" class, then they can create an "CustomerAccount", and the "Main" class will call the "CustomerAccountManager" class to store this "CustomerAccount" into the "CustomerAccounts.txt" file. Then, the user will be brought to a login page. After login, the "Main" class will initiate a "ShoppingCart" for this "Customer". The user can now choose to exit the program or start shopping. While shopping, the user can add "GroceryItem" into their "ShoppingCart" by specifying the "id" and "quantity" of the item. When they do that, the "Main" class will call the "GroceryInventory" class to remove those "GroceryItems" from the "inventory.txt" and add them to the user's "ShoppingCart". The user can view what's in their "ShoppingCart", and remove items from it. When the user is satisfied, they can check out, which will create an "Order" with an "open" status. The "OrderManager" will add this "Order" into the "Orders.txt" file. The user will be asked to confirm if they picked up their order. After they confirmed, the "OrderManager" will set the order's status to "closed", and write that change into the "Orders.txt" file.
-
-
-Design Decisions:
-
-After receiving feedback from phase 0, we realized that our project structure does not adhere to clean architecture because some of our higher-level classes have a dependency on lower-level classes. Our TA also pointed out that our controller classes should not interact on the same level since we are using a higher-order class to coordinate. So in pull request #10, we changed our project structure by adjusting class level and removing inappropriate imports so that our future implementations adhere to clean architecture. We also put our file into different folders so that our codes are more organized and easier for us to work with. And we deleted a few classes and functionalities (specifically the delivery system) from our program as our TA pointed out that our project scope is too large, and we should make it smaller so that our project can be more useful.
-
-
-SOLID & Clean Architecture:
-
-During our implementations we have noticed some violations, for example, we tried to implement a Strategy pattern in pull request #18. But later we found out that "GroceryItem", which is an entity, imports classes in the external interface level, which clearly is a violation of both the Clean Architecture and the SOLID principles. So in pull request #28, we fixed it. During our implementations, we also consistently check imports in classes we wrote to ensure that there are no dependencies on the same level and to ensure that higher-level modules do not depend on lower modules. We also have a UML diagram under phase 1 folder to demonstrate Clean Architecture. For Single responsibility principle, we ensured that each class has only one responsibility, for example, we have three different file writing classes for three different objects stored in three different text file. We also documented the responsibilities for every class in our program, making our program easier to understand and extend. Our program have an abstract class "UserAccount", so in phase 2 when we extend our project we might want to bring back the delivery system, then we can create a new class called DeliveryAccount that extend this abstract class. We can also create a new corresponding Controller class for it, neither action will change the existing classes which adheres to Open/Close principle. We also ensured that the interfaces in our program are small as possible. For example, we have an "Account" interface which only have two necessary getter methods so that we are adhering to the Interface Segregation Principle. We also ensured our subclass like "CustomerAccount" overrides all methods that it inherits, which adheres to Liskov Substitution Principle. And finally as explained before, we are adhering Clean Architecture like our higher level modules do not depend on lower modules, and there is no dependencies between same level modules, so we are also following the Dependency Inversion Principle.
+As of phase 2, users can change their username and pin through the
+program, we also added a payment and credit system. Each user will be rewarded with credit when they purchase
+items and confirm their orders, and their balance will be deducted after they purchase items. At any time users 
+can top up their balance through the program. We also included color settings to better adhere the Universal
+Design Principles, users can choose three types of color setting, default, inverted, and all black.
 
 
-Design Pattern:
+**A general walk through:**
 
-For the design pattern, we are using the Dependency Injection Pattern in "CustomerAccountManager" and "OrderManager" classes, and this is also another effort we made to ensure our program adheres to Clean Architecture. This pattern says that instead of using the "new" keyword to create an object inside a method in another class, we should pass the object as a parameter to that method. For example, in the "CustomerAccountManager" class there is an "addAccount" method, which adds an "CustomerAccount" into the "CustomerAccounts.txt" file. A "CustomerAccount" has a username and a pin. Before using this pattern we were passing the username and the pin as parameters into the "addAccount" method and created an "CustomerAccount" inside this method. This creates a hard dependency between "CustomerAccountManager" and "CustomerAccount", which makes each module harder to test. By using the Dependency Injection pattern, we pass a "CustomerAccount" as a parameter to the "addAccount" method (see pull request #48), and let the "Main" class creates this CustomerAccount. This complicates the "Main" class but the advantage is that this will remove a hard dependency between the "CustomerAccountManager" class and the "CustomerAccount" class, making each module easier to test and easier to use independently. In the future, we will probably continue to use this pattern as we extend our project.
+A user runs the program by running the "Main" class, then they can create an "CustomerAccount", and the "Main" 
+class will call the "CustomerAccountController" class to store this "CustomerAccount" into the "CustomerAccounts.txt"
+file. Then, the user will be brought to a login page. After login, the "Main" class will initiate a "ShoppingCart" 
+for this user. While shopping, "InventoryPresenter" will display all the items we have in the 
+store, and the user can
+add "GroceryItem" into their "ShoppingCart" by specifying the "id" and "quantity" of the item. When they do that,
+the "Main" class will call the "InventoryController" class to remove those "GroceryItems" from the "inventory.txt" and 
+add them to the user's "ShoppingCart". The user can view what's in their "ShoppingCart", and remove items from it.
+When the user is satisfied, they can check out, which will create an "Order" with an "open" status. The 
+"OrderController" will add this "Order" into the "Orders.txt" file. The user will be asked to confirm if they picked
+up their order. After they confirmed, the "OrderController" will set the order's status to "closed", and write that 
+change into the "Orders.txt" file. When the user goes back and check his account's order history, "OrderPresenter"
+will display this user's past orders.
 
 
-Package Strategy & Codes refactoring & Organization:
+**Design Decisions:**
 
-We put our classes into packages by four layers, from high level to low level: entity, use_case, controller, and external_interface, and another folder 'file' is to store text file. We think this is easy for us to locate a class file or a text file, and if anyone wants to extend our project by adding new classes they know where to put these classes. This also helps us to be clear on which class belongs to which layer so that we don't accidentally violate the clean architecture. During our implementations, we consistently checked for codes smells and bad coding styles. For example, we had a class called "storeManager", but then, we found that it has the same responsibility as another class called "groceryInventory". So we combined these two classes in pull request #22, which also helped us to adhere to the Single Responsibility Principle. We also tried to shorten long methods, for example in pull request #46, we extracted a method from a method in the "Main" class. One problem with our current design is that we are using the "Main" class to coordinate everything. This reduces the dependencies between other classes but increases the size and complexity of the "Main" class. Our "Main" class also involves a lot of user inputs and switching cases which makes it hard to test, but our tests covers most of other methods. We also included a diagram under phase 1 folder, which tells the relationship between each method in the "Main" class, to help others to understand the "Main" class, and documented every method and class in our program to ensure that anyone can understand what our codes are doing.
+In phase 2 We renamed some of our classes to better fit their functions, we also extracted some parts of controller
+classes into gateways and presenters because we
+used to have controllers doing String output and manipulation, and file reading and writing
+which does not adhere to single Responsibility and clean architecture. We also changed our text file location, 
+they used to be under "java" folder, but since they don't 
+have java codes, so we moved them into elsewhere.
 
 
-Progress report:
+**Clean Architecture:**
+
+In phase 1 we have controller classes writing and reading from database which is a violation. In phase 2 we 
+extracted the file writing and reading parts into DataAccess classes in the most outer layer, and have their
+interfaces at the use case layer, and let controllers use these interfaces, which is essentially Dependency
+inversion technique. You can see 
+this in [Pull request 75](https://github.com/CSC207-UofT/course-project-group-047-1/pull/75/files). Now
+we no longer have dependency towards outside, all dependency are from low level modules to high level modules,
+no high level modules imports and uses low level modules. We also included a UML diagram under phase 2 folder.
+
+
+**SOLID Principles:**
+
+Single Responsibility Principle:
+
+Like mentioned above, in phase 1 we have controllers combined with gateway and presenters, but now in phase 2 we 
+fixed this and all our class have only one responsibility, one reason to change. We also documented the
+responsibility for each class so that anyone can understand what each class does.
+
+Open/Close Principle:
+
+For project extension we have interfaces at use case level to extend for. For example, if one wants to add
+a delivery function to our program they can add a new use case class called DeliveryAccount and let it 
+extend the Account interface, and Add the corresponding Data Access concrete class and interface, and the 
+corresponding controller and presenter. None of these actions will alter the existing classes.
+
+Liskov Substitution Principle:
+
+Every subclass or classes that implements an interface in our program overrides the corresponding methods in
+parent classes and contains more methods. So replacing a parent class with a subclass will not change the 
+program's functionality. This is also demonstrated by our Controller classes, each of them uses a
+Data Access interface in use case level, but in actual usage we use "Main" class to pass a concrete class 
+that implement the interface to those controller classes.
+
+Interface Segregation Principle:
+
+All interfaces in our program is small as possible, they all contain only the 
+necessary methods. No classes contain features they don't need, and all concrete classes that implements an
+interface override and use the corresponding methods.
+
+Dependency Inversion Principle:
+
+As we mentioned in Clean Architecture we used Dependency Inversion on our Data Access classes, these concrete
+classes are in the most outer layer and their interface are in use case layer so that our controllers and 
+use case classes can use these data access class without violating the dependency rule.
+
+**Design Pattern:**
+
+Iterator Pattern:
+
+We used Iterator Pattern in our three Presenter classes, 
+see [Pull request 91](https://github.com/CSC207-UofT/course-project-group-047-1/pull/91)
+and [Pull request 96](https://github.com/CSC207-UofT/course-project-group-047-1/pull/96)
+in combination of while loops to iterate through our database. The advantage of this while loop and 
+iterator over for loop is it occupies less memory in our computer, especially when our database is large, also
+it has lower time complexity.
+
+We also used Dependency Injection Pattern in our controller classes. For example, our addAccount 
+method in CustomerAccountController
+does not initiate CustomerAccount, instead another class will create an Account and pass that account to the
+controller. The advantage is this can remove a hard dependency between the two classes, making each module
+easier to use and to be tested separately.
+
+
+**Package Strategy & Codes refactoring & Organization:**
+
+We put our classes into packages by four layers, from high level to low level: entity, use_case, interface_adapter, 
+and external_interface, and another folder 'file' is to store text file under database. We think this is easy for us to 
+locate a class file or a text file, and if anyone wants to extend our project by adding new classes they 
+know where to put these classes. This also helps us to be clear on which class belongs to which layer so 
+that we don't accidentally violate the clean architecture. Throughout the project constantly checked
+for codes smells and bad coding styles and fix them as wee see them. For example, we combined 
+classes with the same responsibility, see 
+[Pull request 22](https://github.com/CSC207-UofT/course-project-group-047-1/pull/22). We also
+tried to shorten long methods, for example 
+in [pull request 46](https://github.com/CSC207-UofT/course-project-group-047-1/pull/46).
+
+
+**Progress report:**
 
 Open questions:
 
-1: The two issues listed on issues page on GitHub
-
-2: What other design patterns can our codes implement? We have been struggling with this for a while, and we tried to use the Strategy pattern in pull request #18l, but it turns out violates the Clean Architecture. We hope to get some advice.
-
-3: Main class is difficult to test, since it involves user's input, we tried to simulate those input but, they are not working and everytime we try to run we get no such element exception. We will do more research on this in phase 2.
+1: How to test the UI with user input?
 
 What has worked well:
 
 1: Our program is working well as we expected.
 
-2: Our group is working well together, we communicate efficiently, and we shared work equally
+2: Our group is working well together, we communicate efficiently, and we shared work equally.
 
 Contributions:
 
-Unfortunately our teammate Yiyu Li dropped the course
+Yicong Luo: [Pull request 107](https://github.com/CSC207-UofT/course-project-group-047-1/pull/107/files), 
+[Pull request 101](https://github.com/CSC207-UofT/course-project-group-047-1/pull/101/files), in these two pull
+requests I added a lot of features in UI.
 
-Yicong Luo
+Khloe Tsang: [Pull request 113](https://github.com/CSC207-UofT/course-project-group-047-1/pull/113/files), 
+[Pull request 50](https://github.com/CSC207-UofT/course-project-group-047-1/pull/50/files), in these two pull requests
+I added a lot of tests.
 
-Working on Main class, design documents, code refactoring
-Will be focusing on Main class and code refactoring in the future
-Khloe Tsang
+Wenzhen Wang: [Pull request 62](https://github.com/CSC207-UofT/course-project-group-047-1/pull/62/files),
+[Pull request 114](https://github.com/CSC207-UofT/course-project-group-047-1/pull/114/files),
+in these two pull requests
+I added a lot of entity codes and tests.
 
-Working on Testing, Main class
-Will be focusing on Testing in the future
-Wenzhen Wang
+Peijun Lu: [Pull request 79](https://github.com/CSC207-UofT/course-project-group-047-1/pull/79/files), 
+[Pull request 77](https://github.com/CSC207-UofT/course-project-group-047-1/pull/77/files),
+in these two pull requests
+I fix the clean architecture violation by controllers reading file.
 
-Working on CustomerAccountManager class, GroceryInventory class,
-Will be focusing on the file writing classes in the future
-Peijun Lu
+Qin Xu: [Pull request 110](https://github.com/CSC207-UofT/course-project-group-047-1/pull/110/files),
+[Pull request 119](https://github.com/CSC207-UofT/course-project-group-047-1/pull/119/files),
+in these two pull requests
+I added a lot of tests.
 
-Working on ShoppingCart class, design pattern
-Will be focusing on design pattern in the future
-Qin Xu
+Zhaoyu Yan: [Pull request 85](https://github.com/CSC207-UofT/course-project-group-047-1/pull/85/files),
+[Pull request 93](https://github.com/CSC207-UofT/course-project-group-047-1/pull/93/files),
+in these two pull requests
+I added design pattern and added a lot of codes in controllers
 
-Working on CustomerAccount, Customer, Main class, and testing
-Will be focusing on testing and Main class in the future
-Zhaoyu Yan
-
-Working on GroceryItem, Order, OrderManager classes
-Will be focusing on OrderManager Class in the future
+Thank you.
