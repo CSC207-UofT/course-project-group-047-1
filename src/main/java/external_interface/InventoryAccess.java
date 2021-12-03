@@ -6,13 +6,20 @@ import use_case.InventoryDataAccess;
 import java.io.*;
 import java.util.ArrayList;
 
+
+/**
+ * This class provide data access to Inventory.txt file
+ */
 public class InventoryAccess implements InventoryDataAccess {
 
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "database/file" + File.separator + "inventory.txt";
+            "main" + File.separator + "database/file" + File.separator + "Inventory.txt";
 
 
+    /**
+     * @return Read Inventory.txt file and return an ArrayList of GroceryItem
+     */
     @Override
     public ArrayList<GroceryItem> read() {
 
@@ -36,6 +43,11 @@ public class InventoryAccess implements InventoryDataAccess {
 
     }
 
+
+    /**
+     * @param items
+     * update Inventory.txt according to changes in items
+     */
     @Override
     public void update(ArrayList<GroceryItem> items) {
 
