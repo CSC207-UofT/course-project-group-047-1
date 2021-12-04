@@ -43,12 +43,10 @@ give enough space to click so that users can use the program easily.
 
 Our market targets are Grocery Stores and Supermarkets where they have a lot of users and with different kinds 
 of customers, and are looking for a simple and easy-to-use program to facilitate their business.
-
 Since our program is following the Clean Architecture and SOLID principles, it can be easily
 maintained or extended by programmers who have only basic knowledge of java. For example, if the store
 wants to add more items for sale, then they don't have to change any existing codes but add this item into the
 "Inventory.txt" file, and our gateway class will automatically detect this item. 
-
 Our program also suites stores with a lot of long-term customers. Since it can store and load accounts, users only 
 have to create their accounts once. Our program is easy to use so even old people can use it without problems.
 Our program can also be used by small stores that are in shortage of supply or are very popular, because our program 
