@@ -3,14 +3,13 @@ package interface_adapter;
 import entity.GroceryItem;
 import use_case.InventoryDataAccess;
 
-import java.io.*;
 import java.util.ArrayList;
 
 
 /**
  * This class manage all items in store
  */
-public class GroceryInventory {
+public class InventoryController {
 
     private final InventoryDataAccess db;
     private final ArrayList<GroceryItem> items;
@@ -19,15 +18,21 @@ public class GroceryInventory {
     /**
      * Constructor
      */
-    public GroceryInventory(InventoryDataAccess db) {
+    public InventoryController(InventoryDataAccess db) {
         this.db = db;
         items = db.read();
     }
 
 
+    /**
+     * Checks if an id is already been used
+     *
+     * @param id: is the id of the grocery item
+     * @return true if the id is already exist, false if otherwise
+     */
     public boolean exists(int id) {
-        for (GroceryItem i : this.items){
-            if (i.getId() == id){
+        for (GroceryItem i : this.items) {
+            if (i.getId() == id) {
                 return true;
             }
         }

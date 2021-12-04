@@ -8,13 +8,20 @@ import use_case.CustomerDataAccess;
 import java.io.*;
 import java.util.ArrayList;
 
+
+/**
+ * This class provide data access to CustomerAccounts.txt file
+ */
 public class CustomerAccountAccess implements CustomerDataAccess {
 
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "file" + File.separator + "CustomerAccounts.txt";
+            "main" + File.separator + "database/file" + File.separator + "CustomerAccounts.txt";
 
 
+    /**
+     * @return Read CustomerAccounts.txt file and return an ArrayList of CustomerAccount
+     */
     @Override
     public ArrayList<CustomerAccount> read() {
 
@@ -42,6 +49,10 @@ public class CustomerAccountAccess implements CustomerDataAccess {
     }
 
 
+    /**
+     * @param accounts
+     * Update CustomerAccount.txt file according to changes in accounts
+     */
     @Override
     public void update(ArrayList<CustomerAccount> accounts) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(path))) {

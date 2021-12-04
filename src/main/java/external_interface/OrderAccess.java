@@ -7,13 +7,19 @@ import java.io.*;
 import java.util.ArrayList;
 
 
+/**
+ * This class provide data access to Orders.txt file
+ */
 public class OrderAccess implements OrderDataAccess {
 
 
     private final String path = System.getProperty("user.dir") + File.separator + "src" + File.separator +
-            "main" + File.separator + "java" + File.separator + "file" + File.separator + "Orders.txt";
+            "main" + File.separator + "database/file" + File.separator + "Orders.txt";
 
 
+    /**
+     * @return Read Orders.txt and return an ArrayList of Order
+     */
     @Override
     public ArrayList<Order> read() {
 
@@ -36,6 +42,10 @@ public class OrderAccess implements OrderDataAccess {
     }
 
 
+    /**
+     * @param orders
+     * update Orders.txt according to changes in orders
+     */
     @Override
     public void update(ArrayList<Order> orders) {
 

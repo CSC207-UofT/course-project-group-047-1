@@ -6,81 +6,154 @@ import use_case.CustomerDataAccess;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class CustomerAccountPresenter implements Iterable<CustomerAccount>{
+/**
+ * This class provides a string presentation of customer account infos
+ */
+public class CustomerAccountPresenter implements Iterable<CustomerAccount> {
 
     CustomerDataAccess db;
     ArrayList<CustomerAccount> accounts;
-    CustomerAccount account;
 
-    public CustomerAccountPresenter(CustomerDataAccess db, String username) {
+    /**
+     * Constructor
+     */
+    public CustomerAccountPresenter(CustomerDataAccess db) {
         this.db = db;
         this.accounts = db.read();
-
-        Iterator<CustomerAccount> itr = this.accounts.iterator();
-
-        this.account = null;
-
-        while (itr.hasNext()){
-            CustomerAccount a = itr.next();
-            if (a.getUsername().equals(username)) {
-                this.account = a;
-                break;
-            }
-        }
     }
 
-
+    /**
+     * Updates the list of all accounts
+     */
     private void update() {
         this.accounts = db.read();
     }
 
 
-    public String viewName() {
+    /**
+     * Returns a string representation of the username of a given account
+     *
+     * @param name: is the username of the account
+     * @return a string representation of the username if the account exists,
+     * return an empty string if otherwise
+     */
+    public String viewName(String name) {
         this.update();
-        return this.account.getUsername();
+
+        for (CustomerAccount a : accounts) {
+            if (a.getUsername().equals(name)) {
+                return (a.getUsername());
+            }
+        }
+        return "";
+    }
+
+    /**
+     * Returns a string representation of the pin of a given account
+     *
+     * @param name: is the username of the account
+     * @return a string representation of the pin if the account exists,
+     * return 0 if otherwise
+     */
+    public int viewPin(String name) {
+        this.update();
+
+        for (CustomerAccount a : accounts) {
+            if (a.getUsername().equals(name)) {
+                return a.getPin();
+            }
+        }
+        return 0;
     }
 
 
-    public int viewPin() {
+    /**
+     * Returns a string representation of the balance of a given account
+     *
+     * @param name: is the username of the account
+     * @return a string representation of the balance if the account exists,
+     * return 0 if otherwise
+     */
+    public double viewBal(String name) {
         this.update();
-        return this.account.getPin();
+
+        for (CustomerAccount a : accounts) {
+            if (a.getUsername().equals(name)) {
+                return a.getBal();
+            }
+        }
+        return 0;
     }
 
 
-    public double viewBal() {
+    /**
+     * Returns a string representation of the credit of a given account
+     *
+     * @param name: is the username of the account
+     * @return a string representation of the credit if the account exists,
+     * return 0 if otherwise
+     */
+    public double viewCred(String name) {
         this.update();
-        return this.account.getBal();
+
+        for (CustomerAccount a : accounts) {
+            if (a.getUsername().equals(name)) {
+                return a.getCred();
+            }
+        }
+        return 0;
     }
 
 
-    public double viewCred() {
+    /**
+     * Returns a string representation of the color preference of a given account
+     *
+     * @param name: is the username of the account
+     * @return a string representation of the color preference if the account exists,
+     * return an empty string if otherwise
+     */
+    public String viewColor(String name) {
         this.update();
-        return this.account.getCred();
+
+        for (CustomerAccount a : accounts) {
+            if (a.getUsername().equals(name)) {
+                return a.getColor();
+            }
+        }
+        return "";
     }
 
 
-    public String viewColor() {
-        this.update();
-        return this.account.getColor();
-    }
-
-
+    /**
+     * Returns an iterator that iterates through all customer accounts
+     */
     @Override
     public Iterator<CustomerAccount> iterator() {
         return new CustomerAccountIterator();
     }
 
 
-    private class CustomerAccountIterator implements Iterator<CustomerAccount>{
+    /**
+     * The iterator class for CustomerAccount
+     */
+    private class CustomerAccountIterator implements Iterator<CustomerAccount> {
 
         private int customer = 0;
 
+        /**
+         * Check if the iterator has a next element
+         *
+         * @return true if the iterator has a next element, false if otherwise
+         */
         @Override
         public boolean hasNext() {
             return this.customer < db.read().size();
         }
 
 
+        /**
+         * Returns the next customer account in the list
+         */
         @Override
         public CustomerAccount next() {
             int curr_customer = this.customer;
