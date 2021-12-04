@@ -21,7 +21,7 @@ public class InventoryControllerTest {
     public void setUp() {
         GroIn = new InventoryController(db);
         apple = new GroceryItem(1, "Apple", 4.0, 5);
-        items = new ArrayList<GroceryItem>();
+        items = new ArrayList<>();
         items.add(apple);
     }
 

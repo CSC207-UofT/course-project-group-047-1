@@ -4,6 +4,10 @@ import entity.GroceryItem;
 
 import java.util.ArrayList;
 
+
+/**
+ * Interface for data access of Inventory.txt file
+ */
 public interface InventoryDataAccess {
 
     /**

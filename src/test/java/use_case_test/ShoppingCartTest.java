@@ -63,7 +63,7 @@ public class ShoppingCartTest {
     @Test(timeout = 50)
     public void testExists() {
         cart.addItem(item1);
-        assertEquals(true, cart.exists(1));
+        assertTrue(cart.exists(1));
     }
 
     /**

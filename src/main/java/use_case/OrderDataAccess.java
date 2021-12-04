@@ -2,6 +2,10 @@ package use_case;
 
 import java.util.ArrayList;
 
+
+/**
+ * Interface for data access of Orders.txt file
+ */
 public interface OrderDataAccess {
 
         /**
