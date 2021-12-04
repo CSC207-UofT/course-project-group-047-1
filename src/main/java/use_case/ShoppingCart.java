@@ -54,6 +54,11 @@ public class ShoppingCart {
     }
 
 
+    /**
+     * Check if there is a certain item in the shopping cart
+     * @param id: the id of the item we are searching for
+     * @return true if the item is in the shopping cart, false otherwise
+     */
     public boolean exists(int id) {
         for (GroceryItem n: this.items) {
             if (n.getId() == id) {return true;}
