@@ -17,9 +17,28 @@ their account information, such as username, pin, balance, credit, and color set
 history.
 
 
+**Changes in phase 2:**
+
+1. The first thing we did is to fix the clean architecture violation by controllers using dependency inversion.
+2. We extracted String output parts in controllers into presenters.
+3. Implemented iterator patterns in presenters with while loop.
+4. Added more functionalities like check order history, change username and pin, color setting(accessibility), 
+payment and balance
+system.
+5. Added more tolerance for errors, for example if the user put a string into where they suppose to put an integer
+then the program won't crash but a warning will be sent to user.
+6. Fixed some bugs in phase 1 like if a user put the wrong item id then he/she will enter a infinite loop.
+7. Added more business policies such as username cannot be empty, cannot add negative balance, cannot shop with 
+negative balance.
+8. Make the UI more interactive, for example user can go back from shopping menu to main menu, in phase 1 they can
+only exit.
+
 **Design Decisions:**
 
-In phase 2 We renamed some of our classes to better fit their functions. We also extracted some parts of the controller 
+In phase 1 we moved some classes to different layers to better adhere to the Clean Architecture, we also deleted
+a few classes and functionality(specifically the delivery function) to narrow down our project scope.
+
+In phase 2 we renamed some of our classes to better fit their functions. We also extracted some parts of the controller 
 classes into gateways and presenters, because we used to have controllers doing String output and manipulation, and 
 file reading and writing, which does not adhere to single responsibility principle and clean architecture. We also 
 changed our text file location. They used to be under the "java" folder, but since they don't have java codes, so we 
@@ -28,12 +47,14 @@ moved them elsewhere.
 
 **Clean Architecture:**
 
-In phase 1, we have controller classes writing and reading from database which is a violation. In phase 2, we 
+In phase 1, we moved some classes into different layers to better adhere to Clean Architecture, but
+we had controller classes writing and reading from database which is a violation. In phase 2, we 
 extracted the file writing and reading parts into DataAccess classes in the most outer layer, and have their
 interfaces at the use case layer, and let controllers use these interfaces, which is essentially a dependency
 inversion technique. You can see 
 this in [Pull request 75](https://github.com/CSC207-UofT/course-project-group-047-1/pull/75/files). Now
-we no longer have dependency towards outside, all dependencies are from low level modules to high level modules,
+we no longer have dependency towards outside, we checked this through our imports and intellij dependency diagrams,
+now all dependencies are from low level modules to high level modules,
 no high level modules imports and uses low level modules. We also included a UML diagram under the phase 2 folder.
 
 
