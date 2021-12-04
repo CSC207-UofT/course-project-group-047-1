@@ -171,8 +171,11 @@ public class Main {
                 pin = input.nextInt();
                 input.nextLine();
 
-                if (this.accounts.exists(username)) {
+                if (Objects.equals(username, "")) {
+                    System.out.println(warn + "\nUsername cannot be empty" + reset);
+                } else if (this.accounts.exists(username)) {
                     System.out.println(warn + "\nUsername already exists" + reset);
+
                 } else {
                     CustomerAccount a = new CustomerAccount(username, pin, 0.0, 0.0, "default");
                     this.accounts.addAccount(a);
@@ -323,7 +326,9 @@ public class Main {
     private void changeName() {
         System.out.print(in + "\nEnter the new username you want: " + reset);
         String n = input.next();
-        if (this.accounts.exists(n)) {
+        if (Objects.equals(n, "")) {
+            System.out.println(warn + "\nUsername cannot be empty" + reset);
+        } else if (this.accounts.exists(n)) {
             System.out.print(warn + "\nusername already exists\n" + reset);
         } else {
             this.accounts.changeUsername(this.name, n);
