@@ -39,7 +39,7 @@ In phase 1 we moved some classes to different layers to better adhere to the Cle
 a few classes and functionality(specifically the delivery function) to narrow down our project scope.
 
 In phase 2 we renamed some of our classes to better fit their functions. We also extracted some parts of the controller 
-classes into gateways and presenters, because we used to have controllers doing String output and manipulation, and 
+classes into data access classes and presenters, because we used to have controllers doing String output and manipulation, and 
 file reading and writing, which does not adhere to single responsibility principle and clean architecture. We also 
 changed our text file location. They used to be under the "java" folder, but since they don't have java codes, so we 
 moved them elsewhere.
